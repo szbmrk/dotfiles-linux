@@ -1,0 +1,110 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "memory",
+        "disk",
+        // "network",
+        "custom/brightness",
+        "pulseaudio",
+        "battery",
+        "custom/powermenu"
+    ],
+    // Module configurations
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/window": {
+        "icon": true,
+        "icon-size": 18,
+        "format": "{}",
+        "max-length": 40
+    },
+    "hyprland/submap": {
+        "format": " {}"
+    },
+    "clock": {
+        "format": "<span color='#b4befe' font-size='large'><b></b></span> {:%B %d. %H:%M}",
+        "format-alt": "<span color='#b4befe' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "on-click-right": "gnome-calendar"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+    },
+    "disk": {
+        "format": " {percentage_used}%",
+        "format-alt": " {used}/{total}",
+        "interval": 30,
+        "path": "/"
+    },
+    "network": {
+        "format-wifi": "󰤨 {signalStrength}%",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": " disconnected",
+        "interval": 5,
+        "tooltip-format-wifi": "{essid} {signalStrength}%",
+        "on-click": "nm-connection-editor"
+    },
+    "memory": {
+        "format": " {percentage}%",
+        "format-alt": " {used:0.1f}G/{total:0.1f}G",
+        "interval": 10
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " muted",
+        "format-icons": {
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "on-click": "/home/szobo/.config/waybar/scripts/toggle_pavucontrol.sh",
+        "on-click-right": "pamixer -t"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "interval": 10
+    },
+    "custom/brightness": {
+        "format": "󰃠 {}%",
+        "interval": 2,
+        "exec": "brightnessctl -m | cut -d, -f4 | tr -d '%'",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "tooltip": false
+    }
+}

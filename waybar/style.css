@@ -1,0 +1,135 @@
+* {
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-size: 16px;
+    font-weight: 700;
+    color: #a6adc8;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background-color: rgba(30, 30, 46, 0.95);
+    color: #cdd6f4;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#mode,
+#tray,
+#network,
+#pulseaudio,
+#custom-vscode,
+#custom-github,
+#custom-weather,
+#custom-power,
+#custom-brightness {
+    margin: 0 8px;
+    color: #cdd6f4;
+}
+
+#clock {
+    background-color: rgba(17, 17, 27, 0.9);
+    margin: 4px 0;
+    border-radius: 12px;
+    padding: 0 8px;
+    border: 0;
+}
+
+#workspaces {
+    background-color: rgba(17, 17, 27, 0.9);
+    margin: 4px 0px;
+    margin-left: 8px;
+    margin-right: 4px;
+    border-radius: 12px;
+    padding: 0 8px;
+    border: 0;
+}
+
+#workspaces button {
+    padding: 0 3px;
+    border: none;
+    font-size: 16px;
+    color: #6c7086;
+}
+
+#workspaces button.active label {
+    color: #f38ba8;
+    font-weight: 900;
+}
+
+#submap {
+    color: #f9e2af;
+    padding: 0 4px;
+    margin: 0 4px;
+}
+
+#window {
+    margin-left: 8px;
+}
+
+#battery {
+    color: #f2cdcd;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+@keyframes blink {
+    to {
+        background-color: #cdd6f4;
+        color: #1e1e2e;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#disk {
+    color: #94e2d5;
+}
+
+#memory {
+    color: #cba6f7;
+}
+
+#network {
+    color: #f9e2af;
+}
+
+#network.disconnected {
+    color: #f38ba8;
+}
+
+#pulseaudio {
+    color: #89b4fa;
+}
+
+#pulseaudio.muted {
+    color: #f38ba8;
+}
+
+#custom-brightness {
+    color: #fab387;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #f38ba8;
+}
