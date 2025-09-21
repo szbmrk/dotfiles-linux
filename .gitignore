@@ -1,0 +1,14 @@
+*
+
+# Ignore all files except the ones below
+!.gitignore
+!nvim/
+!hypr/
+!waybar/
+!wezterm/
+!starship/
+!kitty/
+!fish/
+!fuzzel/
+!gtk-3.0/
+!gtk-4.0/
