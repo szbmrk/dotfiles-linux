@@ -79,7 +79,6 @@
             ]
         },
         "on-click": "/home/szobo/.config/waybar/scripts/toggle_pavucontrol.sh",
-        // mute
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "battery": {
