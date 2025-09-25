@@ -33,3 +33,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/home/szobo/opt/idea\x2dIC\x2d2024\x2e2\x2e2/bin\x1e/home/szobo/opt/idea\x2dIC\x2d252\x2e26199\x2e169/bin
