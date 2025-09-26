@@ -9,8 +9,6 @@ local opts = {
 
 set_keymap({"n", "v"}, "y", '"+y', opts)
 set_keymap({"n", "v"}, "p", '"+p', opts)
-set_keymap("v", "d", '"+d', opts)
-set_keymap("v", "<leader>d", '"_d', opts)
 set_keymap({"n", "v", "i"}, "<C-a>", '<Esc>ggVG', opts)
 set_keymap("v", "<S-Tab>", "<gv", opts)
 set_keymap("v", "<Tab>", ">gv", opts)
@@ -18,7 +16,12 @@ set_keymap("n", "<leader>d", '"_dd', opts)
 set_keymap("n", "<C-z>", "u", opts)
 set_keymap("n", "<Esc>", "<Esc>:noh<CR>", opts)
 set_keymap("n", "<leader>r", ":%s/", opts)
-set_keymap({"n", "v"}, "<C-x>", "dd", opts)
+set_keymap("v", "p", '"_dp', opts)
+set_keymap("v", "d", '"_d', opts)
+
+set_keymap("v", "<C-x>", '"+d"', opts)
+set_keymap("n", "<C-x>", '"+dd"', opts)
+set_keymap("i", "<C-x>", '"<Esc>+dd"', opts)
 
 -- call vscode commands from neovim
 set_keymap({"n", "v"}, "<leader>ff", "<cmd>lua require('vscode').action('workbench.action.quickOpen')<CR>")
