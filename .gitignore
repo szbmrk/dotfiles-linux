@@ -24,3 +24,7 @@
 !gtk-4.0/**
 !swaync/
 !swaync/**
+!wlogout/
+!wlogout/**
+!wofi/
+!wofi/**

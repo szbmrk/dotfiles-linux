@@ -2,6 +2,10 @@ vim.g.mapleader = " "
 
 local set_keymap = vim.keymap.set
 
+set_keymap("", "<Esc>", "<cmd>noh<CR>", {
+	silent = true,
+})
+
 -- Save file with Ctrl+S
 set_keymap("n", "<C-s>", ":w<CR>", {
 	silent = true,
@@ -109,12 +113,12 @@ set_keymap("i", "<C-x>", "<Esc>dd", {
 })
 
 -- Comment line
-set_keymap("n", "/", "gcc", {
-	silent = true,
-})
-set_keymap("v", "/", "gc", {
-	silent = true,
-})
+-- set_keymap("n", "/", "gcc", {
+-- 	silent = true,
+-- })
+-- set_keymap("v", "/", "gc", {
+-- 	silent = true,
+-- })
 
 -- Search with Ctrl+FZF
 set_keymap({ "n", "v", "i" }, "<C-f>", ":/", {
