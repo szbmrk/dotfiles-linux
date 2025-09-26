@@ -22,6 +22,7 @@
         "custom/brightness",
         "pulseaudio",
         "battery",
+        "custom/swaync",
         "custom/powermenu"
     ],
     // Module configurations
@@ -106,5 +107,20 @@
         "on-scroll-up": "brightnessctl set +5%",
         "on-scroll-down": "brightnessctl set 5%-",
         "tooltip": false
+    },
+    "custom/swaync": {
+        "tooltip": false,
+        "format": " {}",
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/powermenu": {
+        "tooltip": false,
+        "format": " ",
+        "on-click": "wlogout"
     }
 }

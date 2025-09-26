@@ -26,7 +26,6 @@
     "script-fail-notify": true,
     "widgets": [
         "title",
-        "dnd",
         "notifications"
     ],
     "widget-config": {
@@ -34,9 +33,6 @@
             "text": "Notifications",
             "clear-all-button": true,
             "button-text": "Clear All"
-        },
-        "dnd": {
-            "text": "Do Not Disturb"
         },
         "label": {
             "max-lines": 5,
