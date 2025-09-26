@@ -5,6 +5,7 @@ set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 set -Ux STARSHIP_CACHE /tmp
 set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux XDG_CONFIG_HOME $HOME/.config
+set PATH $PATH /home/szobo/.local/bin
 
 alias c="clear"
 alias claer="clear"
