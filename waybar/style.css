@@ -11,7 +11,7 @@ window#waybar {
     background-color: rgba(30, 30, 46, 0.95);
     color: #cdd6f4;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: 0.5s;
 }
 
 #clock,
@@ -27,9 +27,9 @@ window#waybar {
 #custom-github,
 #custom-weather,
 #custom-power,
-#custom-brightness,
 #custom-swaync,
-#custom-powermenu {
+#custom-brightness,
+#custom-powermenu #backlight-slider {
     margin: 0 8px;
     color: #cdd6f4;
 }
@@ -72,6 +72,27 @@ window#waybar {
 
 #window {
     margin-left: 8px;
+}
+
+#taskbar {
+    background-color: rgba(17, 17, 27, 0.9);
+    margin: 4px 0px;
+    margin-left: 26px;
+    border-radius: 12px;
+    padding: 0 8px;
+    border: 0;
+}
+
+#taskbar button {
+    padding: 0 6px;
+    border: none;
+    font-size: 16px;
+    color: #6c7086;
+}
+
+#taskbar button.active {
+    background-color: #45475a;
+    border-radius: 12px;
 }
 
 #battery {
@@ -123,15 +144,11 @@ window#waybar {
     color: #f38ba8;
 }
 
-#custom-brightness {
-    color: #f9e2af
-}
-
-#tray>.passive {
+#tray > .passive {
     -gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #f38ba8;
 }
@@ -142,4 +159,31 @@ window#waybar {
 
 #custom-powermenu {
     color: #eb6f92;
+}
+
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#backlight-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: #45475a;
+}
+#backlight-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    border-color: #fab387;
+    background-color: #fab387;
+}
+
+#custom-brightness {
+    margin-right: 0;
+    color: #fab387;
 }

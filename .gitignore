@@ -28,3 +28,9 @@
 !wlogout/**
 !wofi/
 !wofi/**
+!sherlock/
+!sherlock/**
+!rofi/
+!rofi/**
+!hypr-dock/
+!hypr-dock/**

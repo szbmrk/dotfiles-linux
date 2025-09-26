@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 local set_keymap = vim.keymap.set
 
-set_keymap("", "<Esc>", "<cmd>noh<CR>", {
+set_keymap("", "<Esc>", "<Esc><cmd>noh<CR>", {
 	silent = true,
 })
 
@@ -41,6 +41,10 @@ set_keymap("v", "p", '"_dp', {
 })
 
 -- Delete without yanking
+set_keymap("n", "dd", '"_dd', {
+	silent = true,
+})
+
 set_keymap("v", "d", '"_d', {
 	silent = true,
 })
