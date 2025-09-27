@@ -21,6 +21,7 @@ window#waybar {
 #disk,
 #mode,
 #tray,
+#custom-vscode,
 #network,
 #pulseaudio,
 #custom-vscode,
@@ -186,4 +187,9 @@ window#waybar {
 #custom-brightness {
     margin-right: 0;
     color: #fab387;
+}
+
+#custom-vscode {
+    color: #7dcfff;
+    font-size: 18px;
 }

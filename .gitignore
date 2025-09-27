@@ -34,3 +34,5 @@
 !rofi/**
 !hypr-dock/
 !hypr-dock/**
+!scripts/
+!scripts/**
