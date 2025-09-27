@@ -112,7 +112,8 @@
     border-right: 1px solid @accent;
 }
 
-.image {}
+.image {
+}
 
 .body-image {
     margin-top: 6px;
@@ -184,7 +185,9 @@
     border-radius: 10px;
     background-clip: border-box;
     padding: 4px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.3),
+        0 1px 3px 1px rgba(0, 0, 0, 0.7),
         0 2px 6px 2px rgba(0, 0, 0, 0.3);
     color: @foreground;
     border: 2px solid @accent;
@@ -207,7 +210,7 @@
     font-size: 1.5rem;
 }
 
-.widget-title>button {
+.widget-title > button {
     font-size: initial;
     color: @foreground;
     text-shadow: none;
@@ -217,7 +220,7 @@
     border-radius: 8px;
 }
 
-.widget-title>button:hover {
+.widget-title > button:hover {
     background: @background;
 }
 
@@ -226,7 +229,7 @@
     font-size: 1.1rem;
 }
 
-.widget-dnd>switch {
+.widget-dnd > switch {
     font-size: initial;
     border-radius: 8px;
     background: @background;
@@ -234,11 +237,11 @@
     box-shadow: none;
 }
 
-.widget-dnd>switch:checked {
+.widget-dnd > switch:checked {
     background: @accent;
 }
 
-.widget-dnd>switch slider {
+.widget-dnd > switch slider {
     background: @background;
     border-radius: 8px;
     border: 1px solid @foreground;
@@ -248,7 +251,7 @@
     margin: 8px;
 }
 
-.widget-label>label {
+.widget-label > label {
     font-size: 1.1rem;
 }
 
@@ -269,3 +272,4 @@
 .widget-mpris-subtitle {
     font-size: 1.1rem;
 }
+

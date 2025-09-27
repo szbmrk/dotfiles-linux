@@ -44,9 +44,9 @@ def process_recents(recents: List[dict]) -> List[str]:
     for entry in recents:
         entry_str = ""
         if "folder" in entry:
-            entry_str = (f"󰉋 {entry['folder']}")
+            entry_str = (f" {entry['folder']}")
         elif "file" in entry:
-            entry_str = (f"󰈔 {entry['file']}")
+            entry_str = (f" {entry['file']}")
         entry_str = entry_str.replace(os.path.expanduser("~"), "~")
         processed.append(entry_str) 
     return processed
@@ -76,4 +76,5 @@ if __name__ == "__main__":
         print("No selection (cancelled).")
     else:
         choice = choice.replace("~", os.path.expanduser("~"))
-        subprocess.run(["code", choice.split(" ", 1)[1]])
+        if os.path.exists(choice.split(" ", 1)[1]):
+            subprocess.run(["code", choice.split(" ", 1)[1]])

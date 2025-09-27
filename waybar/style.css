@@ -24,6 +24,7 @@ window#waybar {
 #custom-vscode,
 #network,
 #pulseaudio,
+#custom-nvim,
 #custom-vscode,
 #custom-github,
 #custom-weather,
@@ -159,6 +160,7 @@ window#waybar {
 }
 
 #custom-powermenu {
+    margin-left: 4px;
     color: #eb6f92;
 }
 
@@ -191,5 +193,10 @@ window#waybar {
 
 #custom-vscode {
     color: #7dcfff;
+    font-size: 18px;
+}
+
+#custom-nvim {
+    color: #a6e3a1;
     font-size: 18px;
 }

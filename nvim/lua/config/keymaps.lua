@@ -196,16 +196,17 @@ set_keymap("n", "gd", function()
 			vim.notify("No definition found", vim.log.levels.WARN)
 			return
 		end
-		if #result == 1 then
-			vim.lsp.util.show_document(result[1], "utf-8")
-		else
-			local items = vim.lsp.util.locations_to_items(result, "utf-8")
-			vim.fn.setqflist({}, " ", {
-				title = "LSP Definitions",
-				items = items,
-			})
-			vim.cmd("copen")
-		end
+		vim.lsp.util.show_document(result[1], "utf-8")
+		-- if #result == 1 then
+		-- 	vim.lsp.util.show_document(result[1], "utf-8")
+		-- else
+		-- 	local items = vim.lsp.util.locations_to_items(result, "utf-8")
+		-- 	vim.fn.setqflist({}, " ", {
+		-- 		title = "LSP Definitions",
+		-- 		items = items,
+		-- 	})
+		-- 	vim.cmd("copen")
+		-- end
 	end)
 end)
 

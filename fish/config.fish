@@ -24,6 +24,11 @@ function config
     cd $HOME/.config
 end
 
+function edit_config
+    cd $HOME/.config
+    nvim .
+end
+
 function downloads
     cd $HOME/Downloads
 end

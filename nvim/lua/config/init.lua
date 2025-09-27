@@ -1,7 +1,8 @@
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
-require("config.lsp-config")
+require("config.lsp")
+require("config.diagnostics")
 
 vim.cmd("colorscheme rose-pine")
 vim.cmd.highlight('IndentLine guifg=#21202e')
