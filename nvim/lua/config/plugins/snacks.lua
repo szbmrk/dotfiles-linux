@@ -11,7 +11,7 @@ return {
             timeout = 3000,
         },
         scope = { enabled = false },
-        scroll = { enabled = false },
+        scroll = { enabled = true },
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {

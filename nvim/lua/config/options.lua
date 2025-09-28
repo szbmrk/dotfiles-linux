@@ -29,8 +29,15 @@ opt.clipboard:append(
     or "unnamedplus"
 )
 
--- Infinite undo
+-- Completion
+opt.completeopt = "menu,menuone,popup,fuzzy,noselect"
+
+-- Saving
+opt.confirm = true
+opt.swapfile = false
+opt.backup = false
 opt.undofile = true
+opt.undolevels = 10000
 
 -- Enable line wrapping for markdown files
 vim.api.nvim_create_autocmd('FileType', {

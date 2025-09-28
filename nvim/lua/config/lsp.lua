@@ -66,6 +66,11 @@ local lsp_configs = {
 			},
 		},
 	},
+    qmlls = {
+        cmd = { "qml-language-server" },
+        filetypes = { "qml", "qt" },
+        root_markers = { ".git" },
+    },
 }
 
 for server, config in pairs(lsp_configs) do
