@@ -16,13 +16,13 @@
         "tray",
         "custom/nvim",
         "custom/vscode",
-        "memory",
         "disk",
-        // "network",
-        "custom/brightness",
-        "backlight/slider",
+        "network",
+        "memory",
+        "backlight",
         "pulseaudio",
         "battery",
+        "custom/settings",
         "custom/swaync",
         "custom/powermenu",
     ],
@@ -58,8 +58,8 @@
     //     },
     // },
     "clock": {
-        "format": "<span color='#b4befe' font-size='large'><b></b></span> {:%B %d. %H:%M}",
-        "format-alt": "<span color='#b4befe' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
+        "format": "<span color='#89dceb' font-size='large'><b></b></span> {:%B %d. %H:%M}",
+        "format-alt": "<span color='#89dceb' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click-right": "gnome-calendar",
     },
@@ -78,8 +78,8 @@
         "on-click": "python /home/szobo/.config/scripts/vscode-recents.py",
     },
     "disk": {
-        "format": " {percentage_used}%",
-        "format-alt": " {used}/{total}",
+        "format": " {percentage_used}%",
+        "format-alt": " {used}/{total}",
         "interval": 30,
         "path": "/",
     },
@@ -89,7 +89,7 @@
         "format-disconnected": " disconnected",
         "interval": 5,
         "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "on-click": "iwmenu -l rofi",
+        "on-click": "better-control -w -m",
     },
     "memory": {
         "format": " {percentage}%",
@@ -102,7 +102,7 @@
         "format-icons": {
             "default": ["", ""],
         },
-        "on-click": "/home/szobo/.config/scripts/toggle_pavucontrol.sh",
+        "on-click": "better-control -v -m",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     },
     "battery": {
@@ -117,15 +117,15 @@
         "format-icons": ["", "", "", "", ""],
         "interval": 10,
     },
-    "custom/brightness": {
-        "format": "󰃠 ",
-        "tooltip": false,
-    },
-    "backlight/slider": {
-        "min": 0,
-        "max": 100,
-        "orientation": "horizontal",
+    "backlight": {
         "device": "intel_backlight",
+        "format": "󰃠 {percent}%",
+        "on-click": "better-control -d -m",
+    },
+    "custom/settings": {
+        "tooltip": false,
+        "format": "",
+        "on-click": "better-control",
     },
     "custom/swaync": {
         "tooltip": false,
