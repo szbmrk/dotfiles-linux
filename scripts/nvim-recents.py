@@ -84,7 +84,8 @@ if __name__ == "__main__":
         path = os.path.expanduser(path)
         if os.path.exists(path):
             desktop_file = "/home/szobo/.local/share/applications/nvim.desktop"
-            # subprocess.Popen(["xdg-open", desktop_file])
-            subprocess.Popen(["wezterm", "-e", "nvim", path])
+            subprocess.run(
+                ["wezterm", "start", "--", "bash", "-lc", f"cd {path} && nvim ."]
+            )
         else:
             print(f"Path does not exist: {path}")
