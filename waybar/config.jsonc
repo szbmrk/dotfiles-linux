@@ -89,7 +89,7 @@
         "format-disconnected": " disconnected",
         "interval": 5,
         "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "on-click": "better-control -w -m",
+        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh w",
     },
     "memory": {
         "format": " {percentage}%",
@@ -102,7 +102,7 @@
         "format-icons": {
             "default": ["", ""],
         },
-        "on-click": "better-control -v -m",
+        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh v",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     },
     "battery": {
@@ -120,12 +120,12 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "󰃠 {percent}%",
-        "on-click": "better-control -d -m",
+        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh d",
     },
     "custom/settings": {
         "tooltip": false,
         "format": "",
-        "on-click": "better-control",
+        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh",
     },
     "custom/swaync": {
         "tooltip": false,
