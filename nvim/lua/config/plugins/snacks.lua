@@ -4,7 +4,10 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-        explorer = { enabled = false },
+        explorer = {
+            enabled = true,
+            replace_netrw = true
+        },
         notifier = {
             enabled = true,
             timeout = 3000,

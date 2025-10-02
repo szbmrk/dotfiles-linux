@@ -128,7 +128,9 @@ set_keymap("n", "<A-Down>", ":move .+1<CR>")
 set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
 
 -- Leader+E to open oil
-set_keymap("n", "<leader>e", function() require("oil").open() end)
+-- set_keymap("n", "<leader>e", function() require("oil").open() end)
+set_keymap("n", "<leader>e", function() require("snacks").explorer() end)
+set_keymap("n", "<leader>E", function() require("snacks").explorer.reveal() end)
 
 -- Trouble keymaps
 set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
