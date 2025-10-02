@@ -4,6 +4,9 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
+        picker = {
+            layout = { layout = { position = "right" } }
+        },
         explorer = {
             enabled = true,
             replace_netrw = true,
