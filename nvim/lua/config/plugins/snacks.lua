@@ -6,7 +6,8 @@ return {
     opts = {
         explorer = {
             enabled = true,
-            replace_netrw = true
+            replace_netrw = true,
+            auto_close = true,
         },
         notifier = {
             enabled = true,
