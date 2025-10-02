@@ -7,6 +7,7 @@ return {
 				python = { "ruff" },
 				go = { "gofmt" },
 				rust = { "rustfmt" },
+                c = {"clang-format"},
 				cpp = { "clang-format" },
 				cs = { "dotnet-format" },
 				html = { "prettier" },

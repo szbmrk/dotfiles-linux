@@ -1,19 +1,21 @@
 local wezterm = require 'wezterm'
-local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
+-- local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
 return {
     term = "xterm-256color",
 
     -- Font and color scheme
     font = wezterm.font("JetBrainsMono Nerd Font Propo"),
+    harfbuzz_features = { 'calt = 0', 'clig = 0', 'liga = 0' },
     font_size = 14,
-    color_scheme = "Rosé Pine",
+    -- color_scheme = "Rosé Pine",
+    color_scheme = "Catppuccin Mocha",
 
-    colors = theme.colors(),
-    window_frame = theme.window_frame(),
+    -- colors = theme.colors(),
+    -- window_frame = theme.window_frame(),
 
     hide_tab_bar_if_only_one_tab = true,
-    window_background_opacity = 0.97,
+    window_background_opacity = 0.9,
     automatically_reload_config = true,
 
     -- Key bindings

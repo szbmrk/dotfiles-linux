@@ -50,6 +50,12 @@ function gitp
     git commit -m "."
     git push
 end
+ 
+# ===========================
+# Make template projects
+# ===========================
+
+
 
 # ===========================
 # Starship Prompt

@@ -63,31 +63,4 @@ return {
 			end
 		end,
 	},
-	-- {
-	-- 	"williamboman/mason.nvim",
-	-- 	config = function()
-	-- 		require("mason").setup()
-	-- 	end,
-	-- },
-	-- {
-	-- 	"williamboman/mason-lspconfig.nvim",
-	-- 	config = function()
-	-- 		require("mason-lspconfig").setup({
-	-- 			ensure_installed = {
-	-- 				"ruff", -- Python linter
-	-- 				"pyright", -- Python linter
-	-- 				"gopls", -- Go
-	-- 				"rust_analyzer", -- Rust
-	-- 				"clangd", -- C++
-	-- 				"omnisharp", -- C#
-	-- 				"html", -- HTML
-	-- 				"cssls", -- CSS
-	-- 				"jsonls", -- JSON/JSONC
-	-- 				"ts_ls", -- JS/TS
-	-- 				"phpactor", -- PHP
-	-- 				"lua_ls", -- Lua
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 }
