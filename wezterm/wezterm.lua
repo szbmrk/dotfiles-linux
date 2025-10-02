@@ -11,6 +11,27 @@ return {
     -- color_scheme = "Rosé Pine",
     color_scheme = "Catppuccin Mocha",
 
+    colors = {
+        tab_bar = {
+            inactive_tab_edge = '#313244',
+
+            active_tab = {
+                bg_color = '#89b4fa',
+                fg_color = '#11111b',
+            },
+
+            inactive_tab = {
+                bg_color = '#313244',
+                fg_color = '#cdd6f4',
+            },
+        },
+    },
+
+    window_frame = {
+        active_titlebar_bg = '#1e1e2e',
+        inactive_titlebar_bg = '#1e1e2e',
+    },
+
     -- colors = theme.colors(),
     -- window_frame = theme.window_frame(),
 

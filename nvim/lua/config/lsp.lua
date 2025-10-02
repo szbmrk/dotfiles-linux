@@ -17,7 +17,7 @@ local lsp_configs = {
 	clangd = {
 		cmd = { "clangd" },
 		filetypes = { "c", "cpp", "objc", "objcpp" },
-		root_markers = { "compile_commands.json", ".git" },
+		root_markers = { "compile_commands.json", ".git", ".clang-format" },
 	},
 	html = {
 		cmd = { "vscode-html-language-server", "--stdio" },

@@ -54,10 +54,34 @@ end
 # ===========================
 # Make template projects
 # ===========================
+function make_c_proj
+    set -l projname (read -P "Project name: ")
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
 
+    set -l target "$HOME/Projects/$projname"
 
+    if test -e "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
 
-# ===========================
-# Starship Prompt
-# ===========================
+    cp -r "$HOME/templates/c_template" "$target"
+    mkdir "$target/include/$projname"
+    echo "Created new C project at $target"
+
+    set -l makefile_path "$target/Makefile"
+
+    if test -f "$makefile_path"
+        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
+        echo "Updated Makefile with project name."
+    else
+        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
+    end
+    cd "$target"
+end
+
+eval "$(zoxide init fish --cmd cd)"
 starship init fish | source
