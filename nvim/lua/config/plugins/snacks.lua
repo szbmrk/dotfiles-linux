@@ -5,13 +5,21 @@ return {
     ---@type snacks.Config
     opts = {
         explorer = { enabled = false },
-        indent = { enabled = false },
         notifier = {
             enabled = true,
             timeout = 3000,
         },
-        scope = { enabled = false },
-        scroll = { enabled = true },
+        scroll = {
+            animate = {
+                duration = { step = 15, total = 200 },
+                easing = "linear",
+            },
+            animate_repeat = {
+                delay = 100,
+                duration = { step = 5, total = 50 },
+                easing = "linear",
+            },
+        },
     },
     init = function()
         vim.api.nvim_create_autocmd("User", {
