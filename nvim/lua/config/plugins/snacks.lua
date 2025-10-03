@@ -8,7 +8,7 @@ return {
             layout = { layout = { position = "right" } }
         },
         explorer = {
-            enabled = true,
+            enabled = false,
             replace_netrw = true,
             auto_close = true,
         },

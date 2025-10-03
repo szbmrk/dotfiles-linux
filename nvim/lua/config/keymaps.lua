@@ -129,8 +129,9 @@ set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
 
 -- Leader+E to open oil
 -- set_keymap("n", "<leader>e", function() require("oil").open() end)
-set_keymap("n", "<leader>e", function() require("snacks").explorer() end)
--- set_keymap("n", "<leader>e", function() require("snacks").explorer.reveal() end)
+-- set_keymap("n", "<leader>e", function() require("snacks").explorer() end)
+-- set_keymap("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+set_keymap("n", "<leader>e", ":Neotree toggle reveal<CR>")
 
 -- Trouble keymaps
 set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")

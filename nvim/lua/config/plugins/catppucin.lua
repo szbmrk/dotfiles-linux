@@ -1,7 +1,7 @@
 return {
-	"catppuccin/nvim",
-	as = "catppuccin",
-	config = function()
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
         require("catppuccin").setup({
             flavour = "mocha",
             transparent_background = true,
@@ -12,6 +12,8 @@ return {
                 mason = true,
                 cmp = true,
                 fzf = true,
+                nvimtree = true,
+                neotree = true,
                 lualine = true,
                 harpoon = true,
                 native_lsp = {
@@ -19,6 +21,5 @@ return {
                 },
             },
         })
-	end,
+    end,
 }
-
