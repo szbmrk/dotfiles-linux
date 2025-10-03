@@ -68,7 +68,7 @@ function make_c_proj
         return 1
     end
 
-    cp -r "$HOME/templates/c_template" "$target"
+    cp -r "$HOME/templates/c" "$target"
     mkdir "$target/include/$projname"
     echo "Created new C project at $target"
 
@@ -80,6 +80,69 @@ function make_c_proj
     else
         echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
     end
+    cd "$target"
+end
+
+function make_python_proj
+    set -l projname (read -P "Project name: ")
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+
+    if test -e "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    cp -r "$HOME/templates/python" "$target"
+    echo "Created new python project at $target"
+
+    cd "$target"
+
+    python -m venv venv
+    source "venv/bin/activate.fish"
+end
+
+function make_java_proj
+    set -l projname (read -P "Project name: ")
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+
+    if test -e "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    cp -r "$HOME/templates/java" "$target"
+    echo "Created new java project at $target"
+
+    cd "$target"
+end
+
+function make_rust_proj
+    set -l projname (read -P "Project name: ")
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+
+    if test -e "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    cp -r "$HOME/templates/rust" "$target"
+    echo "Created new rust project at $target"
+
     cd "$target"
 end
 
