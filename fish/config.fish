@@ -83,6 +83,35 @@ function make_c_proj
     cd "$target"
 end
 
+function make_cpp_proj
+    set -l projname (read -P "Project name: ")
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+
+    if test -e "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    cp -r "$HOME/templates/cpp" "$target"
+    mkdir "$target/include/$projname"
+    echo "Created new C++ project at $target"
+
+    set -l makefile_path "$target/Makefile"
+
+    if test -f "$makefile_path"
+        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
+        echo "Updated Makefile with project name."
+    else
+        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
+    end
+    cd "$target"
+end
+
 function make_python_proj
     set -l projname (read -P "Project name: ")
     if test -z "$projname"
@@ -143,6 +172,23 @@ function make_rust_proj
     cp -r "$HOME/templates/rust" "$target"
     echo "Created new rust project at $target"
 
+    set -l makefile_path "$target/Makefile"
+
+    if test -f "$makefile_path"
+        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
+        echo "Updated Makefile with project name."
+    else
+        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
+    end
+
+    set -l cargotoml_path "$target/Cargo.toml"
+
+    if test -f "$cargotoml_path"
+        sed -i "2iname = \"$projname\"" "$cargotoml_path"
+        echo "Updated Cargo.toml with project name."
+    else
+        echo "Warning: Cargo.toml not found at '$cargotoml_path'. Skipping modification."
+    end
     cd "$target"
 end
 
