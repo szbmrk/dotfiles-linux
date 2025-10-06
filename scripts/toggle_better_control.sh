@@ -20,7 +20,6 @@ done
 while kill -0 $PID 2>/dev/null; do
     FOCUSED=$(hyprctl activewindow -j | jq -r '.class')
 
-    echo $FOCUSED
     if [[ "$FOCUSED" != "better_control.py" ]]; then
         kill $PID
         exit 0
