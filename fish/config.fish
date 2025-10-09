@@ -7,6 +7,7 @@ set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux XDG_CONFIG_HOME $HOME/.config
 
 set PATH $PATH /home/szobo/.local/bin
+set PATH $PATH /home/szobo/.cargo/bin
 
 alias c="clear"
 alias claer="clear"
