@@ -10,7 +10,7 @@ configuration {
     display-window: "Windows:";
 }
 
-@theme "tokyo"
+@theme "catppucin"
 
 * {
     font: "JetBrainsMono Nerd Font Propo 14";
@@ -29,8 +29,8 @@ window {
     y-offset:       -20;
     border-radius:  16px;
 
-    border: 1px;
-    border-color:  #9ccfd8;
+    border: 2px;
+    border-color:  @blue;
     background-color:   @bg0;
 }
 
