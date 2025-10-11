@@ -8,6 +8,7 @@
 !hypr/**
 !waybar/
 !waybar/**
+waybar/local.css
 !wezterm/
 !wezterm/**
 !starship/
