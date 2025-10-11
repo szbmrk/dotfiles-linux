@@ -1,9 +1,9 @@
 local lsp_configs = {
-    pyright = {
-        cmd = { "pyright-langserver", "--stdio" },
-        filetypes = { "python" },
-        root_markers = { "pyproject.toml", "setup.py", ".git" },
-    },
+	pyright = {
+		cmd = { "pyright-langserver", "--stdio" },
+		filetypes = { "python" },
+		root_markers = { "pyproject.toml", "setup.py", ".git" },
+	},
 	gopls = {
 		cmd = { "gopls" },
 		filetypes = { "go" },
@@ -34,11 +34,11 @@ local lsp_configs = {
 		filetypes = { "json" },
 		root_markers = { ".git" },
 	},
-    tsserver = {
-        cmd = { "typescript-language-server", "--stdio" },
-        filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-        root_markers = { "package.json", "tsconfig.json", ".git" },
-    },
+	tsserver = {
+		cmd = { "typescript-language-server", "--stdio" },
+		filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+		root_markers = { "package.json", "tsconfig.json", ".git" },
+	},
 	phpactor = {
 		cmd = { "phpactor", "language-server" },
 		filetypes = { "php" },
@@ -57,8 +57,8 @@ local lsp_configs = {
 					globals = { "vim" },
 				},
 				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true),
-					checkThirdParty = false,
+					library = { vim.api.nvim_get_runtime_file("", true), "${3rd}/love2d/library" },
+					checkThirdParty = true,
 				},
 				telemetry = {
 					enable = false,
@@ -66,11 +66,11 @@ local lsp_configs = {
 			},
 		},
 	},
-    qmlls = {
-        cmd = { "qml-language-server" },
-        filetypes = { "qml", "qt" },
-        root_markers = { ".git" },
-    },
+	qmlls = {
+		cmd = { "qml-language-server" },
+		filetypes = { "qml", "qt" },
+		root_markers = { ".git" },
+	},
 }
 
 for server, config in pairs(lsp_configs) do
@@ -79,15 +79,11 @@ for server, config in pairs(lsp_configs) do
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("UserLspAttach", { clear = false }),
-    callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(
-                true,
-                client.id,
-                ev.buf
-            )
-        end
-    end,
+	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = false }),
+	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf)
+		end
+	end,
 })
