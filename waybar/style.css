@@ -183,3 +183,5 @@ window#waybar {
 #custom-settings {
     color: #f9e2af;
 }
+
+@import url("local.css");
