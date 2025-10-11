@@ -67,7 +67,7 @@ local lsp_configs = {
 		},
 	},
 	qmlls = {
-		cmd = { "qml-language-server" },
+		cmd = { vim.env.QT_BIN_DIR ~= nil and vim.fs.joinpath(vim.env.QT_BIN_DIR, "qmlls") or "qmlls" },
 		filetypes = { "qml", "qt" },
 		root_markers = { ".git" },
 	},
