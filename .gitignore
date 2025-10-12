@@ -31,3 +31,5 @@ waybar/local.css
 # !qt5ct/**
 # !qt6ct/
 # !qt6ct/**
+!quickshell/
+!quickshell/**

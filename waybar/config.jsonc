@@ -61,7 +61,7 @@
         "format": "<span color='#89dceb' font-size='large'><b></b></span> {:%B %d. %H:%M}",
         "format-alt": "<span color='#89dceb' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
         "tooltip-format": "<tt>{calendar}</tt>",
-        "on-click-right": "gnome-calendar",
+        "on-click-right": "dms ipc call dash toggle overview",
     },
     "tray": {
         "icon-size": 18,
@@ -102,7 +102,7 @@
         "format-icons": {
             "default": ["", ""],
         },
-        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh v",
+        "on-click": "dms ipc call control-center toggle",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     },
     "battery": {
@@ -120,12 +120,12 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "󰃠 {percent}%",
-        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh d",
+        "on-click": "dms ipc call control-center toggle",
     },
     "custom/settings": {
         "tooltip": false,
         "format": "",
-        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh",
+        "on-click": "dms ipc call control-center toggle",
     },
     "custom/swaync": {
         "tooltip": false,
