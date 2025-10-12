@@ -89,7 +89,7 @@
         "format-disconnected": " disconnected",
         "interval": 5,
         "tooltip-format-wifi": "{essid} {signalStrength}%",
-        "on-click": "/home/szobo/.config/scripts/toggle_better_control.sh w",
+        "on-click": "dms ipc call control-center toggle",
     },
     "memory": {
         "format": " {percentage}%",
