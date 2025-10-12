@@ -66,6 +66,11 @@ window#waybar {
     font-weight: 900;
 }
 
+#workspaces button.urgent label {
+    color: #f9e2af;
+    font-weight: 900;
+}
+
 #submap {
     color: #f9e2af;
     padding: 0 4px;
