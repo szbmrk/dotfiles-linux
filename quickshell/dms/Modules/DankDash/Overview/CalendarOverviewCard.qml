@@ -14,7 +14,7 @@ Rectangle {
     property bool hasEvents: selectedDateEvents && selectedDateEvents.length > 0
 
     function weekStartJs() {
-        return Qt.locale().firstDayOfWeek % 7
+        return (Qt.locale().firstDayOfWeek + 1) % 7
     }
 
     function startOfWeek(dateObj) {
@@ -218,7 +218,7 @@ Rectangle {
                 model: {
                     const days = []
                     const loc = Qt.locale()
-                    const qtFirst = loc.firstDayOfWeek
+                    const qtFirst = loc.firstDayOfWeek + 1
                     for (let i = 0; i < 7; ++i) {
                         const qtDay = ((qtFirst - 1 + i) % 7) + 1
                         days.push(loc.dayName(qtDay, Locale.ShortFormat))
