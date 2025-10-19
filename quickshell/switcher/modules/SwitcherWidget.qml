@@ -39,7 +39,7 @@ Item {
         anchors.centerIn: parent
 
         width: (root.windowImplicitWidth * root.columns) + (root.windowSpacing * (root.columns - 1)) + padding
-        height: (root.windowImplicitHeight * root.rows) + (root.windowSpacing * (root.rows - 1)) + padding * 2
+        height: (root.windowImplicitHeight * root.rows) + (root.windowSpacing * (root.rows)) + padding * 2
 
         radius: 16
         color: root.transparentize("#11111b", 0.1)
