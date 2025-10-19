@@ -18,17 +18,19 @@ PanelWindow {
     readonly property real screenHeight: screen ? screen.height : 1080
     readonly property real dpr: {
         if (CompositorService.isNiri && screen) {
-            const niriScale = NiriService.displayScales[screen.name]
-            if (niriScale !== undefined) return niriScale
+            const niriScale = NiriService.displayScales[screen.name];
+            if (niriScale !== undefined)
+                return niriScale;
         }
         if (CompositorService.isHyprland && screen) {
-            const hyprlandMonitor = Hyprland.monitors.values.find(m => m.name === screen.name)
-            if (hyprlandMonitor?.scale !== undefined) return hyprlandMonitor.scale
+            const hyprlandMonitor = Hyprland.monitors.values.find(m => m.name === screen.name);
+            if (hyprlandMonitor?.scale !== undefined)
+                return hyprlandMonitor.scale;
         }
-        return (screen?.devicePixelRatio) || 1
+        return (screen?.devicePixelRatio) || 1;
     }
     property bool showBackground: true
-    property real backgroundOpacity: 0.5
+    property real backgroundOpacity: 0.2
     property string positioning: "center"
     property point customPosition: Qt.point(0, 0)
     property bool closeOnEscapeKey: true
@@ -53,23 +55,23 @@ PanelWindow {
     signal backgroundClicked
 
     function open() {
-        ModalManager.openModal(root)
-        closeTimer.stop()
-        shouldBeVisible = true
-        visible = true
-        focusScope.forceActiveFocus()
+        ModalManager.openModal(root);
+        closeTimer.stop();
+        shouldBeVisible = true;
+        visible = true;
+        focusScope.forceActiveFocus();
     }
 
     function close() {
-        shouldBeVisible = false
-        closeTimer.restart()
+        shouldBeVisible = false;
+        closeTimer.restart();
     }
 
     function toggle() {
         if (shouldBeVisible) {
-            close()
+            close();
         } else {
-            open()
+            open();
         }
     }
 
@@ -80,20 +82,20 @@ PanelWindow {
     WlrLayershell.keyboardFocus: shouldHaveFocus ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
     onVisibleChanged: {
         if (root.visible) {
-            opened()
+            opened();
         } else {
             if (Qt.inputMethod) {
-                Qt.inputMethod.hide()
-                Qt.inputMethod.reset()
+                Qt.inputMethod.hide();
+                Qt.inputMethod.reset();
             }
-            dialogClosed()
+            dialogClosed();
         }
     }
 
     Connections {
         function onCloseAllModalsExcept(excludedModal) {
             if (excludedModal !== root && !allowStacking && shouldBeVisible) {
-                close()
+                close();
             }
         }
 
@@ -105,7 +107,7 @@ PanelWindow {
 
         interval: animationDuration + 100
         onTriggered: {
-            visible = false
+            visible = false;
         }
     }
 
@@ -128,11 +130,11 @@ PanelWindow {
             anchors.fill: parent
             enabled: root.closeOnBackgroundClick
             onClicked: mouse => {
-                           const localPos = mapToItem(contentContainer, mouse.x, mouse.y)
-                           if (localPos.x < 0 || localPos.x > contentContainer.width || localPos.y < 0 || localPos.y > contentContainer.height) {
-                               root.backgroundClicked()
-                           }
-                       }
+                const localPos = mapToItem(contentContainer, mouse.x, mouse.y);
+                if (localPos.x < 0 || localPos.x > contentContainer.width || localPos.y < 0 || localPos.y > contentContainer.height) {
+                    root.backgroundClicked();
+                }
+            }
         }
 
         Behavior on opacity {
@@ -151,23 +153,23 @@ PanelWindow {
         anchors.centerIn: undefined
         x: {
             if (positioning === "center") {
-                return Theme.snap((root.screenWidth - width) / 2, dpr)
+                return Theme.snap((root.screenWidth - width) / 2, dpr);
             } else if (positioning === "top-right") {
-                return Theme.px(Math.max(Theme.spacingL, root.screenWidth - width - Theme.spacingL), dpr)
+                return Theme.px(Math.max(Theme.spacingL, root.screenWidth - width - Theme.spacingL), dpr);
             } else if (positioning === "custom") {
-                return Theme.snap(root.customPosition.x, dpr)
+                return Theme.snap(root.customPosition.x, dpr);
             }
-            return 0
+            return 0;
         }
         y: {
             if (positioning === "center") {
-                return Theme.snap((root.screenHeight - height) / 2, dpr)
+                return Theme.snap((root.screenHeight - height) / 2, dpr);
             } else if (positioning === "top-right") {
-                return Theme.px(Theme.barHeight + Theme.spacingXS, dpr)
+                return Theme.px(Theme.barHeight + Theme.spacingXS, dpr);
             } else if (positioning === "custom") {
-                return Theme.snap(root.customPosition.y, dpr)
+                return Theme.snap(root.customPosition.y, dpr);
             }
-            return 0
+            return 0;
         }
         color: root.backgroundColor
         radius: root.cornerRadius
@@ -211,7 +213,7 @@ PanelWindow {
 
                 onLoaded: {
                     if (item) {
-                        Qt.callLater(() => item.forceActiveFocus())
+                        Qt.callLater(() => item.forceActiveFocus());
                     }
                 }
             }
@@ -226,21 +228,21 @@ PanelWindow {
         visible: root.shouldBeVisible || root.visible
         focus: root.shouldBeVisible
         Keys.onEscapePressed: event => {
-                                  if (root.closeOnEscapeKey && shouldHaveFocus) {
-                                      root.close()
-                                      event.accepted = true
-                                  }
-                              }
+            if (root.closeOnEscapeKey && shouldHaveFocus) {
+                root.close();
+                event.accepted = true;
+            }
+        }
         onVisibleChanged: {
             if (visible && shouldHaveFocus) {
-                Qt.callLater(() => focusScope.forceActiveFocus())
+                Qt.callLater(() => focusScope.forceActiveFocus());
             }
         }
 
         Connections {
             function onShouldHaveFocusChanged() {
                 if (shouldHaveFocus && shouldBeVisible) {
-                    Qt.callLater(() => focusScope.forceActiveFocus())
+                    Qt.callLater(() => focusScope.forceActiveFocus());
                 }
             }
 
