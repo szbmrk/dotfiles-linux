@@ -143,11 +143,19 @@ window#waybar {
     color: #f38ba8;
 }
 
-#pulseaudio {
+#pulseaudio.source {
+    color: #b4befe;
+}
+
+#pulseaudio.source-muted {
+    color: #f38ba8;
+}
+
+#pulseaudio.output {
     color: #89b4fa;
 }
 
-#pulseaudio.muted {
+#pulseaudio.output.muted {
     color: #f38ba8;
 }
 
@@ -161,7 +169,7 @@ window#waybar {
 }
 
 #custom-swaync {
-    color: #89b4fa;
+    color: #f2cdcd;
 }
 
 #custom-powermenu {
