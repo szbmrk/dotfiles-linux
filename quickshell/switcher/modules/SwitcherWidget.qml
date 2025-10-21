@@ -20,7 +20,7 @@ Item {
     property real windowSpacing: 30
     property int maxColumns: 5
 
-    property int windowCount: Hyprland.toplevels.values.length
+    property int windowCount: windowsList.length
 
     property int columns: Math.min(windowCount, maxColumns)
     property int rows: Math.ceil(windowCount / columns)
