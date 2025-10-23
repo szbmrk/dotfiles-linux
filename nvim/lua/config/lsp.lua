@@ -72,25 +72,25 @@ local lsp_configs = {
 		root_markers = { ".git" },
 	},
 	omnisharp = {
-		cmd = { "omnisharp" },
+		cmd = { "/home/szobo/.local/bin/omnisharp/run", "--languageserver" },
 		filetypes = { "cs", "vb" },
 		root_markers = { "project.json", ".sln", ".csproj", ".git" },
-		settings = {
-			FormattingOptions = {
-				EnableEditorConfigSupport = true,
-			},
-			MsBuild = {
-				LoadProjectsOnDemand = false,
-			},
-			RoslynExtensionsOptions = {
-				EnableAnalyzersSupport = true,
-				EnableImportCompletion = true,
-				LocationPaths = {},
-			},
-			Sdk = {
-				IncludePrereleases = true,
-			},
-		},
+		-- settings = {
+		-- 	FormattingOptions = {
+		-- 		EnableEditorConfigSupport = true,
+		-- 	},
+		-- 	MsBuild = {
+		-- 		LoadProjectsOnDemand = false,
+		-- 	},
+		-- 	RoslynExtensionsOptions = {
+		-- 		EnableAnalyzersSupport = true,
+		-- 		EnableImportCompletion = true,
+		-- 		LocationPaths = {},
+		-- 	},
+		-- 	Sdk = {
+		-- 		IncludePrereleases = true,
+		-- 	},
+		-- },
 	},
 }
 
