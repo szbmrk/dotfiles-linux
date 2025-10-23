@@ -71,6 +71,27 @@ local lsp_configs = {
 		filetypes = { "qml", "qt" },
 		root_markers = { ".git" },
 	},
+	omnisharp = {
+		cmd = { "omnisharp" },
+		filetypes = { "cs", "vb" },
+		root_markers = { "project.json", ".sln", ".csproj", ".git" },
+		settings = {
+			FormattingOptions = {
+				EnableEditorConfigSupport = true,
+			},
+			MsBuild = {
+				LoadProjectsOnDemand = false,
+			},
+			RoslynExtensionsOptions = {
+				EnableAnalyzersSupport = true,
+				EnableImportCompletion = true,
+				LocationPaths = {},
+			},
+			Sdk = {
+				IncludePrereleases = true,
+			},
+		},
+	},
 }
 
 for server, config in pairs(lsp_configs) do
