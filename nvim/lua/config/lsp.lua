@@ -1,7 +1,7 @@
 local lsp_configs = {
 	pyright = {
 		cmd = { "pyright-langserver", "--stdio" },
-		filetypes = { "python" },
+		filetypes = { "python", "py" },
 		root_markers = { "pyproject.toml", "setup.py", ".git" },
 	},
 	gopls = {
@@ -100,7 +100,7 @@ for server, config in pairs(lsp_configs) do
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = false }),
+	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
 	callback = function(ev)
 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
 		if client:supports_method("textDocument/completion") then

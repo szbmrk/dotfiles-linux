@@ -33,3 +33,5 @@ waybar/local.css
 # !qt6ct/**
 !quickshell/
 !quickshell/**
+!MangoHud/
+!MangoHud/**
