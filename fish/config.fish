@@ -8,6 +8,7 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
+set PATH $PATH /home/szobo/.dotnet/tools
 
 alias c="clear"
 alias claer="clear"
