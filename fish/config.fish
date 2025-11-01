@@ -13,6 +13,7 @@ set PATH $PATH /home/szobo/.dotnet/tools
 alias c="clear"
 alias claer="clear"
 alias vim="nvim"
+alias cat="bat"
 
 # ===========================
 # Functions
