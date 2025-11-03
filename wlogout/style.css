@@ -1,18 +1,17 @@
-@define-color base #191724;
-@define-color surface #1f1d2e;
-@define-color overlay #26233a;
-@define-color muted #6e6a86;
-@define-color subtle #908caa;
-@define-color text #e0def4;
-@define-color love #eb6f92;
-@define-color gold #f6c177;
-@define-color rose #ebbcba;
-@define-color pine #31748f;
-@define-color foam #9ccfd8;
-@define-color iris #c4a7e7;
-@define-color highlightLow #21202e;
-@define-color highlightMed #403d52;
-@define-color highlightHigh #524f67;
+@define-color base #1e1e2e;
+@define-color surface #313244;
+@define-color overlay #45475a;
+@define-color muted #6c7086;
+@define-color subtle #9399b2;
+@define-color text #cdd6f4;
+@define-color red #f38ba8;
+@define-color peach #f9e2af;
+@define-color blue #89b4fa;
+@define-color teal #94e2d5;
+@define-color lavender #b4befe;
+@define-color highlightLow #181825;
+@define-color highlightMed #313244;
+@define-color highlightHigh #45475a;
 
 * {
     font-family: "JetBrainsMono Nerd Font Propo";
@@ -22,7 +21,7 @@
 }
 
 window {
-    background-color: rgba(25, 23, 36, 0.9);
+    background-color: rgba(30, 30, 46, 0.9);
     font-size: 16pt;
 }
 
@@ -40,7 +39,7 @@ button {
 
 button:hover {
     background-color: @highlightMed;
-    border-color: @foam;
+    border-color: @blue;
     background-size: 35%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -51,29 +50,17 @@ button span {
 }
 
 #lock {
-    background-image: image(
-        url("/usr/share/wlogout/icons/lock.png"),
-        url("/usr/local/share/wlogout/icons/lock.png")
-    );
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"));
 }
 
 #logout {
-    background-image: image(
-        url("/usr/share/wlogout/icons/logout.png"),
-        url("/usr/local/share/wlogout/icons/logout.png")
-    );
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"));
 }
 
 #shutdown {
-    background-image: image(
-        url("/usr/share/wlogout/icons/shutdown.png"),
-        url("/usr/local/share/wlogout/icons/shutdown.png")
-    );
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"));
 }
 
 #reboot {
-    background-image: image(
-        url("/usr/share/wlogout/icons/reboot.png"),
-        url("/usr/local/share/wlogout/icons/reboot.png")
-    );
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"));
 }
