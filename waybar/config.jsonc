@@ -145,14 +145,13 @@
         "on-click": "dms ipc call control-center toggle",
     },
     "custom/swaync": {
-        "tooltip": false,
-        "format": " {}",
+        "format": "{}",
         "return-type": "json",
-        "exec-if": "which swaync-client",
-        "exec": "swaync-client -swb",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "escape": true,
+        "exec": "~/.config/scripts/swaync-status.sh",
+        "on-click": "swaync-client -t -sw", // Toggle control center
+        "on-click-right": "swaync-client --toggle-dnd", // Toggle DND
+        "on-click-middle": "swaync-client -C", // Clear all notifications
+        "interval": 1,
     },
     "custom/powermenu": {
         "tooltip": false,

@@ -327,3 +327,25 @@ scrollbar trough {
 .image {
     padding-right: 0.5rem;
 }
+
+.widget-dnd {
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+.widget-dnd > switch {
+    font-size: initial;
+    border-radius: 8px;
+    background: #313244;
+    box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+    background: #89b4fa;
+}
+
+.widget-dnd > switch slider {
+    background: #45475a;
+    border-radius: 8px;
+}

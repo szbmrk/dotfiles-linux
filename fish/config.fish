@@ -134,8 +134,8 @@ function make_python_proj
 
     cd "$target"
 
-    uv venv
-    source ".venv/bin/activate.fish"
+    uv venv venv
+    source "venv/bin/activate.fish"
 end
 
 function make_java_proj
