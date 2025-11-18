@@ -15,7 +15,7 @@
     "modules-right": [
         "tray",
         // "custom/nvim",
-        "custom/vscode",
+        // "custom/vscode",
         "disk",
         "network",
         "memory",
