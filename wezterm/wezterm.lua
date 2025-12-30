@@ -2,6 +2,8 @@ local wezterm = require 'wezterm'
 -- local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
 return {
+    default_prog = { '/usr/bin/fish' },
+
     term = "xterm-256color",
 
     -- Font and color scheme

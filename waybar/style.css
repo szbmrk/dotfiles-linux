@@ -72,9 +72,16 @@ window#waybar {
 }
 
 #submap {
-    color: #f9e2af;
     padding: 0 4px;
     margin: 0 4px;
+}
+
+#submap.resize {
+    color: #f9e2af;
+}
+
+#submap.pause {
+    color: #f38ba8;
 }
 
 #window {
