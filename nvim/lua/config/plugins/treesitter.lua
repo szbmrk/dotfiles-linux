@@ -22,6 +22,7 @@ return {
 			"printf",
 			"python",
 			"query",
+			"rust",
 			"regex",
 			"toml",
 			"tsx",
