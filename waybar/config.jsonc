@@ -81,7 +81,7 @@
         "format": " {percentage_used}%",
         "format-alt": " {used}/{total}",
         "interval": 30,
-        "path": "/",
+        "path": "/home",
     },
     "network": {
         "format-wifi": "󰤨 {signalStrength}%",
