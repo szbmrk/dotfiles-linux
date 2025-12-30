@@ -60,6 +60,12 @@
     "clock": {
         "format": "<span color='#89dceb' font-size='large'><b></b></span> {:%B %d. %H:%M}",
         "format-alt": "<span color='#89dceb' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "today": "<span color='#f38ba8'><b><u>{}</u></b></span>",
+            },
+        },
         "tooltip-format": "<tt>{calendar}</tt>",
         "on-click-right": "dms ipc call dash toggle overview",
     },
@@ -147,9 +153,9 @@
         "format": "{}",
         "return-type": "json",
         "exec": "~/.config/scripts/swaync-status.sh",
-        "on-click": "swaync-client -t -sw", // Toggle control center
-        "on-click-right": "swaync-client --toggle-dnd", // Toggle DND
-        "on-click-middle": "swaync-client -C", // Clear all notifications
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client --toggle-dnd",
+        "on-click-middle": "swaync-client -C",
         "interval": 1,
     },
     "custom/powermenu": {
