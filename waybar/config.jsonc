@@ -27,7 +27,6 @@
         "custom/swaync",
         "custom/powermenu",
     ],
-    // Module configurations
     "hyprland/workspaces": {
         "format": "{id}",
         "on-click": "activate",
