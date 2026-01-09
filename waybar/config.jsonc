@@ -60,10 +60,12 @@
     "clock": {
         "format": "<span color='#89dceb' font-size='large'><b></b></span> {:%B %d. %H:%M}",
         "format-alt": "<span color='#89dceb' font-size='large'><b></b></span> {:%A, %B %d. %Y %H:%M}",
+        "locale": "hu_HU",
         "calendar": {
             "mode": "month",
             "format": {
                 "today": "<span color='#f38ba8'><b><u>{}</u></b></span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
             },
         },
         "tooltip-format": "<tt>{calendar}</tt>",
