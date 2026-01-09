@@ -31,6 +31,8 @@ return {
 			"vimdoc",
 			"xml",
 			"yaml",
+			"hyprlang",
+			"rasi",
 			"go",
 			"gdscript",
 			"godot_resource",
