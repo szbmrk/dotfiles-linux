@@ -15,7 +15,6 @@ return {
 				fzf = true,
 				nvimtree = true,
 				neotree = true,
-				lualine = true,
 				harpoon = true,
 				native_lsp = {
 					enabled = true,
