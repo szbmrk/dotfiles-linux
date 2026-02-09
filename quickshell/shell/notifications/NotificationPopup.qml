@@ -48,7 +48,7 @@ Variants {
 
             margins {
                 top: Style.barHeight + Style.marginL
-                right: Style.marginL
+                right: Style.marginS
             }
 
             readonly property int notifWidth: 400
@@ -73,7 +73,10 @@ Variants {
 
                 Behavior on implicitHeight {
                     SpringAnimation {
-                        spring: 2.0; damping: 0.4; epsilon: 0.01; mass: 0.8
+                        spring: 2.0
+                        damping: 0.4
+                        epsilon: 0.01
+                        mass: 0.8
                     }
                 }
 
@@ -99,7 +102,17 @@ Variants {
 
                         scale: scaleValue
                         opacity: opacityValue
-                        transform: Translate { y: card.slideOffset }
+                        transform: Translate {
+                            y: card.slideOffset
+                        }
+
+                        // Smooth position animation when layout repositions items
+                        Behavior on y {
+                            NumberAnimation {
+                                duration: 300
+                                easing.type: Easing.OutCubic
+                            }
+                        }
 
                         // Background
                         Rectangle {
@@ -125,8 +138,18 @@ Variants {
                                     width: progressWidth * model.progress
                                     color: model.urgency === 2 ? Theme.red : model.urgency === 0 ? Theme.subtext0 : Theme.primary
 
-                                    Behavior on width { NumberAnimation { duration: 100; easing.type: Easing.Linear } }
-                                    Behavior on x { NumberAnimation { duration: 100; easing.type: Easing.Linear } }
+                                    Behavior on width {
+                                        NumberAnimation {
+                                            duration: 100
+                                            easing.type: Easing.Linear
+                                        }
+                                    }
+                                    Behavior on x {
+                                        NumberAnimation {
+                                            duration: 100
+                                            easing.type: Easing.Linear
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -144,7 +167,10 @@ Variants {
                         Timer {
                             id: resumeTimer
                             interval: 50
-                            onTriggered: { if (card.hoverCount === 0) NotificationService.resumeTimeout(card.notificationId); }
+                            onTriggered: {
+                                if (card.hoverCount === 0)
+                                    NotificationService.resumeTimeout(card.notificationId);
+                            }
                         }
 
                         // Right-click to dismiss
@@ -154,8 +180,9 @@ Variants {
                             hoverEnabled: true
                             onEntered: card.hoverCount++
                             onExited: card.hoverCount--
-                            onClicked: function(mouse) {
-                                if (mouse.button === Qt.RightButton) animateOut();
+                            onClicked: function (mouse) {
+                                if (mouse.button === Qt.RightButton)
+                                    animateOut();
                             }
                         }
 
@@ -165,7 +192,7 @@ Variants {
                             slideOffset = -100;
                             scaleValue = 0.8;
                             opacityValue = 0.0;
-                            animInTimer.interval = index * 80;
+                            animInTimer.interval = 20;  // All notifications slide in together
                             animInTimer.start();
                         }
 
@@ -185,7 +212,8 @@ Variants {
                         }
 
                         function animateOut() {
-                            if (isRemoving) return;
+                            if (isRemoving)
+                                return;
                             isRemoving = true;
                             slideOffset = -100;
                             scaleValue = 0.8;
@@ -200,13 +228,26 @@ Variants {
                         }
 
                         Behavior on scaleValue {
-                            SpringAnimation { spring: 3; damping: 0.4; epsilon: 0.01; mass: 0.8 }
+                            SpringAnimation {
+                                spring: 3
+                                damping: 0.4
+                                epsilon: 0.01
+                                mass: 0.8
+                            }
                         }
                         Behavior on opacityValue {
-                            NumberAnimation { duration: 200; easing.type: Easing.OutCubic }
+                            NumberAnimation {
+                                duration: 200
+                                easing.type: Easing.OutCubic
+                            }
                         }
                         Behavior on slideOffset {
-                            SpringAnimation { spring: 2.5; damping: 0.3; epsilon: 0.01; mass: 0.6 }
+                            SpringAnimation {
+                                spring: 2.5
+                                damping: 0.3
+                                epsilon: 0.01
+                                mass: 0.6
+                            }
                         }
 
                         // Content
@@ -246,9 +287,9 @@ Variants {
                                         asynchronous: true
 
                                         layer.enabled: true
-                                        layer.effect: Item {
-                                            // Rounded clip not available without shaders; just use clip
-                                        }
+                                        layer.effect:
+                                        // Rounded clip not available without shaders; just use clip
+                                        Item {}
                                     }
                                 }
 
@@ -277,7 +318,9 @@ Variants {
                                             color: Theme.flamingo
                                         }
 
-                                        Item { Layout.fillWidth: true }
+                                        Item {
+                                            Layout.fillWidth: true
+                                        }
                                     }
 
                                     // Summary
@@ -313,8 +356,11 @@ Variants {
 
                                         property string parentNotifId: card.notificationId
                                         property var parsedActions: {
-                                            try { return model.actionsJson ? JSON.parse(model.actionsJson) : []; }
-                                            catch(e) { return []; }
+                                            try {
+                                                return model.actionsJson ? JSON.parse(model.actionsJson) : [];
+                                            } catch (e) {
+                                                return [];
+                                            }
                                         }
 
                                         Repeater {
@@ -333,7 +379,8 @@ Variants {
                                                     anchors.centerIn: parent
                                                     text: {
                                                         var t = modelData.text || "Open";
-                                                        if (t.includes(",")) return t.split(",")[1] || t;
+                                                        if (t.includes(","))
+                                                            return t.split(",")[1] || t;
                                                         return t;
                                                     }
                                                     pointSize: Style.fontS
@@ -351,7 +398,11 @@ Variants {
                                                     onClicked: NotificationService.invokeAction(card.notificationId, modelData.identifier)
                                                 }
 
-                                                Behavior on color { ColorAnimation { duration: Style.animFast } }
+                                                Behavior on color {
+                                                    ColorAnimation {
+                                                        duration: Style.animFast
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -365,7 +416,9 @@ Variants {
                             anchors.topMargin: Style.marginS
                             anchors.right: cardBg.right
                             anchors.rightMargin: Style.marginS
-                            width: 20; height: 20; radius: 10
+                            width: 20
+                            height: 20
+                            radius: 10
                             color: closeMa.containsMouse ? Theme.hoverBg : Theme.surface1
 
                             IconText {
@@ -394,7 +447,7 @@ Variants {
             // Connect animation signal
             property var animConnection: null
             Component.onCompleted: {
-                animConnection = function(notifId) {
+                animConnection = function (notifId) {
                     for (var i = 0; i < notifRepeater.count; i++) {
                         var item = notifRepeater.itemAt(i);
                         if (item && item.notificationId === notifId) {

@@ -17,7 +17,7 @@ Text {
     property string homeTotal: ""
     property string homeFree: ""
 
-    text: "\uf0a0"
+    text: ""
     font.family: Theme.fontFamily
     font.pixelSize: Theme.fontSize
     font.weight: Theme.fontWeight
@@ -87,8 +87,18 @@ Text {
         scale: mouseArea.containsMouse ? 1.0 : 0.9
         transformOrigin: Item.Bottom
 
-        Behavior on opacity { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
-        Behavior on scale { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Style.animFast
+                easing.type: Easing.OutCubic
+            }
+        }
+        Behavior on scale {
+            NumberAnimation {
+                duration: Style.animFast
+                easing.type: Easing.OutCubic
+            }
+        }
 
         ColumnLayout {
             id: tooltipLayout
@@ -99,7 +109,7 @@ Text {
             RowLayout {
                 spacing: Style.marginS
                 IconText {
-                    text: "\uf0a0"
+                    text: ""
                     pointSize: Style.fontL
                     color: Theme.teal
                 }
