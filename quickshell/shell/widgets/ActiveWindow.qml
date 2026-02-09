@@ -57,6 +57,11 @@ Row {
                 try {
                     var obj = JSON.parse(this.text);
                     root.title = (obj.title || "").substring(0, root.maxLength);
+
+                    if (obj.title.length > root.maxLength) {
+                        root.title += "...";
+                    }
+
                     root.windowClass = obj.class || "";
                 } catch (e) {
                     root.title = "";
