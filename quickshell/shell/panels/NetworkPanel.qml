@@ -51,6 +51,8 @@ PopupPanel {
     }
 
     function disconnectNetwork() {
+        if (connectedSsid)
+            disconnectProc.command = ["nmcli", "connection", "down", connectedSsid];
         disconnectProc.running = true;
     }
 
@@ -122,6 +124,13 @@ PopupPanel {
                             bgColor: "transparent"
                             onClicked: root.close()
                         }
+                    }
+
+                    PanelText {
+                        visible: connectedSsid !== ""
+                        text: "Connected to " + connectedSsid
+                        pointSize: Style.fontS
+                        color: Theme.green
                     }
                 }
             }
@@ -378,6 +387,16 @@ PopupPanel {
                                 connectNetwork(modelData.ssid);
                         }
                     }
+
+                    // Forget button for saved networks
+                    IconButton {
+                        visible: modelData.saved && !modelData.inUse && !showPassword
+                        icon: "\uf1f8"  // trash
+                        iconColor: Theme.overlay1
+                        bgColor: "transparent"
+                        implicitWidth: 28; implicitHeight: 28
+                        onClicked: forgetNetwork(modelData.ssid)
+                    }
                 }
 
                 // Password input row
@@ -453,30 +472,36 @@ PopupPanel {
     // ── Processes ──
     Process {
         id: scanProc
-        command: ["bash", "-c", "nmcli -t -f SSID,SIGNAL,SECURITY,IN-USE device wifi list --rescan yes 2>/dev/null | head -50"]
+        command: ["bash", "-c", "nmcli -t -f IN-USE,SSID,SIGNAL,SECURITY device wifi list --rescan yes 2>/dev/null | head -50"]
         stdout: StdioCollector {
             onStreamFinished: {
                 var lines = this.text.trim().split("\n");
                 var result = [];
                 var connected = "";
                 for (var i = 0; i < lines.length; i++) {
-                    var parts = lines[i].split(":");
+                    if (!lines[i].trim()) continue;
+                    // Handle nmcli terse escaped colons (\:)
+                    var raw = lines[i].replace(/\\:/g, "##COL##");
+                    var parts = raw.split(":");
                     if (parts.length >= 4) {
-                        var ssid = parts[0];
+                        var inUse = parts[0].trim() === "*";
+                        var ssid = parts[1].replace(/##COL##/g, ":");
                         if (!ssid) continue;
+                        var signal = parts[2];
+                        var security = parts.slice(3).join(":").replace(/##COL##/g, ":");
+
                         var dup = false;
                         for (var j = 0; j < result.length; j++) {
                             if (result[j].ssid === ssid) { dup = true; break; }
                         }
                         if (dup) continue;
 
-                        var inUse = parts[3].trim() === "*";
                         if (inUse) connected = ssid;
 
                         result.push({
                             ssid: ssid,
-                            signal: parts[1],
-                            security: parts[2],
+                            signal: signal,
+                            security: security,
                             inUse: inUse,
                             saved: false
                         });
@@ -490,7 +515,6 @@ PopupPanel {
                 root.networks = result;
                 root.connectedSsid = connected;
                 root.scanning = false;
-                // Check for saved connections
                 savedProc.running = true;
             }
         }
@@ -533,7 +557,7 @@ PopupPanel {
 
     Process {
         id: disconnectProc
-        command: ["nmcli", "device", "disconnect", "wlan0"]
+        command: ["nmcli", "connection", "down", ""]
         onRunningChanged: { if (!running) scan(); }
     }
 

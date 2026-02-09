@@ -72,6 +72,12 @@ Scope {
                     Layout.rightMargin: 8
                 }
 
+                BluetoothStatus {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 8
+                    Layout.rightMargin: 8
+                }
+
                 MemoryUsage {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.leftMargin: 8
