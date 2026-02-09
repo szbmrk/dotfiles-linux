@@ -212,7 +212,7 @@ Scope {
                     panelId: "diskPanel"
                     anchor: "top-right"
                     preferredWidth: 400
-                    preferredHeight: 360
+                    preferredHeight: 310
                 }
 
                 NotificationsPanel {

@@ -31,10 +31,28 @@ Text {
             else
                 PanelManager.toggleById("audioPanel");
         }
+        onWheel: wheel => {
+            const delta = wheel.angleDelta.y;
+
+            if (delta > 0)
+                increaseVol.running = true;
+            else if (delta < 0)
+                decraseVol.running = true;
+        }
     }
 
     Process {
         id: muteProc
         command: ["pactl", "set-source-mute", "@DEFAULT_SOURCE@", "toggle"]
+    }
+
+    Process {
+        id: increaseVol
+        command: ["pactl", "set-source-volume", "@DEFAULT_SOURCE@", "+1%"]
+    }
+
+    Process {
+        id: decraseVol
+        command: ["pactl", "set-source-volume", "@DEFAULT_SOURCE@", "-1%"]
     }
 }

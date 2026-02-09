@@ -18,7 +18,6 @@ PopupPanel {
 
     panelContent: Component {
         ColumnLayout {
-            spacing: Style.marginL
 
             // ── Header ──
             Card {

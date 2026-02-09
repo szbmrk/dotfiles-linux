@@ -31,10 +31,28 @@ Text {
             else
                 PanelManager.toggleById("audioPanel");
         }
+        onWheel: wheel => {
+            const delta = wheel.angleDelta.y;
+
+            if (delta > 0)
+                increaseVol.running = true;
+            else if (delta < 0)
+                decraseVol.running = true;
+        }
     }
 
     Process {
         id: muteProc
         command: ["pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle"]
+    }
+
+    Process {
+        id: increaseVol
+        command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "+1%"]
+    }
+
+    Process {
+        id: decraseVol
+        command: ["pactl", "set-sink-volume", "@DEFAULT_SINK@", "-1%"]
     }
 }
