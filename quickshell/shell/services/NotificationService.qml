@@ -84,23 +84,6 @@ Singleton {
         if (doNotDisturb)
             return;
 
-        // Duplicate check disabled - show all notifications separately
-        // var dupIdx = findDuplicateIndex(data.appName, data.summary);
-        // if (dupIdx >= 0) {
-        //     activeList.setProperty(dupIdx, "body", data.body);
-        //     activeList.setProperty(dupIdx, "urgency", data.urgency);
-        //     activeList.setProperty(dupIdx, "progress", 1.0);
-        //     activeList.setProperty(dupIdx, "originalImage", data.originalImage);
-        //     activeList.setProperty(dupIdx, "actionsJson", data.actionsJson);
-        //     var existingId = activeList.get(dupIdx).id;
-        //     if (activeNotifications[existingId]) {
-        //         activeNotifications[existingId].metadata.timestamp = Date.now();
-        //         activeNotifications[existingId].notification = notification;
-        //     }
-        //     notification.tracked = true;
-        //     return;
-        // }
-
         // Store active
         activeNotifications[data.id] = {
             notification: notification,
