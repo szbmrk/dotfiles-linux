@@ -57,7 +57,7 @@ Singleton {
 
     // ── Font ──
     readonly property string fontFamily: "JetBrainsMono Nerd Font Propo"
-    readonly property string fontFamilyUI: "Inter"
+    readonly property string fontFamilyUI: "JetBrainsMono Nerd Font Propo"
     readonly property int fontSize: 14
     readonly property int fontWeight: 700
 }
