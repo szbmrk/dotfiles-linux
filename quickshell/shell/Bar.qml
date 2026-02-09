@@ -167,7 +167,7 @@ Scope {
                     panelId: "audioPanel"
                     anchor: "top-right"
                     preferredWidth: 420
-                    preferredHeight: 380
+                    preferredHeight: 540
                 }
 
                 CalendarPanel {

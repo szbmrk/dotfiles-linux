@@ -2,7 +2,7 @@ import QtQuick
 import "../"
 
 Rectangle {
-    color: Theme.cardBg
+    color: Theme.base
     radius: Style.radiusM
     border.color: Theme.cardBorder
     border.width: Style.borderS

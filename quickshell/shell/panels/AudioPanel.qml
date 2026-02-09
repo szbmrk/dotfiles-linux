@@ -287,6 +287,15 @@ PopupPanel {
                     }
                 }
 
+                Divider { } 
+
+
+                PanelText {
+                    text: "Applications"
+                    pointSize: Style.fontL
+                    font.family: Theme.fontFamily
+                }
+
                 Flickable {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
