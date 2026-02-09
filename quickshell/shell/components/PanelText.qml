@@ -1,7 +1,6 @@
 import QtQuick
 import "../"
 
-// Standard text – panel/UI text using the UI font
 Text {
     id: root
 

@@ -4,7 +4,6 @@ import Quickshell
 import "../"
 import "../components"
 
-// Calendar panel — month grid with navigation and current time
 PopupPanel {
     id: root
 
@@ -12,23 +11,25 @@ PopupPanel {
     property int calMonth: now.getMonth()
     property int calYear: now.getFullYear()
 
-    readonly property var monthNames: [
-        "January", "February", "March", "April",
-        "May", "June", "July", "August",
-        "September", "October", "November", "December"
-    ]
+    readonly property var monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     readonly property var dayNames: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 
     function prevMonth() {
-        if (calMonth === 0) { calMonth = 11; calYear--; }
-        else calMonth--;
+        if (calMonth === 0) {
+            calMonth = 11;
+            calYear--;
+        } else
+            calMonth--;
         rebuildGrid();
     }
 
     function nextMonth() {
-        if (calMonth === 11) { calMonth = 0; calYear++; }
-        else calMonth++;
+        if (calMonth === 11) {
+            calMonth = 0;
+            calYear++;
+        } else
+            calMonth++;
         rebuildGrid();
     }
 
@@ -52,14 +53,26 @@ PopupPanel {
         var isCurrentMonth = (calMonth === today.getMonth() && calYear === today.getFullYear());
 
         for (var i = startDow - 1; i >= 0; i--)
-            result.push({ day: daysInPrev - i, current: false, today: false });
+            result.push({
+                day: daysInPrev - i,
+                current: false,
+                today: false
+            });
 
         for (var d = 1; d <= daysInMonth; d++)
-            result.push({ day: d, current: true, today: isCurrentMonth && d === today.getDate() });
+            result.push({
+                day: d,
+                current: true,
+                today: isCurrentMonth && d === today.getDate()
+            });
 
         var remaining = 42 - result.length;
         for (var n = 1; n <= remaining; n++)
-            result.push({ day: n, current: false, today: false });
+            result.push({
+                day: n,
+                current: false,
+                today: false
+            });
 
         daysModel = result;
     }
@@ -153,7 +166,8 @@ PopupPanel {
                             icon: "\uf053"  // chevron-left
                             iconColor: Theme.subtext0
                             bgColor: "transparent"
-                            implicitWidth: 24; implicitHeight: 24
+                            implicitWidth: 24
+                            implicitHeight: 24
                             onClicked: prevMonth()
                         }
 
@@ -161,7 +175,8 @@ PopupPanel {
                             icon: "\uf015"  // home (today)
                             iconColor: Theme.subtext0
                             bgColor: "transparent"
-                            implicitWidth: 24; implicitHeight: 24
+                            implicitWidth: 24
+                            implicitHeight: 24
                             onClicked: goToday()
                         }
 
@@ -169,7 +184,8 @@ PopupPanel {
                             icon: "\uf054"  // chevron-right
                             iconColor: Theme.subtext0
                             bgColor: "transparent"
-                            implicitWidth: 24; implicitHeight: 24
+                            implicitWidth: 24
+                            implicitHeight: 24
                             onClicked: nextMonth()
                         }
                     }
@@ -214,7 +230,9 @@ PopupPanel {
 
                                 Rectangle {
                                     anchors.centerIn: parent
-                                    width: 28; height: 28; radius: 14
+                                    width: 28
+                                    height: 28
+                                    radius: 14
                                     color: modelData.today ? Theme.primary : "transparent"
                                 }
 
@@ -223,8 +241,10 @@ PopupPanel {
                                     text: modelData.day
                                     pointSize: Style.fontS
                                     color: {
-                                        if (modelData.today) return Theme.base;
-                                        if (modelData.current) return Theme.text;
+                                        if (modelData.today)
+                                            return Theme.base;
+                                        if (modelData.current)
+                                            return Theme.text;
                                         return Theme.overlay0;
                                     }
                                     font.weight: modelData.today ? Style.weightBold : Style.weightMedium

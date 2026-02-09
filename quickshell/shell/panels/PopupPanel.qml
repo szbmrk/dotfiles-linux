@@ -1,7 +1,6 @@
 import QtQuick
 import "../"
 
-// Base for all popup panels — handles open/close animation, backdrop click
 Item {
     id: root
 
@@ -11,8 +10,6 @@ Item {
     property int preferredHeight: 400
     property bool isOpen: false
 
-    // Anchor: where the panel appears relative to the bar
-    // "top-right", "top-left", "top-center", "bottom-right", etc.
     property string anchor: "top-right"
     property int anchorMargin: Style.marginL
 
@@ -38,14 +35,15 @@ Item {
     visible: isOpen
     z: 100
 
-    // Dim background when panel is open
     Rectangle {
         anchors.fill: parent
-        color: Qt.rgba(0, 0, 0, 0.3)
+        color: Qt.rgba(0, 0, 0, 0)
         visible: root.isOpen
 
         Behavior on opacity {
-            NumberAnimation { duration: Style.animNormal }
+            NumberAnimation {
+                duration: Style.animNormal
+            }
         }
 
         MouseArea {
@@ -117,7 +115,9 @@ Item {
         MouseArea {
             anchors.fill: parent
             propagateComposedEvents: false
-            onPressed: function(mouse) { mouse.accepted = true; }
+            onPressed: function (mouse) {
+                mouse.accepted = true;
+            }
         }
 
         Loader {

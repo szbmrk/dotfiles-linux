@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import "../"
 
-// Styled slider for panels (volume, brightness, etc.)
 Slider {
     id: root
 
@@ -39,7 +38,9 @@ Slider {
         border.width: 2
 
         Behavior on color {
-            ColorAnimation { duration: Style.animFast }
+            ColorAnimation {
+                duration: Style.animFast
+            }
         }
     }
 

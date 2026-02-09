@@ -9,10 +9,6 @@ import "components"
 Scope {
     id: root
 
-    // ═══════════════════════════════════════════════
-    //  Bar — one per screen
-    // ═══════════════════════════════════════════════
-
     Variants {
         model: Quickshell.screens
 
@@ -82,11 +78,11 @@ Scope {
                     Layout.rightMargin: 8
                 }
 
-                // Backlight {
-                //     Layout.alignment: Qt.AlignVCenter
-                //     Layout.leftMargin: 8
-                //     Layout.rightMargin: 8
-                // }
+                Brightness {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 8
+                    Layout.rightMargin: 8
+                }
 
                 AudioSource {
                     Layout.alignment: Qt.AlignVCenter
@@ -100,11 +96,11 @@ Scope {
                     Layout.rightMargin: 8
                 }
 
-                // Battery {
-                //     Layout.alignment: Qt.AlignVCenter
-                //     Layout.leftMargin: 8
-                //     Layout.rightMargin: 8
-                // }
+                Battery {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 8
+                    Layout.rightMargin: 8
+                }
 
                 Notifications {
                     Layout.alignment: Qt.AlignVCenter
@@ -119,17 +115,13 @@ Scope {
                 }
             }
 
-            // ═══════ CENTER (Fixed) ═══════
+            // ═══════ CENTER ═══════
             Clock {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
     }
-
-    // ═══════════════════════════════════════════════
-    //  Panel Overlay — one per screen, full-screen layer above bar
-    // ═══════════════════════════════════════════════
 
     Variants {
         model: Quickshell.screens
@@ -148,14 +140,12 @@ Scope {
 
             color: "transparent"
 
-            // Layer shell config for overlay
             WlrLayershell.layer: WlrLayer.Overlay
             WlrLayershell.keyboardFocus: PanelManager.openPanel !== null ? WlrKeyboardFocus.Exclusive : WlrKeyboardFocus.None
             WlrLayershell.namespace: "shell-panels"
 
             exclusionMode: ExclusionMode.Ignore
 
-            // Invisible unless a panel is showing
             visible: PanelManager.openPanel !== null
 
             // ── Panels ──
@@ -231,10 +221,6 @@ Scope {
         }
     }
 
-    // ═══════════════════════════════════════════════
-    //  Tray Context Menu Overlay — full-screen click-away layer
-    // ═══════════════════════════════════════════════
-
     Variants {
         model: Quickshell.screens
 
@@ -295,8 +281,18 @@ Scope {
                 scale: PanelManager.trayMenuOpen ? 1.0 : 0.95
                 transformOrigin: Item.Top
 
-                Behavior on opacity { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
-                Behavior on scale { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Style.animFast
+                        easing.type: Easing.OutCubic
+                    }
+                }
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: Style.animFast
+                        easing.type: Easing.OutCubic
+                    }
+                }
 
                 // Prevent click-through to the backdrop
                 MouseArea {
@@ -358,7 +354,8 @@ Scope {
                                         Rectangle {
                                             visible: !parent.isRadio
                                             anchors.centerIn: parent
-                                            width: 12; height: 12
+                                            width: 12
+                                            height: 12
                                             radius: Style.radiusXS
                                             color: "transparent"
                                             border.color: parent.isChecked ? Theme.primary : Theme.overlay1
@@ -376,7 +373,8 @@ Scope {
                                         Rectangle {
                                             visible: parent.isRadio
                                             anchors.centerIn: parent
-                                            width: 12; height: 12
+                                            width: 12
+                                            height: 12
                                             radius: 6
                                             color: "transparent"
                                             border.color: parent.isChecked ? Theme.primary : Theme.overlay1
@@ -385,7 +383,8 @@ Scope {
                                             Rectangle {
                                                 visible: parent.parent.isChecked
                                                 anchors.centerIn: parent
-                                                width: 6; height: 6
+                                                width: 6
+                                                height: 6
                                                 radius: 3
                                                 color: Theme.primary
                                             }

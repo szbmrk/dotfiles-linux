@@ -1,8 +1,6 @@
 import QtQuick
-import QtQuick.Controls
 import "../"
 
-// Toggle switch — used in panels for on/off states
 Item {
     id: root
 
@@ -41,7 +39,9 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
 
             Behavior on color {
-                ColorAnimation { duration: Style.animFast }
+                ColorAnimation {
+                    duration: Style.animFast
+                }
             }
 
             Rectangle {

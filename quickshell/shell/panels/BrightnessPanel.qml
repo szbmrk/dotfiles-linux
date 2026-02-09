@@ -5,7 +5,6 @@ import Quickshell.Io
 import "../"
 import "../components"
 
-// Brightness panel — display brightness control
 PopupPanel {
     id: root
 
@@ -66,7 +65,8 @@ PopupPanel {
                         IconText {
                             text: {
                                 var val = parseInt(brightnessPercent) || 0;
-                                if (val <= 30) return "\uf186";  // moon
+                                if (val <= 30)
+                                    return "\uf186";  // moon
                                 return "\uf185";  // sun
                             }
                             pointSize: Style.fontL
@@ -87,7 +87,8 @@ PopupPanel {
 
                     PanelSlider {
                         Layout.fillWidth: true
-                        from: 0; to: 100
+                        from: 0
+                        to: 100
                         value: parseInt(brightnessPercent) || 0
                         stepSize: 1
                         fillColor: Theme.peach
@@ -100,7 +101,9 @@ PopupPanel {
                 }
             }
 
-            Item { Layout.fillHeight: true }
+            Item {
+                Layout.fillHeight: true
+            }
         }
     }
 
@@ -113,7 +116,10 @@ PopupPanel {
         }
     }
 
-    Process { id: brightnessSetProc; command: ["brightnessctl", "set", "50%"] }
+    Process {
+        id: brightnessSetProc
+        command: ["brightnessctl", "set", "50%"]
+    }
 
     Timer {
         interval: 2000
@@ -123,6 +129,7 @@ PopupPanel {
     }
 
     onIsOpenChanged: {
-        if (isOpen) brightnessProc.running = true;
+        if (isOpen)
+            brightnessProc.running = true;
     }
 }

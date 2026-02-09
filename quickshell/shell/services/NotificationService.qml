@@ -5,16 +5,13 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Services.Notifications
 
-// Notification service — receives desktop notifications, manages active + history lists
 Singleton {
     id: root
 
-    // Config
     property int maxVisible: 5
     property int maxHistory: 100
     property bool doNotDisturb: false
 
-    // Track last time user opened history panel
     property real lastSeenTs: 0
 
     // State
@@ -28,7 +25,8 @@ Singleton {
         var c = 0;
         for (var i = 0; i < historyList.count; i++) {
             var item = historyList.get(i);
-            if (item && item.timestampMs > lastSeenTs) c++;
+            if (item && item.timestampMs > lastSeenTs)
+                c++;
         }
         return c;
     }
@@ -71,7 +69,7 @@ Singleton {
     Process {
         id: ensureDirProc
         command: ["mkdir", "-p", root.historyDir]
-        onExited: function(exitCode, exitStatus) {
+        onExited: function (exitCode, exitStatus) {
             loadState();
             loadHistory();
         }
@@ -83,7 +81,8 @@ Singleton {
         // Always add to history (even in DND)
         addToHistory(data);
 
-        if (doNotDisturb) return;
+        if (doNotDisturb)
+            return;
 
         // Duplicate check disabled - show all notifications separately
         // var dupIdx = findDuplicateIndex(data.appName, data.summary);
@@ -142,7 +141,7 @@ Singleton {
             timestampMs: now.getTime(),
             progress: 1.0,
             originalImage: image,
-            actionsJson: JSON.stringify((n.actions || []).map(function(a) {
+            actionsJson: JSON.stringify((n.actions || []).map(function (a) {
                 return {
                     text: (a.text || "").trim() || "Action",
                     identifier: a.identifier || ""
@@ -253,15 +252,17 @@ Singleton {
                             actionsJson: item.actionsJson || "[]"
                         });
                     }
-                } catch(e) {
-                    // No history or corrupt file — start fresh
-                }
+                } catch (e)
+                // No history or corrupt file — start fresh
+                {}
             }
         }
     }
 
     function saveState() {
-        var jsonStr = JSON.stringify({ lastSeenTs: lastSeenTs }).replace(/'/g, "'\\''");
+        var jsonStr = JSON.stringify({
+            lastSeenTs: lastSeenTs
+        }).replace(/'/g, "'\\''");
         stateWriteProc.command = ["bash", "-c", "printf '%s' '" + jsonStr + "' > " + stateFile];
         stateWriteProc.running = true;
     }
@@ -282,8 +283,9 @@ Singleton {
             onRead: data => {
                 try {
                     var obj = JSON.parse(data);
-                    if (obj.lastSeenTs) root.lastSeenTs = obj.lastSeenTs;
-                } catch(e) {}
+                    if (obj.lastSeenTs)
+                        root.lastSeenTs = obj.lastSeenTs;
+                } catch (e) {}
             }
         }
     }
@@ -313,9 +315,11 @@ Singleton {
         for (var i = 0; i < activeList.count; i++) {
             var notif = activeList.get(i);
             var nd = activeNotifications[notif.id];
-            if (!nd) continue;
+            if (!nd)
+                continue;
             var meta = nd.metadata;
-            if (meta.duration === -1 || meta.paused) continue;
+            if (meta.duration === -1 || meta.paused)
+                continue;
 
             var elapsed = now - meta.timestamp;
             var progress = Math.max(1.0 - (elapsed / meta.duration), 0.0);
@@ -362,12 +366,15 @@ Singleton {
 
     function invokeAction(id, actionId) {
         var nd = activeNotifications[id];
-        if (!nd || !nd.notification) return false;
+        if (!nd || !nd.notification)
+            return false;
 
         var actions = nd.notification.actions || [];
         for (var i = 0; i < actions.length; i++) {
             if (actions[i].identifier === actionId) {
-                try { actions[i].invoke(); } catch(e) {}
+                try {
+                    actions[i].invoke();
+                } catch (e) {}
                 return true;
             }
         }
@@ -398,18 +405,24 @@ Singleton {
         var diffHour = Math.floor(diffMin / 60);
         var diffDay = Math.floor(diffHour / 24);
 
-        if (diffSec < 60) return "Just now";
-        if (diffMin < 60) return diffMin + "m ago";
-        if (diffHour < 24) return diffHour + "h ago";
-        if (diffDay === 1) return "Yesterday";
-        if (diffDay < 7) return diffDay + "d ago";
+        if (diffSec < 60)
+            return "Just now";
+        if (diffMin < 60)
+            return diffMin + "m ago";
+        if (diffHour < 24)
+            return diffHour + "h ago";
+        if (diffDay === 1)
+            return "Yesterday";
+        if (diffDay < 7)
+            return diffDay + "d ago";
 
         var d = new Date(timestampMs);
         return d.toLocaleDateString(Qt.locale(), "MMM d");
     }
 
     function getAppName(name) {
-        if (!name || name.trim() === "") return "Unknown";
+        if (!name || name.trim() === "")
+            return "Unknown";
         name = name.trim();
 
         if (name.includes(".") && (name.startsWith("com.") || name.startsWith("org.") || name.startsWith("io."))) {
@@ -417,7 +430,8 @@ Singleton {
             var appPart = parts[parts.length - 1];
             if (appPart === "app" || appPart === "desktop")
                 appPart = parts[parts.length - 2] || parts[0];
-            if (appPart) name = appPart;
+            if (appPart)
+                name = appPart;
         }
 
         return name.charAt(0).toUpperCase() + name.slice(1);

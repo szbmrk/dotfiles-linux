@@ -6,7 +6,8 @@ Text {
     id: root
 
     property string percent: "0"
-
+    property bool available: false
+    visible: available
     text: "󰃠 " + percent + "%"
     font.family: Theme.fontFamily
     font.pixelSize: Theme.fontSize
@@ -17,8 +18,17 @@ Text {
         id: backlightProc
         command: ["bash", "-c", "brightnessctl -m 2>/dev/null | cut -d, -f4 | tr -d '%'"]
         running: true
+
         stdout: StdioCollector {
-            onStreamFinished: root.percent = this.text.trim() || "0"
+            onStreamFinished: {
+                let value = this.text.trim();
+                if (value > 0) {
+                    root.percent = value;
+                    root.available = true;
+                } else {
+                    root.available = false;
+                }
+            }
         }
     }
 
@@ -32,6 +42,6 @@ Text {
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
-        onClicked: PanelManager.toggleById("controlCenter")
+        onClicked: PanelManager.toggleById("brightnessPanel")
     }
 }

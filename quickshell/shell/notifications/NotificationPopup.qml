@@ -5,7 +5,6 @@ import Quickshell.Wayland
 import "../"
 import "../components"
 
-// Notification popup — displays up to maxVisible notifications with animations
 Variants {
     model: Quickshell.screens
 
@@ -57,7 +56,6 @@ Variants {
             implicitWidth: notifWidth + Style.marginXL * 2
             implicitHeight: Math.max(1, Math.min(notificationStack.implicitHeight + Style.marginL, maxNotifHeight))
 
-            // Click-through mask — only notification cards are clickable
             mask: Region {
                 item: notificationStack
             }
@@ -95,7 +93,6 @@ Variants {
                         Layout.preferredHeight: cardContent.implicitHeight + Style.marginXL
                         Layout.maximumHeight: Layout.preferredHeight
 
-                        // Animation properties
                         property real scaleValue: 0.8
                         property real opacityValue: 0.0
                         property real slideOffset: -100
@@ -106,7 +103,6 @@ Variants {
                             y: card.slideOffset
                         }
 
-                        // Smooth position animation when layout repositions items
                         Behavior on y {
                             NumberAnimation {
                                 duration: 300
@@ -114,7 +110,6 @@ Variants {
                             }
                         }
 
-                        // Background
                         Rectangle {
                             id: cardBg
                             anchors.fill: parent
@@ -123,7 +118,6 @@ Variants {
                             border.width: Style.borderS
                             color: Theme.panelBg
 
-                            // Urgency progress bar
                             Rectangle {
                                 anchors.top: parent.top
                                 anchors.left: parent.left
@@ -154,7 +148,6 @@ Variants {
                             }
                         }
 
-                        // Hover handling
                         onHoverCountChanged: {
                             if (hoverCount > 0) {
                                 resumeTimer.stop();
@@ -173,7 +166,6 @@ Variants {
                             }
                         }
 
-                        // Right-click to dismiss
                         MouseArea {
                             anchors.fill: cardBg
                             acceptedButtons: Qt.RightButton
@@ -186,7 +178,6 @@ Variants {
                             }
                         }
 
-                        // Entry animation
                         function triggerEntryAnimation() {
                             isRemoving = false;
                             slideOffset = -100;
@@ -250,7 +241,6 @@ Variants {
                             }
                         }
 
-                        // Content
                         ColumnLayout {
                             id: cardContent
                             anchors.fill: cardBg
@@ -277,7 +267,6 @@ Variants {
                                         color: Theme.primary
                                     }
 
-                                    // Show app image if available
                                     Image {
                                         anchors.fill: parent
                                         source: model.originalImage || ""
@@ -288,7 +277,6 @@ Variants {
 
                                         layer.enabled: true
                                         layer.effect:
-                                        // Rounded clip not available without shaders; just use clip
                                         Item {}
                                     }
                                 }
@@ -444,7 +432,6 @@ Variants {
                 }
             }
 
-            // Connect animation signal
             property var animConnection: null
             Component.onCompleted: {
                 animConnection = function (notifId) {

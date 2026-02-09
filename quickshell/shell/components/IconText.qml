@@ -1,7 +1,6 @@
 import QtQuick
 import "../"
 
-// Icon text element using Nerd Font glyphs
 Text {
     id: root
 

@@ -5,7 +5,6 @@ import Quickshell.Services.Pipewire
 import "../"
 import "../components"
 
-// Audio panel — Output/Input volume + per-app volumes + device selection
 PopupPanel {
     id: root
 
@@ -23,7 +22,6 @@ PopupPanel {
         objects: root.sourceNode ? [root.sourceNode] : []
     }
 
-    // Sync service → local (when user is NOT dragging)
     Connections {
         target: root.sink?.audio ?? null
         function onVolumeChanged() {
@@ -39,7 +37,6 @@ PopupPanel {
         }
     }
 
-    // Debounce local → service
     Timer {
         interval: 80
         running: true
@@ -52,7 +49,6 @@ PopupPanel {
         }
     }
 
-    // ── App streams ──
     PwNodeLinkTracker {
         id: linkTracker
         node: Pipewire.defaultAudioSink
@@ -68,7 +64,6 @@ PopupPanel {
         ColumnLayout {
             spacing: Style.marginL
 
-            // ── Header ──
             Card {
                 Layout.fillWidth: true
                 Layout.preferredHeight: headerCol.implicitHeight + Style.marginXL
@@ -145,7 +140,6 @@ PopupPanel {
                 }
             }
 
-            // ── Volumes Tab ──
             ColumnLayout {
                 visible: currentTab === 0
                 Layout.fillWidth: true
@@ -293,7 +287,6 @@ PopupPanel {
                     }
                 }
 
-                // ── App Streams ──
                 Flickable {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -343,7 +336,8 @@ PopupPanel {
                                 }
 
                                 readonly property string appIconName: {
-                                    if (!appNode?.properties) return "";
+                                    if (!appNode?.properties)
+                                        return "";
                                     var p = appNode.properties;
                                     return p["application.icon-name"] || p["application.process.binary"] || "";
                                 }
@@ -452,7 +446,6 @@ PopupPanel {
                 }
             }
 
-            // ── Devices Tab ──
             Flickable {
                 visible: currentTab === 1
                 Layout.fillWidth: true

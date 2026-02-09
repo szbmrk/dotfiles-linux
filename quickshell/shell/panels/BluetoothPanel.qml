@@ -5,7 +5,6 @@ import Quickshell.Io
 import "../"
 import "../components"
 
-// Bluetooth panel — adapter toggle, device discovery, connect/disconnect, pairing
 PopupPanel {
     id: root
 
@@ -46,13 +45,19 @@ PopupPanel {
 
     // Split devices
     readonly property var connectedDevices: {
-        return devices.filter(function(d) { return d.connected; });
+        return devices.filter(function (d) {
+            return d.connected;
+        });
     }
     readonly property var pairedDevices: {
-        return devices.filter(function(d) { return !d.connected && d.paired; });
+        return devices.filter(function (d) {
+            return !d.connected && d.paired;
+        });
     }
     readonly property var availableDevices: {
-        return devices.filter(function(d) { return !d.connected && !d.paired; });
+        return devices.filter(function (d) {
+            return !d.connected && !d.paired;
+        });
     }
 
     panelContent: Component {
@@ -85,7 +90,9 @@ PopupPanel {
 
                     PanelToggle {
                         checked: btEnabled
-                        onToggled: function(checked) { toggleBluetooth(); }
+                        onToggled: function (checked) {
+                            toggleBluetooth();
+                        }
                     }
 
                     IconButton {
@@ -117,7 +124,9 @@ PopupPanel {
                     anchors.margins: Style.marginM
                     spacing: Style.marginL
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
 
                     IconText {
                         text: "\u{f294}"
@@ -143,7 +152,9 @@ PopupPanel {
                         wrapMode: Text.WordWrap
                     }
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
             }
 
@@ -159,7 +170,9 @@ PopupPanel {
                     anchors.margins: Style.marginM
                     spacing: Style.marginL
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
 
                     RowLayout {
                         Layout.alignment: Qt.AlignHCenter
@@ -170,8 +183,11 @@ PopupPanel {
                             pointSize: Style.fontXXL
                             color: Theme.primary
                             RotationAnimation on rotation {
-                                running: true; loops: Animation.Infinite
-                                from: 0; to: 360; duration: 2000
+                                running: true
+                                loops: Animation.Infinite
+                                from: 0
+                                to: 360
+                                duration: 2000
                             }
                         }
 
@@ -190,7 +206,9 @@ PopupPanel {
                         wrapMode: Text.WordWrap
                     }
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
             }
 
@@ -206,7 +224,9 @@ PopupPanel {
                     anchors.margins: Style.marginM
                     spacing: Style.marginL
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
 
                     IconText {
                         text: "\u{f294}"
@@ -244,7 +264,9 @@ PopupPanel {
                         }
                     }
 
-                    Item { Layout.fillHeight: true }
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
             }
 
@@ -380,7 +402,8 @@ PopupPanel {
                     icon: modelData.connected ? "\uf127" : "\uf0c1"
                     iconColor: modelData.connected ? Theme.red : Theme.green
                     bgColor: "transparent"
-                    implicitWidth: 28; implicitHeight: 28
+                    implicitWidth: 28
+                    implicitHeight: 28
                     onClicked: {
                         if (modelData.connected)
                             disconnectDevice(modelData.mac);
@@ -422,11 +445,15 @@ PopupPanel {
                         });
                     }
                 }
-                result.sort(function(a, b) {
-                    if (a.connected && !b.connected) return -1;
-                    if (!a.connected && b.connected) return 1;
-                    if (a.paired && !b.paired) return -1;
-                    if (!a.paired && b.paired) return 1;
+                result.sort(function (a, b) {
+                    if (a.connected && !b.connected)
+                        return -1;
+                    if (!a.connected && b.connected)
+                        return 1;
+                    if (a.paired && !b.paired)
+                        return -1;
+                    if (!a.paired && b.paired)
+                        return 1;
                     return 0;
                 });
                 root.devices = result;
@@ -439,7 +466,7 @@ PopupPanel {
         command: ["bluetoothctl", "power", "on"]
         onRunningChanged: {
             if (!running) {
-                Qt.callLater(function() {
+                Qt.callLater(function () {
                     btStatusProc.running = true;
                     btDevicesProc.running = true;
                 });
@@ -447,21 +474,33 @@ PopupPanel {
         }
     }
 
-    Process { id: btScanOnProc; command: ["bluetoothctl", "scan", "on"] }
-    Process { id: btScanOffProc; command: ["bluetoothctl", "scan", "off"] }
+    Process {
+        id: btScanOnProc
+        command: ["bluetoothctl", "scan", "on"]
+    }
+    Process {
+        id: btScanOffProc
+        command: ["bluetoothctl", "scan", "off"]
+    }
 
     Process {
         id: btConnectProc
         command: ["bluetoothctl", "connect", ""]
         onRunningChanged: {
-            if (!running) { connectingTo = ""; refreshDevices(); }
+            if (!running) {
+                connectingTo = "";
+                refreshDevices();
+            }
         }
     }
 
     Process {
         id: btDisconnectProc
         command: ["bluetoothctl", "disconnect", ""]
-        onRunningChanged: { if (!running) refreshDevices(); }
+        onRunningChanged: {
+            if (!running)
+                refreshDevices();
+        }
     }
 
     // Auto-refresh while scanning

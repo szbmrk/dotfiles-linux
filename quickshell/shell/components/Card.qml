@@ -1,7 +1,6 @@
 import QtQuick
 import "../"
 
-// Rounded card container — used in panels
 Rectangle {
     color: Theme.cardBg
     radius: Style.radiusM

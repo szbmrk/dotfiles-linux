@@ -1,7 +1,6 @@
 import QtQuick
 import "../"
 
-// Icon button — used in panel headers and control center shortcuts
 Rectangle {
     id: root
 
@@ -12,7 +11,7 @@ Rectangle {
     property color hoverColor: Theme.hoverBg
     property string tooltip: ""
 
-    signal clicked()
+    signal clicked
 
     implicitWidth: Style.widgetSize
     implicitHeight: Style.widgetSize
@@ -24,7 +23,9 @@ Rectangle {
     opacity: enabled ? 1.0 : Style.opacityDim
 
     Behavior on color {
-        ColorAnimation { duration: Style.animFast }
+        ColorAnimation {
+            duration: Style.animFast
+        }
     }
 
     Text {

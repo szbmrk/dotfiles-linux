@@ -4,7 +4,6 @@ import Quickshell.Io
 import "../"
 import "../components"
 
-// Disk usage panel — shows / and /home usage with visual bars
 PopupPanel {
     id: root
 
@@ -84,7 +83,9 @@ PopupPanel {
                             pointSize: Style.fontL
                         }
 
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
 
                         PanelText {
                             text: root.rootPercent + "%"
@@ -114,7 +115,10 @@ PopupPanel {
                             }
 
                             Behavior on width {
-                                NumberAnimation { duration: Style.animNormal; easing.type: Easing.OutCubic }
+                                NumberAnimation {
+                                    duration: Style.animNormal
+                                    easing.type: Easing.OutCubic
+                                }
                             }
                         }
                     }
@@ -127,13 +131,17 @@ PopupPanel {
                             pointSize: Style.fontS
                             color: Theme.subtext0
                         }
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
                         PanelText {
                             text: "Free: " + root.rootFree
                             pointSize: Style.fontS
                             color: Theme.subtext0
                         }
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
                         PanelText {
                             text: "Total: " + root.rootTotal
                             pointSize: Style.fontS
@@ -173,7 +181,9 @@ PopupPanel {
                             pointSize: Style.fontL
                         }
 
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
 
                         PanelText {
                             text: root.homePercent + "%"
@@ -203,7 +213,10 @@ PopupPanel {
                             }
 
                             Behavior on width {
-                                NumberAnimation { duration: Style.animNormal; easing.type: Easing.OutCubic }
+                                NumberAnimation {
+                                    duration: Style.animNormal
+                                    easing.type: Easing.OutCubic
+                                }
                             }
                         }
                     }
@@ -216,13 +229,17 @@ PopupPanel {
                             pointSize: Style.fontS
                             color: Theme.subtext0
                         }
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
                         PanelText {
                             text: "Free: " + root.homeFree
                             pointSize: Style.fontS
                             color: Theme.subtext0
                         }
-                        Item { Layout.fillWidth: true }
+                        Item {
+                            Layout.fillWidth: true
+                        }
                         PanelText {
                             text: "Total: " + root.homeTotal
                             pointSize: Style.fontS

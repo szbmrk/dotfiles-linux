@@ -1,11 +1,9 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Io
 import "../"
 import "../components"
 
-// Network panel — WiFi scan/connect/disconnect with signal strength, known/available lists
 PopupPanel {
     id: root
 
@@ -18,7 +16,6 @@ PopupPanel {
     property string passwordText: ""
     property string lastError: ""
 
-    // Split into known (connected/saved) and available
     readonly property var knownNetworks: {
         var known = [];
         for (var i = 0; i < networks.length; i++) {

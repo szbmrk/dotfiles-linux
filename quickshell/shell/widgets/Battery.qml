@@ -39,4 +39,6 @@ Text {
             return Theme.red;
         return Theme.flamingo;
     }
+
+    visible: UPower.onBattery
 }
