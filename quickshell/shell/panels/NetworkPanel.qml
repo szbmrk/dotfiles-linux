@@ -490,11 +490,11 @@ PopupPanel {
                         var signal = parts[2];
                         var security = parts.slice(3).join(":").replace(/##COL##/g, ":");
 
-                        var dup = false;
-                        for (var j = 0; j < result.length; j++) {
-                            if (result[j].ssid === ssid) { dup = true; break; }
-                        }
-                        if (dup) continue;
+                        // var dup = false;
+                        // for (var j = 0; j < result.length; j++) {
+                        //     if (result[j].ssid === ssid) { dup = true; break; }
+                        // }
+                        // if (dup) continue;
 
                         if (inUse) connected = ssid;
 

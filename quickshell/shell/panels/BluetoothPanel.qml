@@ -21,21 +21,34 @@ PopupPanel {
     function toggleDiscovery() {
         if (btScanning) {
             btScanOffProc.running = true;
+            btScanning = false;
         } else {
+            btPairableProc.running = true;
             btScanOnProc.running = true;
+            btScanning = true;
         }
-        btScanning = !btScanning;
     }
 
     function connectDevice(mac) {
         connectingTo = mac;
-        btConnectProc.command = ["bluetoothctl", "connect", mac];
-        btConnectProc.running = true;
+        var dev = devices.find(function(d) { return d.mac === mac; });
+        if (dev && !dev.paired) {
+            btPairProc.command = ["bash", "-c", "bluetoothctl pair '" + mac + "' && bluetoothctl trust '" + mac + "' && bluetoothctl connect '" + mac + "'"];
+            btPairProc.running = true;
+        } else {
+            btConnectProc.command = ["bluetoothctl", "connect", mac];
+            btConnectProc.running = true;
+        }
     }
 
     function disconnectDevice(mac) {
         btDisconnectProc.command = ["bluetoothctl", "disconnect", mac];
         btDisconnectProc.running = true;
+    }
+
+    function forgetDevice(mac) {
+        btForgetProc.command = ["bluetoothctl", "remove", mac];
+        btForgetProc.running = true;
     }
 
     function refreshDevices() {
@@ -399,6 +412,17 @@ PopupPanel {
                 }
 
                 IconButton {
+                    visible: (modelData.paired || modelData.trusted) && !modelData.connected
+                    icon: "\uf1f8"
+                    iconColor: Theme.overlay1
+                    bgColor: "transparent"
+                    tooltip: "Forget device"
+                    implicitWidth: 28
+                    implicitHeight: 28
+                    onClicked: forgetDevice(modelData.mac)
+                }
+
+                IconButton {
                     icon: modelData.connected ? "\uf127" : "\uf0c1"
                     iconColor: modelData.connected ? Theme.red : Theme.green
                     bgColor: "transparent"
@@ -427,7 +451,7 @@ PopupPanel {
 
     Process {
         id: btDevicesProc
-        command: ["bash", "-c", "bluetoothctl devices 2>/dev/null | while read _ mac name; do connected=$(bluetoothctl info \"$mac\" 2>/dev/null | grep 'Connected:' | awk '{print $2}'); paired=$(bluetoothctl info \"$mac\" 2>/dev/null | grep 'Paired:' | awk '{print $2}'); icon=$(bluetoothctl info \"$mac\" 2>/dev/null | grep 'Icon:' | awk '{print $2}'); echo \"$mac|$name|$connected|$paired|$icon\"; done"]
+        command: ["bash", "-c", "bluetoothctl devices 2>/dev/null | while read -r _ mac name; do [ -z \"$mac\" ] && continue; info=$(bluetoothctl info \"$mac\" 2>/dev/null); connected=$(echo \"$info\" | grep -m1 'Connected:' | awk '{print $2}'); paired=$(echo \"$info\" | grep -m1 'Paired:' | awk '{print $2}'); trusted=$(echo \"$info\" | grep -m1 'Trusted:' | awk '{print $2}'); icon=$(echo \"$info\" | grep -m1 'Icon:' | awk '{print $2}'); echo \"$mac|${name:-$mac}|${connected:-no}|${paired:-no}|${trusted:-no}|${icon:-}\"; done"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
@@ -441,7 +465,8 @@ PopupPanel {
                             name: parts[1] || parts[0],
                             connected: parts[2] === "yes",
                             paired: parts.length >= 4 ? parts[3] === "yes" : false,
-                            type: parts.length >= 5 ? parts[4] || "" : ""
+                            trusted: parts.length >= 5 ? parts[4] === "yes" : false,
+                            type: parts.length >= 6 ? parts[5] || "" : ""
                         });
                     }
                 }
@@ -475,12 +500,28 @@ PopupPanel {
     }
 
     Process {
-        id: btScanOnProc
-        command: ["bluetoothctl", "scan", "on"]
+        id: btPairableProc
+        command: ["bluetoothctl", "pairable", "on"]
     }
+
+    Process {
+        id: btScanOnProc
+        command: ["bluetoothctl", "--timeout", "120", "scan", "on"]
+        onRunningChanged: {
+            if (!running && btScanning) {
+                // Scan timed out, restart if panel still open
+                if (root.isOpen && btEnabled) {
+                    btScanOnProc.running = true;
+                } else {
+                    btScanning = false;
+                }
+            }
+        }
+    }
+
     Process {
         id: btScanOffProc
-        command: ["bluetoothctl", "scan", "off"]
+        command: ["bash", "-c", "bluetoothctl scan off 2>/dev/null; kill $(pgrep -f 'bluetoothctl --timeout.*scan on') 2>/dev/null; true"]
     }
 
     Process {
@@ -503,9 +544,29 @@ PopupPanel {
         }
     }
 
+    Process {
+        id: btForgetProc
+        command: ["bluetoothctl", "remove", ""]
+        onRunningChanged: {
+            if (!running)
+                refreshDevices();
+        }
+    }
+
+    Process {
+        id: btPairProc
+        command: ["bash", "-c", "echo pair"]
+        onRunningChanged: {
+            if (!running) {
+                connectingTo = "";
+                refreshDevices();
+            }
+        }
+    }
+
     // Auto-refresh while scanning
     Timer {
-        interval: 5000
+        interval: 2000
         running: btEnabled && btScanning && root.isOpen
         repeat: true
         onTriggered: btDevicesProc.running = true
@@ -514,6 +575,11 @@ PopupPanel {
     onIsOpenChanged: {
         if (isOpen) {
             refreshDevices();
+            if (btEnabled && !btScanning) {
+                btPairableProc.running = true;
+                btScanOnProc.running = true;
+                btScanning = true;
+            }
         } else {
             if (btScanning) {
                 btScanOffProc.running = true;

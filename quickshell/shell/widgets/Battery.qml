@@ -6,15 +6,14 @@ Text {
     id: root
 
     property var bat: UPower.displayDevice
-    property real pct: bat?.percentage ?? 0
+    property real pct: bat?.energyCapacity > 0
+                   ? (bat.energy / bat.energyCapacity) * 100
+                   : 0
     property var batState: bat?.state ?? UPowerDeviceState.Unknown
 
-    property bool isCharging: batState === UPowerDeviceState.Charging || batState === UPowerDeviceState.PendingCharge
-    property bool isPlugged: batState === UPowerDeviceState.FullyCharged
+    property bool isPlugged: batState === UPowerDeviceState.Charging
 
     property string batIcon: {
-        if (isCharging)
-            return "";
         if (isPlugged)
             return "";
         if (pct >= 90)
@@ -33,12 +32,12 @@ Text {
     font.pixelSize: Theme.fontSize
     font.weight: Theme.fontWeight
     color: {
-        if (isCharging)
+        if (isPlugged)
             return Theme.green;
         if (pct <= 15)
             return Theme.red;
         return Theme.flamingo;
     }
 
-    visible: UPower.onBattery
+    visible: UPower.displayDevice.isLaptopBattery == true
 }

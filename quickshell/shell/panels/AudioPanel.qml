@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell
+import Quickshell.Io
 import Quickshell.Services.Pipewire
 import "../"
 import "../components"
@@ -59,6 +60,21 @@ PopupPanel {
     }
 
     property int currentTab: 0
+
+    function setDefaultSink(nodeId) {
+        wpctlProc.command = ["wpctl", "set-default", nodeId.toString()];
+        wpctlProc.running = true;
+    }
+
+    function setDefaultSource(nodeId) {
+        wpctlProc.command = ["wpctl", "set-default", nodeId.toString()];
+        wpctlProc.running = true;
+    }
+
+    Process {
+        id: wpctlProc
+        command: ["wpctl", "set-default", "0"]
+    }
 
     panelContent: Component {
         ColumnLayout {
@@ -463,6 +479,11 @@ PopupPanel {
                 clip: true
                 boundsBehavior: Flickable.StopAtBounds
 
+                // Track all device nodes so properties/volume/mute are available
+                PwObjectTracker {
+                    objects: Pipewire.nodes.values.filter(n => !n.isStream && n.audio)
+                }
+
                 ColumnLayout {
                     id: devicesCol
                     width: parent.width
@@ -486,7 +507,7 @@ PopupPanel {
                             }
 
                             Repeater {
-                                model: Pipewire.nodes.values.filter(n => n.isStream === false && (n.properties?.["media.class"] === "Audio/Sink"))
+                                model: Pipewire.nodes.values.filter(n => !n.isStream && n.isSink && n.audio)
                                 delegate: Rectangle {
                                     required property PwNode modelData
                                     Layout.fillWidth: true
@@ -529,7 +550,7 @@ PopupPanel {
                                     MouseArea {
                                         anchors.fill: parent
                                         cursorShape: Qt.PointingHandCursor
-                                        onClicked: Pipewire.preferredDefaultAudioSink = modelData
+                                        onClicked: setDefaultSink(modelData.id)
                                     }
                                 }
                             }
@@ -554,7 +575,7 @@ PopupPanel {
                             }
 
                             Repeater {
-                                model: Pipewire.nodes.values.filter(n => n.isStream === false && (n.properties?.["media.class"] === "Audio/Source"))
+                                model: Pipewire.nodes.values.filter(n => !n.isStream && !n.isSink && n.audio)
                                 delegate: Rectangle {
                                     required property PwNode modelData
                                     Layout.fillWidth: true
@@ -597,7 +618,7 @@ PopupPanel {
                                     MouseArea {
                                         anchors.fill: parent
                                         cursorShape: Qt.PointingHandCursor
-                                        onClicked: Pipewire.preferredDefaultAudioSource = modelData
+                                        onClicked: setDefaultSource(modelData.id)
                                     }
                                 }
                             }
