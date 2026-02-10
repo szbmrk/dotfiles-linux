@@ -16,7 +16,7 @@ PopupPanel {
     }
 
     property var rangeCounts: [0, 0, 0, 0]
-    property int currentRange: 1
+    property int currentRange: 0
     property string expandedId: ""
 
     function dateOnly(d) {
