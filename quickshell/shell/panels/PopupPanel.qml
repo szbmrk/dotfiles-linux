@@ -60,7 +60,7 @@ Item {
         color: Theme.panelBg
         radius: Style.radiusL
         border.color: Theme.cardBorder
-        border.width: Style.borderS
+        border.width: Style.borderM
         clip: true
 
         // Position based on anchor
@@ -94,7 +94,7 @@ Item {
         }
 
         // Entry animation
-        scale: root.isOpen ? 1.0 : 0.95
+        scale: root.isOpen ? 1.0 : 0.5
         opacity: root.isOpen ? 1.0 : 0.0
 
         Behavior on scale {
