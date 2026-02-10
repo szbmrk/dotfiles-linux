@@ -30,7 +30,11 @@ Row {
                 asynchronous: true
 
                 opacity: iconMa.containsMouse ? 0.8 : 1.0
-                Behavior on opacity { NumberAnimation { duration: Style.animFast } }
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Style.animFast
+                    }
+                }
             }
 
             // Tooltip
@@ -54,8 +58,18 @@ Row {
                 scale: visible ? 1.0 : 0.9
                 transformOrigin: Item.Bottom
 
-                Behavior on opacity { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
-                Behavior on scale { NumberAnimation { duration: Style.animFast; easing.type: Easing.OutCubic } }
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: Style.animFast
+                        easing.type: Easing.OutCubic
+                    }
+                }
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: Style.animFast
+                        easing.type: Easing.OutCubic
+                    }
+                }
 
                 PanelText {
                     id: tooltipLabel
@@ -73,7 +87,7 @@ Row {
                 cursorShape: Qt.PointingHandCursor
                 acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
 
-                onClicked: function(mouse) {
+                onClicked: function (mouse) {
                     if (mouse.button === Qt.LeftButton) {
                         if (!modelData.onlyMenu)
                             modelData.activate();
@@ -89,5 +103,13 @@ Row {
                 }
             }
         }
+    }
+
+    Text {
+        text: "|"
+        color: Theme.text
+        font.family: Theme.fontFamily
+        font.pixelSize: Style.fontXXL
+        font.weight: Style.weightRegular
     }
 }

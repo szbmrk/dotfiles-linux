@@ -62,7 +62,6 @@ Scope {
 
                 DiskUsage {
                     Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 8
                     Layout.rightMargin: 8
                 }
 
