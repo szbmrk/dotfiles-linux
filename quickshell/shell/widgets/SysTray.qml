@@ -111,5 +111,6 @@ Row {
         font.family: Theme.fontFamily
         font.pixelSize: Style.fontXXL
         font.weight: Style.weightRegular
+        visible: SystemTray.items != null
     }
 }
