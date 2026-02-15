@@ -111,6 +111,6 @@ Row {
         font.family: Theme.fontFamily
         font.pixelSize: Style.fontXXL
         font.weight: Style.weightRegular
-        // visible: SystemTray.items.rowCount() > 0
+        visible: SystemTray.items.values.length > 0
     }
 }
