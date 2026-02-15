@@ -18,9 +18,6 @@ set_keymap("i", "<C-z>", "<C-o>u", { silent = true })
 set_keymap("n", "<C-y>", "<C-r>", { silent = true })
 set_keymap("i", "<C-y>", "<C-o><C-r>", { silent = true })
 
--- jj to exit insert mode
-set_keymap("i", "jj", "<Esc>", { silent = true })
-
 -- Paste without yanking
 set_keymap("v", "p", '"_dp', { silent = true })
 
