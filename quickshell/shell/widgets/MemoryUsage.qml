@@ -30,6 +30,11 @@ Text {
         }
     }
 
+    Process {
+        id: btop
+        command: ["hyprctl", "dispatch", "exec", "wezterm start -- btop"]
+    }
+
     Timer {
         interval: 10000
         running: true
@@ -40,6 +45,11 @@ Text {
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
-        onClicked: root.alt = !root.alt
+        onClicked: function (mouse) {
+            if (mouse.button === Qt.LeftButton) {
+                root.alt = !root.alt;
+            } else if (mouse.button === Qt.RightButton)
+                btop.running = true;
+        }
     }
 }
