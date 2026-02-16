@@ -10,6 +10,7 @@ set -Ux fish_greeting ""
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
 set PATH $PATH /home/szobo/.dotnet/tools
+set PATH $PATH /home/szobo/go/bin
 
 alias c="clear"
 alias claer="clear"
