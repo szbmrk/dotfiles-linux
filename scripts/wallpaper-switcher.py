@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+import argparse
+import os
 from pathlib import Path
 import subprocess
 import shutil
 from typing import Dict
 
 WALLPAPERS_PATH = Path("/home/szobo/Pictures/wallpapers/")
+CACHE_PATH = Path("/home/szobo/.cache/wallpaper_switcher/")
 
 
 def is_image(suffix: str) -> bool:
@@ -41,10 +44,40 @@ def rofi_select(wallpapers: Dict[str, Path], prompt: str) -> str:
     return selection
 
 
+def save_last_wallpaper(path: Path) -> None:
+    os.makedirs(CACHE_PATH, exist_ok=True)
+    file = open(CACHE_PATH / "last_selected_wallpaper.txt", mode="w")
+    file.write(str(path))
+    file.close()
+
+
+def restore_last_wallpaper() -> None:
+    cache_file = CACHE_PATH / "last_selected_wallpaper.txt"
+    if cache_file.exists():
+        file = open(cache_file, mode="r")
+        wallpaper = file.readline().strip("\n")
+        file.close()
+
+        subprocess.run(["hyprctl", "hyprpaper", "preload", wallpaper])
+        subprocess.run(["hyprctl", "hyprpaper", "wallpaper", ",", wallpaper])
+
+
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--restore", action="store_true", help="Restores last selected wallpaper"
+    )
+    args = parser.parse_args()
+
+    if args.restore:
+        restore_last_wallpaper()
+        exit(0)
+
     wallpapers = get_wallpapers()
     choice = rofi_select(wallpapers, prompt="Wallpapers:")
     if not choice:
         print("No selection (cancelled).")
     else:
+        subprocess.run(["hyprctl", "hyprpaper", "preload", wallpapers[choice]])
         subprocess.run(["hyprctl", "hyprpaper", "wallpaper", ",", wallpapers[choice]])
+        save_last_wallpaper(wallpapers[choice])
