@@ -44,12 +44,14 @@ Text {
 
     MouseArea {
         anchors.fill: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         cursorShape: Qt.PointingHandCursor
         onClicked: function (mouse) {
-            if (mouse.button === Qt.LeftButton) {
-                root.alt = !root.alt;
-            } else if (mouse.button === Qt.RightButton)
+            if (mouse.button === Qt.RightButton) {
                 btop.running = true;
+            } else if (mouse.button === Qt.LeftButton) {
+                root.alt = !root.alt;
+            }
         }
     }
 }

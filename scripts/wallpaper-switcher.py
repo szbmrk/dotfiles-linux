@@ -28,10 +28,11 @@ def rofi_select(wallpapers: Dict[str, Path], prompt: str) -> str:
     if not shutil.which("rofi"):
         raise FileNotFoundError("rofi not found in PATH")
 
-    input_data = "\n".join(wallpapers.keys()).encode("utf-8")
+    input = [f"{k}\x00icon\x1f{v}" for k, v in wallpapers.items()]
+    input_data = "\n".join(input).encode("utf-8")
 
     p = subprocess.Popen(
-        ["rofi", "-dmenu", "-p", prompt],
+        ["rofi", "-config", "wallpaper-select.rasi", "-dmenu", "-p", prompt],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
