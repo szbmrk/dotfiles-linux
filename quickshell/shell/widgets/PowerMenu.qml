@@ -1,5 +1,4 @@
 import QtQuick
-import Quickshell.Io
 import "../"
 
 Text {
@@ -14,11 +13,6 @@ Text {
     MouseArea {
         anchors.fill: parent
         cursorShape: Qt.PointingHandCursor
-        onClicked: powerProc.running = true
-    }
-
-    Process {
-        id: powerProc
-        command: ["wlogout"]
+        onClicked: PanelManager.toggleById("powerMenuPanel")
     }
 }

@@ -222,6 +222,15 @@ Scope {
                     preferredWidth: 420
                     preferredHeight: 540
                 }
+
+                PowerMenuPanel {
+                    id: powerMenuPanel
+                    anchors.fill: parent
+                    panelId: "powerMenuPanel"
+                    anchor: "top-right"
+                    preferredWidth: 380
+                    preferredHeight: 380
+                }
             }
         }
     }
