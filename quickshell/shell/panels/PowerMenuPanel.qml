@@ -13,13 +13,42 @@ PopupPanel {
     property int timeRemaining: 0
     readonly property int timerDuration: 3000
 
-    // ── Power actions ──
     readonly property var powerOptions: [
-        { action: "lock",     icon: "\uf023", title: "Lock",     color: Theme.blue,   command: ["loginctl", "lock-session"] },
-        { action: "suspend",  icon: "\uf186", title: "Suspend",  color: Theme.lavender, command: ["systemctl", "suspend"] },
-        { action: "reboot",   icon: "\uf2f1", title: "Reboot",   color: Theme.peach,  command: ["systemctl", "reboot"] },
-        { action: "logout",   icon: "\uf2f5", title: "Logout",   color: Theme.green,  command: ["loginctl", "terminate-user", ""] },
-        { action: "shutdown", icon: "\uf011", title: "Shutdown", color: Theme.red,    command: ["systemctl", "poweroff"] }
+        {
+            action: "lock",
+            icon: "\uf023",
+            title: "Lock",
+            color: Theme.blue,
+            command: ["loginctl", "lock-session"]
+        },
+        {
+            action: "suspend",
+            icon: "\uf186",
+            title: "Suspend",
+            color: Theme.lavender,
+            command: ["systemctl", "suspend"]
+        },
+        {
+            action: "reboot",
+            icon: "\uf2f1",
+            title: "Reboot",
+            color: Theme.peach,
+            command: ["systemctl", "reboot"]
+        },
+        {
+            action: "logout",
+            icon: "\uf2f5",
+            title: "Logout",
+            color: Theme.green,
+            command: ["loginctl", "terminate-user", ""]
+        },
+        {
+            action: "shutdown",
+            icon: "\uf011",
+            title: "Shutdown",
+            color: Theme.red,
+            command: ["systemctl", "poweroff"]
+        }
     ]
 
     property int selectedIndex: -1
@@ -108,7 +137,6 @@ PopupPanel {
                 anchors.fill: parent
                 spacing: Style.marginL
 
-                // ── Header ──
                 RowLayout {
                     Layout.fillWidth: true
                     spacing: Style.marginM
@@ -120,10 +148,7 @@ PopupPanel {
                     }
 
                     PanelText {
-                        text: timerActive
-                            ? powerOptions.find(o => o.action === pendingAction).title
-                              + " in " + Math.ceil(timeRemaining / 1000) + "s…"
-                            : "Session"
+                        text: timerActive ? powerOptions.find(o => o.action === pendingAction).title + " in " + Math.ceil(timeRemaining / 1000) + "s…" : "Session"
                         pointSize: Style.fontXL
                         font.weight: Style.weightBold
                         color: timerActive ? Theme.primary : Theme.text
@@ -148,7 +173,6 @@ PopupPanel {
                     Layout.fillWidth: true
                 }
 
-                // ── Power buttons ──
                 ColumnLayout {
                     Layout.fillWidth: true
                     spacing: Style.marginS
@@ -180,7 +204,9 @@ PopupPanel {
                             border.color: modelData.color
 
                             Behavior on color {
-                                ColorAnimation { duration: Style.animFast }
+                                ColorAnimation {
+                                    duration: Style.animFast
+                                }
                             }
 
                             RowLayout {
@@ -202,7 +228,9 @@ PopupPanel {
                                     }
 
                                     Behavior on color {
-                                        ColorAnimation { duration: Style.animFast }
+                                        ColorAnimation {
+                                            duration: Style.animFast
+                                        }
                                     }
                                 }
 
@@ -221,7 +249,9 @@ PopupPanel {
                                     }
 
                                     Behavior on color {
-                                        ColorAnimation { duration: Style.animFast }
+                                        ColorAnimation {
+                                            duration: Style.animFast
+                                        }
                                     }
                                 }
 
