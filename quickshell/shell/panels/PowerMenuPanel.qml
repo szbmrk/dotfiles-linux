@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
 import Quickshell.Io
 import "../"
 import "../components"
@@ -114,23 +113,6 @@ PopupPanel {
                 } else {
                     root.close();
                 }
-            }
-
-            Keys.onUpPressed: {
-                if (selectedIndex <= 0)
-                    selectedIndex = powerOptions.length - 1;
-                else
-                    selectedIndex--;
-            }
-            Keys.onDownPressed: {
-                if (selectedIndex >= powerOptions.length - 1)
-                    selectedIndex = 0;
-                else
-                    selectedIndex++;
-            }
-            Keys.onReturnPressed: {
-                if (selectedIndex >= 0 && selectedIndex < powerOptions.length)
-                    startTimer(powerOptions[selectedIndex].action);
             }
 
             ColumnLayout {

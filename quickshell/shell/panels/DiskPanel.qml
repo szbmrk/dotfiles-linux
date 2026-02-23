@@ -18,8 +18,6 @@ PopupPanel {
 
     panelContent: Component {
         ColumnLayout {
-
-            // ── Header ──
             Card {
                 Layout.fillWidth: true
                 Layout.preferredHeight: headerRow.implicitHeight + Style.marginXL
