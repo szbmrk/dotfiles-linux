@@ -79,6 +79,19 @@ if __name__ == "__main__":
     if not choice:
         print("No selection (cancelled).")
     else:
-        subprocess.run(["hyprctl", "hyprpaper", "preload", wallpapers[choice]])
-        subprocess.run(["hyprctl", "hyprpaper", "wallpaper", ",", wallpapers[choice]])
+        # subprocess.run(["hyprctl", "hyprpaper", "preload", wallpapers[choice]])
+        # subprocess.run(["hyprctl", "hyprpaper", "wallpaper", ",", wallpapers[choice]])
+        subprocess.run(
+            [
+                "awww",
+                "img",
+                wallpapers[choice],
+                "--transition-fps",
+                "144",
+                "--transition-type",
+                "center",
+                "--transition-duration",
+                "1",
+            ]
+        )
         save_last_wallpaper(wallpapers[choice])
