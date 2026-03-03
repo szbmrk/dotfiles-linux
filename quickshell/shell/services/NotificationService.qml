@@ -8,7 +8,7 @@ import Quickshell.Services.Notifications
 Singleton {
     id: root
 
-    property int maxVisible: 5
+    property int maxVisible: 1
     property int maxHistory: 100
     property bool doNotDisturb: false
 
