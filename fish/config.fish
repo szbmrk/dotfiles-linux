@@ -203,3 +203,6 @@ end
 
 eval "$(zoxide init fish --cmd cd)"
 starship init fish | source
+
+# opencode
+fish_add_path /home/szobo/.opencode/bin
