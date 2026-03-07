@@ -12,6 +12,7 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			local tw = require("tailwindcss-colorizer-cmp").formatter
 
 			require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -36,6 +37,12 @@ return {
 				}),
 				performance = {
 					max_view_entries = 20,
+				},
+				formatting = {
+					format = function(entry, item)
+						item = tw(entry, item)
+						return item
+					end,
 				},
 			})
 
