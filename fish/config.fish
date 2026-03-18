@@ -7,6 +7,7 @@ set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux fish_greeting ""
 set -Ux JAVA_HOME /usr/lib/jvm/java-21-openjdk
+set -Ux PNPM_HOME ~/.local/share/pnpm
 
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
@@ -15,6 +16,7 @@ set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
 set PATH $PATH $JAVA_HOME
+set PATH $PATH $PNPM_HOME
 
 alias c="clear"
 alias claer="clear"
