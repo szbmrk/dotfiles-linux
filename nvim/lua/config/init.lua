@@ -4,6 +4,7 @@ require("config.lazy")
 require("config.lsp")
 require("config.diagnostics")
 require("config.snippets")
+require("config.commands")
 
 vim.cmd("colorscheme catppuccin-mocha")
 vim.cmd.highlight("IndentLine guifg=#524f67")

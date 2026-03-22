@@ -1,0 +1,48 @@
+import QtQuick
+import Quickshell
+import "../"
+
+Rectangle {
+    id: root
+
+    implicitHeight: 26
+    implicitWidth: clockRow.implicitWidth + 16
+    radius: 12
+    color: Theme.pillBg
+
+    SystemClock {
+        id: clock
+        precision: SystemClock.Hours
+    }
+
+    Row {
+		id: clockRow
+        anchors.centerIn: parent
+        spacing: 6
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: ""
+            font.family: Theme.fontFamily
+            font.pixelSize: 16
+            font.weight: Theme.fontWeight
+            color: Theme.sky
+        }
+
+        Text {
+            anchors.verticalCenter: parent.verticalCenter
+            text: Qt.formatDateTime(clock.date, "MMMM dd.")
+            font.family: Theme.fontFamily
+            font.pixelSize: Theme.fontSize
+            font.weight: Theme.fontWeight
+            color: Theme.text
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        onClicked: PanelManager.toggleById("calendarPanel")
+    }
+}

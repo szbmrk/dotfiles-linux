@@ -31,6 +31,10 @@ Scope {
                 spacing: 0
 
                 // ═══════ LEFT ═══════
+                Clock {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 8
+                }
 
                 Workspaces {
                     Layout.alignment: Qt.AlignVCenter
@@ -121,7 +125,7 @@ Scope {
             }
 
             // ═══════ CENTER ═══════
-            Clock {
+            Date {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }

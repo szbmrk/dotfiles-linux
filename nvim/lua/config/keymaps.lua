@@ -107,12 +107,30 @@ set_keymap("n", "gd", function()
 end)
 
 -- Conform keymaps
-set_keymap("n", "<leader>fd", function()
-	require("conform").format({
-		async = true,
-		lsp_fallback = true,
-	})
-end)
+set_keymap({ "n", "v" }, "<leader>fd", function()
+	local conform = require("conform")
+
+	if vim.fn.mode() == "v" then
+		local start_pos = vim.fn.getpos("'<")
+		local end_pos = vim.fn.getpos("'>")
+
+		local range = {
+			start = { start_pos[2], start_pos[3] - 1 },
+			["end"] = { end_pos[2], end_pos[3] - 1 },
+		}
+
+		conform.format({
+			range = range,
+			async = true,
+			lsp_fallback = true,
+		})
+	else
+		conform.format({
+			async = true,
+			lsp_fallback = true,
+		})
+	end
+end, { desc = "Format selection or buffer with conform.nvim" })
 
 -- Move line up with Alt+Up
 set_keymap("i", "<A-Up>", "<Esc>:move .-2<CR>gi")

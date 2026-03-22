@@ -22,27 +22,11 @@ Rectangle {
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
-            text: ""
-            font.family: Theme.fontFamily
-            font.pixelSize: 16
-            font.weight: Theme.fontWeight
-            color: Theme.sky
-        }
-
-        Text {
-            anchors.verticalCenter: parent.verticalCenter
-            text: Qt.formatDateTime(clock.date, "MMMM dd. hh:mm")
+            text: Qt.formatDateTime(clock.date, "hh:mm")
             font.family: Theme.fontFamily
             font.pixelSize: Theme.fontSize
             font.weight: Theme.fontWeight
             color: Theme.text
         }
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        cursorShape: Qt.PointingHandCursor
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-        onClicked: PanelManager.toggleById("calendarPanel")
     }
 }
