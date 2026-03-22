@@ -39,3 +39,5 @@ waybar/local.css
 !bat/**
 !fastfetch/
 !fastfetch/**
+!opencode/
+!opencode/AGENTS.md
