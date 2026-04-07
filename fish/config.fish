@@ -8,6 +8,7 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux fish_greeting ""
 set -Ux JAVA_HOME /usr/lib/jvm/java-21-openjdk
 set -Ux PNPM_HOME ~/.local/share/pnpm
+set -Ux ANI_CLI_PLAYER vlc
 
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
