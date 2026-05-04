@@ -19,6 +19,7 @@ set PATH $PATH /home/szobo/.dotnet/tools
 set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
+set PATH $PATH /home/szobo/.fly/bin
 set PATH $PATH $JAVA_HOME
 set PATH $PATH $PNPM_HOME
 
