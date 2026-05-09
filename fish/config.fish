@@ -10,6 +10,7 @@ set -Ux JAVA_HOME /usr/lib/jvm/java-21-openjdk
 set -Ux PNPM_HOME ~/.local/share/pnpm
 set -Ux ANI_CLI_PLAYER vlc
 set -Ux LIBGL_ALWAYS_SOFTWARE 1
+set -Ux ANDROID_HOME $HOME/Android/Sdk
 set -Ux ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -Ux CAPACITOR_ANDROID_STUDIO_PATH /opt/android-studio/bin/studio.sh
 
