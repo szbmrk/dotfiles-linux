@@ -26,8 +26,7 @@ Text {
 
     function onClicked() {
         if (isWifi) {
-            PanelManager.toggleById("wifiPanel");
-            return;
+            PanelManager.toggleById("networkPanel");
         }
 
         if (isEthernet && ethernetIp !== "") {
