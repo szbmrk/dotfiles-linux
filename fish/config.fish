@@ -6,7 +6,7 @@ set -Ux STARSHIP_CACHE /tmp
 set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux fish_greeting ""
-set -Ux JAVA_HOME /usr/lib/jvm/java-21-openjdk
+set -Ux JAVA_HOME /usr/lib/jvm/java-25-openjdk
 set -Ux PNPM_HOME ~/.local/share/pnpm
 set -Ux ANI_CLI_PLAYER vlc
 set -Ux LIBGL_ALWAYS_SOFTWARE 1
