@@ -1,5 +1,6 @@
 *
 
+
 !.gitignore
 
 !nvim/
@@ -41,3 +42,5 @@ waybar/local.css
 !fastfetch/**
 !opencode/
 !opencode/AGENTS.md
+
+hypr/conf/local.conf
