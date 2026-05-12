@@ -1,17 +1,17 @@
 local wezterm = require("wezterm")
 -- local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').main
 
-local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE")) or 14.0
+local font_size = tonumber(os.getenv("WEZTERM_FONT_SIZE") or "")
 
 return {
 	default_prog = { "/usr/bin/fish" },
 
 	term = "xterm-256color",
-
 	-- Font and color scheme
+
 	font = wezterm.font("JetBrainsMono Nerd Font Propo"),
 	harfbuzz_features = { "calt = 0", "clig = 0", "liga = 0" },
-	font_size = font_size,
+	font_size = font_size or 14.0,
 	-- color_scheme = "Rosé Pine",
 	color_scheme = "Catppuccin Mocha",
 
