@@ -63,6 +63,12 @@ hl.bind(mod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
 hl.bind(mod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
 hl.bind(mod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
 
+hl.bind(mod .. " + Q", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mod .. " + Q", hl.dsp.window.move({ workspace = "+0" }))
+hl.bind(mod .. " + Q", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mod .. " + Q", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mod .. " + Q", hl.dsp.workspace.toggle_special("magic"))
+
 hl.define_submap("resize", function()
 	hl.bind("right", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
 	hl.bind("left", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
