@@ -19,9 +19,9 @@ Rectangle {
 
             const delta = wheel.angleDelta.y;
             if (delta > 0)
-                Hyprland.dispatch("workspace e+1");
+                Hyprland.dispatch('hl.dsp.focus({ workspace = "e+1" })');
             else if (delta < 0)
-                Hyprland.dispatch("workspace e-1");
+                Hyprland.dispatch('hl.dsp.focus({ workspace = "e-1"})');
         }
     }
 
