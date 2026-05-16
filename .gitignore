@@ -44,3 +44,4 @@ waybar/local.css
 !opencode/AGENTS.md
 
 hypr/conf/local.conf
+hypr/conf/local.lua

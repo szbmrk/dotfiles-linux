@@ -96,7 +96,11 @@ local lsp_configs = {
 					globals = { "vim" },
 				},
 				workspace = {
-					library = { vim.api.nvim_get_runtime_file("", true), "${3rd}/love2d/library" },
+					library = {
+						vim.api.nvim_get_runtime_file("", true),
+						"${3rd}/love2d/library",
+						"/usr/share/hypr/stubs",
+					},
 					checkThirdParty = true,
 				},
 				telemetry = {

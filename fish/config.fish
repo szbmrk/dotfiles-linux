@@ -6,13 +6,14 @@ set -Ux STARSHIP_CACHE /tmp
 set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux fish_greeting ""
-set -Ux JAVA_HOME /usr/lib/jvm/java-25-openjdk
+set -Ux JAVA_HOME /usr/lib/jvm/java-21-temurin-jdk
 set -Ux PNPM_HOME ~/.local/share/pnpm
 set -Ux ANI_CLI_PLAYER vlc
 set -Ux LIBGL_ALWAYS_SOFTWARE 1
 set -Ux ANDROID_HOME $HOME/Android/Sdk
 set -Ux ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -Ux CAPACITOR_ANDROID_STUDIO_PATH /opt/android-studio/bin/studio.sh
+set -Ux MANGOHUD 1
 
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
@@ -21,6 +22,7 @@ set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
 set PATH $PATH /home/szobo/.fly/bin
+set PATH $PATH /usr/lib/jvm/java-21-temurin-jdk/bin
 set PATH $PATH $JAVA_HOME
 set PATH $PATH $PNPM_HOME
 
