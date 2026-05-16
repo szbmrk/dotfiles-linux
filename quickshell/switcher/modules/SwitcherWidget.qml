@@ -79,11 +79,11 @@ Item {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: mouse => {
                             if (mouse.button == Qt.RightButton) {
-                                Hyprland.dispatch(`closewindow address:${window.windowData.address}`);
+                                Hyprland.dispatch(`hl.dsp.window.close({window = "address:${window.windowData.address}"})`);
                             } else {
-                                Hyprland.dispatch(`focuswindow address:${window.windowData.address}`);
-                                Hyprland.dispatch(`alterzorder top, address:${window.windowData.address}`);
-                                Hyprland.dispatch("submap reset");
+                                Hyprland.dispatch(`hl.dsp.focus({window = "address:${window.windowData.address}"})`);
+                                Hyprland.dispatch(`hl.dsp.window.alter_zorder({mode = "top", window = "address:${window.windowData.address}"})`);
+                                Hyprland.dispatch('hl.dsp.submap("reset")');
                                 GlobalStates.focusedWindowIndex = 1;
                                 GlobalStates.switcherOpen = false;
                             }

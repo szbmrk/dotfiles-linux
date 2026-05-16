@@ -100,7 +100,7 @@ Scope {
                 Keys.onPressed: event => {
                     if (event.key === Qt.Key_Escape) {
                         GlobalStates.switcherOpen = false;
-                        Hyprland.dispatch("submap reset");
+                        Hyprland.dispatch('hl.dsp.submap("reset")');
                         event.accepted = true;
                     }
                     if (event.key == Qt.Key_Left) {
@@ -112,9 +112,9 @@ Scope {
                         event.accepted = true;
                     }
                     if (event.key == Qt.Key_Return) {
-                        Hyprland.dispatch(`focuswindow address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}`);
-                        Hyprland.dispatch(`alterzorder top, address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}`);
-                        Hyprland.dispatch("submap reset");
+                        Hyprland.dispatch(`hl.dsp.focus({window = "address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}"})`);
+                        Hyprland.dispatch(`hl.dsp.window.alter_zorder({mode = "top", window = "address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}"})`);
+                        Hyprland.dispatch('hl.dsp.submap("reset")');
                         GlobalStates.switcherOpen = false;
                         GlobalStates.focusedWindowIndex = 1;
                         event.accepted = true;
@@ -127,9 +127,9 @@ Scope {
 
                 Keys.onReleased: event => {
                     if (!(event.modifiers & Qt.AltModifier)) {
-                        Hyprland.dispatch(`focuswindow address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}`);
-                        Hyprland.dispatch(`alterzorder top, address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}`);
-                        Hyprland.dispatch("submap reset");
+                        Hyprland.dispatch(`hl.dsp.focus({window = "address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}"})`);
+                        Hyprland.dispatch(`hl.dsp.window.alter_zorder({mode = "top", window = "address:0x${root.windowsList[GlobalStates.focusedWindowIndex].address}"})`);
+                        Hyprland.dispatch('hl.dsp.submap("reset")');
                         GlobalStates.switcherOpen = false;
                         GlobalStates.focusedWindowIndex = 1;
                         event.accepted = true;
