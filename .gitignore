@@ -45,3 +45,4 @@ waybar/local.css
 
 hypr/conf/local.conf
 hypr/conf/local.lua
+hypr/hyprlandd.lua
