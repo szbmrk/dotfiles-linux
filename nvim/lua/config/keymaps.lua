@@ -142,10 +142,7 @@ set_keymap("i", "<A-Down>", "<Esc>:move .+1<CR>gi")
 set_keymap("n", "<A-Down>", ":move .+1<CR>")
 set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
 
--- Leader+E to open oil
--- set_keymap("n", "<leader>e", function() require("oil").open() end)
--- set_keymap("n", "<leader>e", function() require("snacks").explorer() end)
--- set_keymap("n", "<leader>e", ":NvimTreeFindFileToggle<CR>")
+-- Leader+E to open explorer
 set_keymap("n", "<leader>e", ":Neotree toggle reveal<CR>")
 
 -- Trouble keymaps
