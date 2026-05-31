@@ -55,10 +55,6 @@ set_keymap("v", "<C-x>", "d", { silent = true })
 set_keymap("n", "<C-x>", "dd", { silent = true })
 set_keymap("i", "<C-x>", "<Esc>dd", { silent = true })
 
--- Comment line
--- set_keymap("n", "/", "gcc", { silent = true, })
--- set_keymap("v", "/", "gc", { silent = true, })
-
 -- Search with Ctrl+F
 set_keymap({ "n", "v", "i" }, "<C-f>", ":/", { silent = true })
 
@@ -138,9 +134,9 @@ set_keymap("n", "<A-Up>", ":move .-2<CR>gv")
 set_keymap("v", "<A-Up>", ":move '<-2<CR>gv=gv")
 
 -- Move line down with Alt+Down
+set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
 set_keymap("i", "<A-Down>", "<Esc>:move .+1<CR>gi")
 set_keymap("n", "<A-Down>", ":move .+1<CR>")
-set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
 
 -- Leader+E to open explorer
 set_keymap("n", "<leader>e", ":Neotree toggle reveal<CR>")
