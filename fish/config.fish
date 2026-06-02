@@ -14,6 +14,7 @@ set -Ux ANDROID_HOME $HOME/Android/Sdk
 set -Ux ANDROID_SDK_ROOT $HOME/Android/Sdk
 set -Ux CAPACITOR_ANDROID_STUDIO_PATH /opt/android-studio/bin/studio.sh
 set -Ux MANGOHUD 1
+# set -Ux PORTLESS_STATE_DIR /home/szobo/.portless
 
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin

@@ -42,6 +42,7 @@ waybar/local.css
 !fastfetch/**
 !opencode/
 !opencode/AGENTS.md
+!opencode/opencode.json
 
 hypr/conf/local.conf
 hypr/conf/local.lua
