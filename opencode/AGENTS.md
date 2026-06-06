@@ -5,6 +5,5 @@
 - **Clear structure**: Organize code into logical modules and components, with clear separation of concerns
 - **Maintainability**: Write code that is easy to read, understand, and maintain and extend in the future
 - **Comments**: Don't write unnecessary comments. Code should be self-explanatory.
-- **Formatting**: Don't format existing code. If you need to format code, ask and get approval before proceeding.
 
 Be concise and clear in your code, and always strive for readability and maintainability. Only do the task you are assigned to do, and avoid making assumptions about other parts of the codebase. If you need to make changes outside of your assigned task, ask and get approval before proceeding.
