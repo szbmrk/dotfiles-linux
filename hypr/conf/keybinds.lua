@@ -81,7 +81,6 @@ hl.bind(mod .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("pause", function()
 	hl.bind(mod .. " + SHIFT + P", hl.dsp.submap("reset"))
-	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 hl.bind(mod .. " + SHIFT + P", hl.dsp.submap("pause"))
 
@@ -92,4 +91,4 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
-hl.bind("mouse:276", hl.dsp.pass({ window = "class:^.*$" }))
+hl.bind("mouse:276", hl.dsp.pass({ window = "class:^(discord)$" }))
