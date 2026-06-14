@@ -222,7 +222,17 @@ fish_add_path /home/szobo/.opencode/bin
 if status is-interactive
     and not set -q TMUX
     and test "$TERM_PROGRAM" != "vscode"
-    tmux new-session -A -s main
+
+    set base main
+    set session $base
+    set i 2
+
+    while tmux has-session -t "$session" 2>/dev/null
+        set session "$base$i"
+        set i (math $i + 1)
+    end
+
+    exec tmux new-session -s "$session" "tmux set-option -t '$session' destroy-unattached on; exec fish"
 end
 
 function tn
