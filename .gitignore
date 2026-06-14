@@ -44,6 +44,15 @@ waybar/local.css
 !opencode/AGENTS.md
 !opencode/opencode.json
 
+!alacritty/
+!alacritty/**
+alacritty/env.toml
+
+!tmux/
+!tmux/**
+tmux/plugins
+tmux/resurrect
+
 hypr/conf/local.conf
 hypr/conf/local.lua
 hypr/hyprlandd.lua

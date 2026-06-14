@@ -43,8 +43,8 @@ set_keymap("v", "<C-d>", "y'>p", { silent = true })
 set_keymap("i", "<C-d>", "<Esc>yypa", { silent = true })
 
 -- Ctrl+A to select all
-set_keymap("n", "<C-a>", "ggVG", { silent = true })
-set_keymap("i", "<C-a>", "<Esc>ggVG", { silent = true })
+-- set_keymap("n", "<C-a>", "ggVG", { silent = true })
+-- set_keymap("i", "<C-a>", "<Esc>ggVG", { silent = true })
 
 -- Backspace to delete without yanking
 set_keymap("n", "<BS>", "x", { silent = true })

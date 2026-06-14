@@ -4,7 +4,7 @@ hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mod .. " + mouse:272", hl.dsp.window.float(), { click = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind("CTRL + E", hl.dsp.exec_cmd("wezterm"))
+hl.bind("CTRL + E", hl.dsp.exec_cmd("alacritty"))
 hl.bind("SUPER + B", hl.dsp.exec_cmd("firefox"))
 hl.bind("CTRL + space", hl.dsp.exec_cmd("pkill rofi || ~/.config/scripts/rofi-run.sh"))
 hl.bind("SUPER + SHIFT + W", hl.dsp.exec_cmd("~/.config/scripts/wallpaper-switcher.py"))
