@@ -218,3 +218,19 @@ starship init fish | source
 
 # opencode
 fish_add_path /home/szobo/.opencode/bin
+
+if status is-interactive
+    and not set -q TMUX
+    and test "$TERM_PROGRAM" != "vscode"
+    tmux new-session -A -s main
+end
+
+function tn
+    set name (basename "$PWD")
+    if set -q TMUX
+        tmux new-session -d -s "$name" -c "$PWD" 2>/dev/null
+        tmux switch-client -t "$name"
+    else
+        tmux new-session -A -s "$name" -c "$PWD"
+    end
+end
