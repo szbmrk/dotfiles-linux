@@ -7,6 +7,7 @@ Text {
 
     property string percent: "0"
     property bool available: false
+
     visible: available
     text: "󰃠 " + percent + "%"
     font.family: Theme.fontFamily
@@ -16,13 +17,28 @@ Text {
 
     Process {
         id: backlightProc
-        command: ["bash", "-c", "brightnessctl -m 2>/dev/null | cut -d, -f4 | tr -d '%'"]
+        command: ["bash", "-c", `
+            if ! ls /sys/class/power_supply/BAT* >/dev/null 2>&1; then
+                echo "unavailable"
+                exit 0
+            fi
+
+            brightnessctl -m 2>/dev/null | cut -d, -f4 | tr -d '%'
+            `]
         running: true
 
         stdout: StdioCollector {
             onStreamFinished: {
                 let value = this.text.trim();
-                if (value > 0) {
+
+                if (value === "unavailable" || value === "") {
+                    root.available = false;
+                    return;
+                }
+
+                let number = Number(value);
+
+                if (!isNaN(number) && number > 0) {
                     root.percent = value;
                     root.available = true;
                 } else {
