@@ -232,7 +232,7 @@ if status is-interactive
         set i (math $i + 1)
     end
 
-    exec tmux new-session -s "$session" "tmux set-option -t '$session' destroy-unattached on; exec fish"
+    exec tmux new-session -s "$session"
 end
 
 function tn
