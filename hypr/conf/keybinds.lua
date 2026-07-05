@@ -81,6 +81,7 @@ end)
 hl.bind(mod .. " + R", hl.dsp.submap("resize"))
 
 hl.define_submap("pause", function()
+	hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("~/.config/scripts/mangohud-switcher.sh"))
 	hl.bind(mod .. " + SHIFT + P", hl.dsp.submap("reset"))
 end)
 hl.bind(mod .. " + SHIFT + P", hl.dsp.submap("pause"))
