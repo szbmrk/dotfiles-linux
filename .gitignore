@@ -36,6 +36,7 @@ hypr/hyprlandd.lua
 !opencode/
 !opencode/AGENTS.md
 !opencode/opencode.json
+!opencode/tui.json
 
 !pi/
 !pi/**
