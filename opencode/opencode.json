@@ -14,7 +14,5 @@
       "enabled": true
     }
   },
-  "plugin": [
-    "./plugins/caveman/plugin.js"
-  ]
+  "plugin": ["./plugins/caveman/plugin.js", "@plannotator/opencode@latest"]
 }
