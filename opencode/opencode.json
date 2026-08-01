@@ -14,5 +14,13 @@
       "enabled": true
     }
   },
-  "plugin": ["./plugins/caveman/plugin.js", "@plannotator/opencode@latest"]
+  "plugin": [
+    "./plugins/caveman/plugin.js",
+    [
+      "@plannotator/opencode@latest",
+      {
+        "workflow": "manual"
+      }
+    ]
+  ]
 }
