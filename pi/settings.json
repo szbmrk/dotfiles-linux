@@ -24,7 +24,7 @@
   },
   "outputPad": 1,
   "autocompleteMaxVisible": 7,
-  "defaultThinkingLevel": "low",
+  "defaultThinkingLevel": "medium",
   "enabledModels": [
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.6-terra",
