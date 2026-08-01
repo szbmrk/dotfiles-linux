@@ -16,14 +16,15 @@
   ],
   "extensions": [
     "./extensions/readonly.ts",
-    "./extensions/model-thinking-status.ts"
+    "./extensions/model-thinking-status.ts",
+    "./extensions/prompt-border-color.ts"
   ],
   "images": {
     "blockImages": false
   },
   "outputPad": 1,
   "autocompleteMaxVisible": 7,
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "low",
   "enabledModels": [
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.6-terra",

@@ -1,3 +1,5 @@
+import { setReadonlyEnabled } from "./readonly/state.ts";
+
 const STATUS_KEY = "readonly";
 const ENTRY_TYPE = "readonly-mode";
 const DEFAULT_SESSION_KEY = "__readonly_default_session__";
@@ -222,6 +224,7 @@ export default function readonlyExtension(pi: {
 
     pi.setActiveTools(readonlyTools(pi));
     updateState(key, nextState);
+    setReadonlyEnabled(true);
     statusText(ctx, true);
 
     if (options.notify !== false) {
@@ -259,6 +262,7 @@ export default function readonlyExtension(pi: {
       enabled: false,
       savedActiveTools: null,
     });
+    setReadonlyEnabled(false);
     statusText(ctx, false);
 
     if (options.notify !== false) {
@@ -299,10 +303,12 @@ export default function readonlyExtension(pi: {
       return;
     }
 
+    setReadonlyEnabled(false);
     statusText(ctx, false);
   });
 
   pi.on("session_shutdown", async (_event, ctx) => {
+    setReadonlyEnabled(false);
     statusText(ctx, false);
   });
 
