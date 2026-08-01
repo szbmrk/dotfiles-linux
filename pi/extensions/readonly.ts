@@ -14,7 +14,6 @@ const READONLY_BASE_ALLOWLIST = [
   "fffgrep",
   "context7_resolve-library-id",
   "context7_query-docs",
-  "bash",
 ];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -229,7 +228,7 @@ export default function readonlyExtension(pi: {
 
     if (options.notify !== false) {
       ctx.ui.notify(
-        "Readonly mode enabled. File-mutating tools removed; web-access tools stay available; bash now asks for approval every run.",
+        "Readonly mode enabled. File-mutating tools removed; web-access tools stay available; bash is disabled.",
         "info",
       );
     }
@@ -312,42 +311,6 @@ export default function readonlyExtension(pi: {
     statusText(ctx, false);
   });
 
-  pi.on("tool_call", async (event, ctx) => {
-    if (!isRecord(event) || event.toolName !== "bash") {
-      return;
-    }
-
-    const { state } = currentState(ctx);
-    if (!state.enabled) {
-      return;
-    }
-
-    const input = isRecord(event.input) ? event.input : null;
-    const command =
-      typeof input?.command === "string" && input.command.trim().length > 0
-        ? input.command
-        : "(unknown bash command)";
-
-    if (!ctx.hasUI) {
-      return {
-        block: true,
-        reason:
-          "Readonly mode requires interactive approval for bash, but no UI is available.",
-      };
-    }
-
-    const ok = await ctx.ui.confirm(
-      "Readonly bash approval",
-      `Readonly mode requires approval for each bash command.\n\n${command}`,
-    );
-
-    if (!ok) {
-      return {
-        block: true,
-        reason: "Blocked by readonly mode.",
-      };
-    }
-  });
 
   async function handleReadonlyCommand(
     args: string,
