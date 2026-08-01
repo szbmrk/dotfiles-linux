@@ -40,6 +40,7 @@ hypr/hyprlandd.lua
 !pi/
 !pi/**
 pi/auth.json
+pi/pi-btw.json
 pi/mcp-cache.json
 pi/npm
 pi/sessions
