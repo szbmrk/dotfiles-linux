@@ -14,6 +14,9 @@
     "git:github.com/narumiruna/pi-web-search",
     "npm:@narumitw/pi-btw"
   ],
+  "extensions": [
+    "./extensions/readonly.ts"
+  ],
   "images": {
     "blockImages": false
   },
