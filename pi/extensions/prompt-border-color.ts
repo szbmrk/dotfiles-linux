@@ -11,7 +11,7 @@ import {
 
 const PLANNOTATOR_STATUS_KEY = "plannotator";
 
-const PURPLE = "\u001b[38;2;203;166;247m";
+const PURPLE = "\u001b[38;2;180;190;254m";
 const YELLOW = "\u001b[38;2;249;226;175m";
 const RESET = "\u001b[39m";
 
@@ -46,11 +46,17 @@ function hasPlannotatorEnabled(ctx: {
       data?: { phase?: unknown };
     };
 
-    if (typedEntry.type !== "custom" || typedEntry.customType !== PLANNOTATOR_STATUS_KEY) {
+    if (
+      typedEntry.type !== "custom" ||
+      typedEntry.customType !== PLANNOTATOR_STATUS_KEY
+    ) {
       continue;
     }
 
-    return typedEntry.data?.phase === "planning" || typedEntry.data?.phase === "executing";
+    return (
+      typedEntry.data?.phase === "planning" ||
+      typedEntry.data?.phase === "executing"
+    );
   }
 
   return false;
@@ -80,11 +86,7 @@ function applyBorderColor(editor: unknown, enabled: boolean): void {
 }
 
 class PromptBorderEditor extends CustomEditor {
-  constructor(
-    tui: TUI,
-    theme: EditorTheme,
-    keybindings: KeybindingsManager,
-  ) {
+  constructor(tui: TUI, theme: EditorTheme, keybindings: KeybindingsManager) {
     super(tui, theme, keybindings);
     this.borderColor = borderColor(getReadonlyEnabled());
   }
@@ -125,7 +127,9 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
     const previous = ctx.ui.getEditorComponent() as EditorFactory | undefined;
     ctx.ui.setEditorComponent((tui, theme, keybindings) => {
       activeTui = tui;
-      const editor = previous?.(tui, theme, keybindings) ?? new PromptBorderEditor(tui, theme, keybindings);
+      const editor =
+        previous?.(tui, theme, keybindings) ??
+        new PromptBorderEditor(tui, theme, keybindings);
       activeEditors.add(editor);
       applyBorderColor(editor, isHighlighted());
       return editor as never;
