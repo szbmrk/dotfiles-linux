@@ -19,19 +19,10 @@ function thinkingLevelOf(ctx: { thinkingLevel?: unknown }): string {
 
 function thinkingColor(level: string): string {
   switch (level) {
-    case "low":
-      return "success";
-    case "medium":
-      return "warning";
-    case "high":
-      return "accent";
-    case "xhigh":
-    case "max":
-      return "error";
-    case "minimal":
     case "off":
-    default:
       return "muted";
+    default:
+      return "warning";
   }
 }
 
@@ -52,7 +43,9 @@ function formatLine(ctx: {
   const model = modelIdOf(ctx.model);
   const level = thinkingLevelOf(ctx);
 
-  return colorModel(model) + fg("muted", " • ") + fg(thinkingColor(level), level);
+  return (
+    colorModel(model) + fg("muted", " • ") + fg(thinkingColor(level), level)
+  );
 }
 
 function refreshWidget(ctx: {
