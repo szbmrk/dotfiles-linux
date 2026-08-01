@@ -1,30 +1,31 @@
 # ===========================
 # Environment variables
 # ===========================
-set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-set -Ux STARSHIP_CACHE /tmp
-set -Ux PROJECTS_DIR $HOME/Projects
-set -Ux XDG_CONFIG_HOME $HOME/.config
-set -Ux fish_greeting ""
-set -Ux JAVA_HOME /usr/lib/jvm/java-21-temurin-jdk
-set -Ux PNPM_HOME ~/.local/share/pnpm
-set -Ux ANI_CLI_PLAYER vlc
-# set -Ux LIBGL_ALWAYS_SOFTWARE 1
 set -Ux ANDROID_HOME $HOME/Android/Sdk
 set -Ux ANDROID_SDK_ROOT $HOME/Android/Sdk
+set -Ux ANI_CLI_PLAYER vlc
 set -Ux CAPACITOR_ANDROID_STUDIO_PATH /opt/android-studio/bin/studio.sh
+set -Ux fish_greeting ""
+set -Ux JAVA_HOME /usr/lib/jvm/java-21-temurin-jdk
+# set -Ux LIBGL_ALWAYS_SOFTWARE 1
 set -Ux MANGOHUD 1
+set -Ux PI_CODING_AGENT_DIR $HOME/.config/pi
+set -Ux PNPM_HOME ~/.local/share/pnpm
 # set -Ux PORTLESS_STATE_DIR /home/szobo/.portless
+set -Ux PROJECTS_DIR $HOME/Projects
+set -Ux STARSHIP_CACHE /tmp
+set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
+set -Ux XDG_CONFIG_HOME $HOME/.config
 
-set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/.cargo/bin
 set PATH $PATH /home/szobo/.dotnet/tools
+set PATH $PATH /home/szobo/.fly/bin
+set PATH $PATH /home/szobo/.local/bin
+set PATH $PATH /home/szobo/Android/Sdk/platform-tools
 set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
-set PATH $PATH /home/szobo/.fly/bin
 set PATH $PATH /usr/lib/jvm/java-21-temurin-jdk/bin
-set PATH $PATH /home/szobo/Android/Sdk/platform-tools
 set PATH $PATH $JAVA_HOME
 set PATH $PATH $PNPM_HOME
 

@@ -3,56 +3,78 @@
 
 !.gitignore
 
-!nvim/
-!nvim/**
-!hypr/
-!hypr/**
-!waybar/
-!waybar/**
-waybar/local.css
-!wezterm/
-!wezterm/**
-!starship/
-!starship/**
+!alacritty/
+!alacritty/**
+alacritty/env.toml
+
+!bat/
+!bat/**
+
+!fastfetch/
+!fastfetch/**
+
 !fish/
 !fish/config.fish
+
 # !gtk-3.0/
 # !gtk-3.0/**
 # !gtk-4.0/
 # !gtk-4.0/**
-!swaync/
-!swaync/**
-!wlogout/
-!wlogout/**
-!rofi/
-!rofi/**
-!scripts/
-!scripts/**
-# !qt5ct/
-# !qt5ct/**
-# !qt6ct/
-# !qt6ct/**
-!quickshell/
-!quickshell/**
+
+!hypr/
+!hypr/**
+hypr/conf/local.conf
+hypr/conf/local.lua
+hypr/hyprlandd.lua
+
 !MangoHud/
 !MangoHud/**
-!bat/
-!bat/**
-!fastfetch/
-!fastfetch/**
+
+!nvim/
+!nvim/**
+
 !opencode/
 !opencode/AGENTS.md
 !opencode/opencode.json
 
-!alacritty/
-!alacritty/**
-alacritty/env.toml
+!pi/
+!pi/**
+pi/auth.json
+pi/mcp-cache.json
+pi/npm
+pi/sessions
+
+!quickshell/
+!quickshell/**
+
+# !qt5ct/
+# !qt5ct/**
+# !qt6ct/
+# !qt6ct/**
+
+!rofi/
+!rofi/**
+
+!scripts/
+!scripts/**
+
+!starship/
+!starship/**
+
+!swaync/
+!swaync/**
 
 !tmux/
 !tmux/**
 tmux/plugins
 tmux/resurrect
 
-hypr/conf/local.conf
-hypr/conf/local.lua
-hypr/hyprlandd.lua
+!waybar/
+!waybar/**
+waybar/local.css
+
+!wezterm/
+!wezterm/**
+
+!wlogout/
+!wlogout/**

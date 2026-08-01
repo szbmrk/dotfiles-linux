@@ -1,0 +1,28 @@
+{
+  "lastChangelogVersion": "0.83.0",
+  "theme": "catppuccin-mocha",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4",
+  "editorPaddingX": 1,
+  "enableInstallTelemetry": false,
+  "packages": [
+    "npm:pi-mcp-adapter",
+    "npm:@plannotator/pi-extension",
+    "npm:@sherif-fanous/pi-catppuccin",
+    "npm:@ff-labs/pi-fff",
+    "npm:@narumitw/pi-lsp",
+    "git:github.com/narumiruna/pi-web-search",
+    "npm:@narumitw/pi-btw"
+  ],
+  "images": {
+    "blockImages": false
+  },
+  "outputPad": 1,
+  "autocompleteMaxVisible": 7,
+  "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "openai-codex/gpt-5.4",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-luna"
+  ]
+}
