@@ -2,7 +2,7 @@ const STATUS_KEY = "readonly";
 const ENTRY_TYPE = "readonly-mode";
 const DEFAULT_SESSION_KEY = "__readonly_default_session__";
 
-const READONLY_ALLOWLIST = [
+const READONLY_BASE_ALLOWLIST = [
   "read",
   "ls",
   "glob",
@@ -12,7 +12,6 @@ const READONLY_ALLOWLIST = [
   "fffgrep",
   "context7_resolve-library-id",
   "context7_query-docs",
-  "web_search",
   "bash",
 ];
 
@@ -22,7 +21,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function normalizeToolList(value: unknown): string[] | null {
   if (!Array.isArray(value)) return null;
-  const tools = value.filter((tool): tool is string => typeof tool === "string" && tool.trim().length > 0);
+  const tools = value.filter(
+    (tool): tool is string =>
+      typeof tool === "string" && tool.trim().length > 0,
+  );
   return tools.length > 0 ? [...new Set(tools)] : [];
 }
 
@@ -45,7 +47,11 @@ function readPersistedState(ctx: {
 
   for (let index = entries.length - 1; index >= 0; index -= 1) {
     const entry = entries[index];
-    if (!isRecord(entry) || entry.type !== "custom" || entry.customType !== ENTRY_TYPE) {
+    if (
+      !isRecord(entry) ||
+      entry.type !== "custom" ||
+      entry.customType !== ENTRY_TYPE
+    ) {
       continue;
     }
 
@@ -62,7 +68,9 @@ function readPersistedState(ctx: {
 }
 
 function persistState(
-  pi: { appendEntry: (customType: string, data?: Record<string, unknown>) => void },
+  pi: {
+    appendEntry: (customType: string, data?: Record<string, unknown>) => void;
+  },
   state: { enabled: boolean; savedActiveTools: string[] | null },
 ): void {
   pi.appendEntry(ENTRY_TYPE, {
@@ -71,7 +79,9 @@ function persistState(
   });
 }
 
-function installedToolNames(pi: { getAllTools: () => Array<{ name?: string }> }): Set<string> {
+function installedToolNames(pi: {
+  getAllTools: () => Array<{ name?: string }>;
+}): Set<string> {
   return new Set(
     pi
       .getAllTools()
@@ -88,25 +98,52 @@ function filterInstalledTools(
   return [...new Set(tools)].filter((tool) => installed.has(tool));
 }
 
-function readonlyTools(pi: { getAllTools: () => Array<{ name?: string }> }): string[] {
-  return filterInstalledTools(pi, READONLY_ALLOWLIST);
+function isWebAccessTool(tool: {
+  name?: string;
+  sourceInfo?: { path?: string; source?: string };
+}): boolean {
+  const path = typeof tool.sourceInfo?.path === "string" ? tool.sourceInfo.path : "";
+  const source = typeof tool.sourceInfo?.source === "string" ? tool.sourceInfo.source : "";
+  return path.includes("pi-web-access") || source.includes("pi-web-access");
 }
 
-function statusText(ctx: {
-  ui: {
-    theme?: { fg?: (color: string, text: string) => string };
-    setStatus: (key: string, value: string | undefined) => void;
-  };
-}, enabled: boolean): void {
+function readonlyTools(pi: {
+  getAllTools: () => Array<{
+    name?: string;
+    sourceInfo?: { path?: string; source?: string };
+  }>;
+}): string[] {
+  const discoveredWebAccessTools = pi
+    .getAllTools()
+    .filter(isWebAccessTool)
+    .map((tool) => (typeof tool.name === "string" ? tool.name : ""))
+    .filter((tool) => tool.length > 0);
+
+  return filterInstalledTools(pi, [
+    ...READONLY_BASE_ALLOWLIST,
+    ...discoveredWebAccessTools,
+  ]);
+}
+
+function statusText(
+  ctx: {
+    ui: {
+      theme?: { fg?: (color: string, text: string) => string };
+      setStatus: (key: string, value: string | undefined) => void;
+    };
+  },
+  enabled: boolean,
+): void {
   if (!enabled) {
     ctx.ui.setStatus(STATUS_KEY, undefined);
     return;
   }
 
-  const label = "🔒 readonly";
-  const colored = typeof ctx.ui.theme?.fg === "function"
-    ? ctx.ui.theme.fg("warning", label)
-    : label;
+  const label = "readonly";
+  const colored =
+    typeof ctx.ui.theme?.fg === "function"
+      ? ctx.ui.theme.fg("warning", label)
+      : label;
   ctx.ui.setStatus(STATUS_KEY, colored);
 }
 
@@ -115,19 +152,33 @@ function usage(): string {
 }
 
 export default function readonlyExtension(pi: {
-  on: (event: string, handler: (...args: unknown[]) => Promise<unknown> | unknown) => void;
+  on: (
+    event: string,
+    handler: (...args: unknown[]) => Promise<unknown> | unknown,
+  ) => void;
   registerCommand: (
     name: string,
-    options: { description: string; handler: (...args: unknown[]) => Promise<void> | void },
+    options: {
+      description: string;
+      handler: (...args: unknown[]) => Promise<void> | void;
+    },
   ) => void;
   getActiveTools: () => string[];
   setActiveTools: (names: string[]) => void;
   getAllTools: () => Array<{ name?: string }>;
   appendEntry: (customType: string, data?: Record<string, unknown>) => void;
 }) {
-  const sessionState = new Map<string, { enabled: boolean; savedActiveTools: string[] | null }>();
+  const sessionState = new Map<
+    string,
+    { enabled: boolean; savedActiveTools: string[] | null }
+  >();
 
-  function currentState(ctx: { sessionManager?: { getSessionId?: () => string | undefined; getEntries?: () => unknown[] } }) {
+  function currentState(ctx: {
+    sessionManager?: {
+      getSessionId?: () => string | undefined;
+      getEntries?: () => unknown[];
+    };
+  }) {
     const key = getSessionKey(ctx);
     const cached = sessionState.get(key);
     if (cached) return { key, state: cached };
@@ -151,7 +202,10 @@ export default function readonlyExtension(pi: {
         setStatus: (key: string, value: string | undefined) => void;
         theme?: { fg?: (color: string, text: string) => string };
       };
-      sessionManager?: { getSessionId?: () => string | undefined; getEntries?: () => unknown[] };
+      sessionManager?: {
+        getSessionId?: () => string | undefined;
+        getEntries?: () => unknown[];
+      };
     },
     options: { notify?: boolean; preserveCurrentTools?: boolean } = {},
   ): void {
@@ -171,7 +225,10 @@ export default function readonlyExtension(pi: {
     statusText(ctx, true);
 
     if (options.notify !== false) {
-      ctx.ui.notify("Readonly mode enabled. Mutating tools removed; bash now asks for approval every run.", "info");
+      ctx.ui.notify(
+        "Readonly mode enabled. File-mutating tools removed; web-access tools stay available; bash now asks for approval every run.",
+        "info",
+      );
     }
   }
 
@@ -182,7 +239,10 @@ export default function readonlyExtension(pi: {
         setStatus: (key: string, value: string | undefined) => void;
         theme?: { fg?: (color: string, text: string) => string };
       };
-      sessionManager?: { getSessionId?: () => string | undefined; getEntries?: () => unknown[] };
+      sessionManager?: {
+        getSessionId?: () => string | undefined;
+        getEntries?: () => unknown[];
+      };
     },
     options: { notify?: boolean } = {},
   ): void {
@@ -202,23 +262,28 @@ export default function readonlyExtension(pi: {
     statusText(ctx, false);
 
     if (options.notify !== false) {
-      ctx.ui.notify("Readonly mode disabled. Previous tool set restored.", "info");
+      ctx.ui.notify(
+        "Readonly mode disabled. Previous tool set restored.",
+        "info",
+      );
     }
   }
 
   function showStatus(ctx: {
     ui: { notify: (message: string, level?: string) => void };
-    sessionManager?: { getSessionId?: () => string | undefined; getEntries?: () => unknown[] };
+    sessionManager?: {
+      getSessionId?: () => string | undefined;
+      getEntries?: () => unknown[];
+    };
   }): void {
     const { state } = currentState(ctx);
     const activeReadonlyTools = readonlyTools(pi);
-    const suffix = activeReadonlyTools.length > 0
-      ? ` Allowed tools: ${activeReadonlyTools.join(", ")}`
-      : " Allowed tools: none matched installed tools.";
+    const suffix =
+      activeReadonlyTools.length > 0
+        ? ` Allowed tools: ${activeReadonlyTools.join(", ")}`
+        : " Allowed tools: none matched installed tools.";
     ctx.ui.notify(
-      state.enabled
-        ? `Readonly mode is ON.${suffix}`
-        : "Readonly mode is OFF.",
+      state.enabled ? `Readonly mode is ON.${suffix}` : "Readonly mode is OFF.",
       "info",
     );
   }
@@ -252,14 +317,16 @@ export default function readonlyExtension(pi: {
     }
 
     const input = isRecord(event.input) ? event.input : null;
-    const command = typeof input?.command === "string" && input.command.trim().length > 0
-      ? input.command
-      : "(unknown bash command)";
+    const command =
+      typeof input?.command === "string" && input.command.trim().length > 0
+        ? input.command
+        : "(unknown bash command)";
 
     if (!ctx.hasUI) {
       return {
         block: true,
-        reason: "Readonly mode requires interactive approval for bash, but no UI is available.",
+        reason:
+          "Readonly mode requires interactive approval for bash, but no UI is available.",
       };
     }
 
@@ -276,48 +343,72 @@ export default function readonlyExtension(pi: {
     }
   });
 
+  async function handleReadonlyCommand(
+    args: string,
+    ctx: {
+      ui: {
+        notify: (message: string, level?: string) => void;
+        setStatus: (key: string, value: string | undefined) => void;
+        theme?: { fg?: (color: string, text: string) => string };
+      };
+      sessionManager?: {
+        getSessionId?: () => string | undefined;
+        getEntries?: () => unknown[];
+      };
+    },
+  ): Promise<void> {
+    const action = (args || "toggle").trim().toLowerCase();
+    const normalized = action.length > 0 ? action.split(/\s+/)[0] : "toggle";
+
+    if (normalized === "status") {
+      showStatus(ctx);
+      return;
+    }
+
+    const { state } = currentState(ctx);
+
+    if (normalized === "off") {
+      if (!state.enabled) {
+        ctx.ui.notify("Readonly mode is already off.", "info");
+        return;
+      }
+      disableReadonly(ctx);
+      return;
+    }
+
+    if (normalized === "on") {
+      if (state.enabled) {
+        ctx.ui.notify("Readonly mode is already on.", "info");
+        return;
+      }
+      enableReadonly(ctx);
+      return;
+    }
+
+    if (normalized !== "toggle") {
+      ctx.ui.notify(usage(), "warning");
+      return;
+    }
+
+    if (state.enabled) {
+      disableReadonly(ctx);
+      return;
+    }
+
+    enableReadonly(ctx);
+  }
+
   pi.registerCommand("readonly", {
     description: "Toggle read-only tool mode for this session",
     handler: async (args, ctx) => {
-      const action = (args || "toggle").trim().toLowerCase();
-      const normalized = action.length > 0 ? action.split(/\s+/)[0] : "toggle";
+      await handleReadonlyCommand(typeof args === "string" ? args : "", ctx);
+    },
+  });
 
-      if (normalized === "status") {
-        showStatus(ctx);
-        return;
-      }
-
-      const { state } = currentState(ctx);
-
-      if (normalized === "off") {
-        if (!state.enabled) {
-          ctx.ui.notify("Readonly mode is already off.", "info");
-          return;
-        }
-        disableReadonly(ctx);
-        return;
-      }
-
-      if (normalized === "on") {
-        if (state.enabled) {
-          ctx.ui.notify("Readonly mode is already on.", "info");
-          return;
-        }
-        enableReadonly(ctx);
-        return;
-      }
-
-      if (normalized !== "toggle") {
-        ctx.ui.notify(usage(), "warning");
-        return;
-      }
-
-      if (state.enabled) {
-        disableReadonly(ctx);
-        return;
-      }
-
-      enableReadonly(ctx);
+  pi.registerShortcut?.("ctrl+r", {
+    description: "Toggle readonly mode",
+    handler: async (ctx) => {
+      await handleReadonlyCommand("toggle", ctx);
     },
   });
 }

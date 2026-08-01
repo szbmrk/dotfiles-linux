@@ -11,8 +11,8 @@
     "npm:@sherif-fanous/pi-catppuccin",
     "npm:@ff-labs/pi-fff",
     "npm:@narumitw/pi-lsp",
-    "git:github.com/narumiruna/pi-web-search",
-    "npm:@narumitw/pi-btw"
+    "npm:@narumitw/pi-btw",
+    "npm:pi-web-access"
   ],
   "extensions": [
     "./extensions/readonly.ts"
