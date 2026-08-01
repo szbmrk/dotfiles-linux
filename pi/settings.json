@@ -15,7 +15,8 @@
     "npm:pi-web-access"
   ],
   "extensions": [
-    "./extensions/readonly.ts"
+    "./extensions/readonly.ts",
+    "./extensions/model-thinking-status.ts"
   ],
   "images": {
     "blockImages": false
