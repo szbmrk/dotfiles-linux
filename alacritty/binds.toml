@@ -13,4 +13,5 @@ bindings = [
 	{ key = "Key7", mods = "Control", chars = "\u001b[27;5;55~" },
 	{ key = "Key8", mods = "Control", chars = "\u001b[27;5;56~" },
 	{ key = "Key9", mods = "Control", chars = "\u001b[27;5;57~" },
+	{ key = "Return", mods = "Shift", chars = "\u001b[13;2u"}
 ]
