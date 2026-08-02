@@ -7,10 +7,16 @@ import "../components"
 PopupPanel {
     id: root
 
-    property string weeklyPercent: "80"
+    property string weeklyPercent: "0"
+    property int resetAt: 0
 
-    property string initialization: '{"jsonrpc":"2.0","id":0,"method":"initialize","params":{"clientInfo":{"name":"shell","title":"Shell","version":"0.1.0"}}}'
-    property string usageRequest: '{"jsonrpc":"2.0","id":1,"method":"account/rateLimits/read"}'
+    function formatResetAt(timestamp) {
+        if (!timestamp)
+            return "unknown";
+
+        var date = new Date(timestamp * 1000);
+        return Qt.formatDateTime(date, "MMM d, HH:mm");
+    }
 
     panelContent: Component {
         ColumnLayout {
@@ -107,7 +113,7 @@ PopupPanel {
                     }
 
                     PanelText {
-                        text: "Resets: "
+                        text: "Resets: " + root.formatResetAt(root.resetAt)
                         pointSize: Style.fontS
                         color: Theme.subtext0
                     }
@@ -118,12 +124,16 @@ PopupPanel {
 
     // ── Data fetching ──
     Process {
-        id: diskProc
-        command: ["bash", "-c", "codex app-server"]
+        id: codexProc
+        command: ["bash", "/home/szobo/.config/quickshell/shell/scripts/codex_usage.sh"]
         running: true
         stdout: StdioCollector {
             onStreamFinished: {
-                root.weeklyPercent = this.text.trim() || "0";
+                var parts = this.text.trim().split(/\s+/);
+                if (parts.length >= 2) {
+                    root.weeklyPercent = 100 - parts[0];
+                    root.resetAt = parseInt(parts[1]) || 0;
+                }
             }
         }
     }
@@ -132,11 +142,11 @@ PopupPanel {
         interval: 30000
         running: true
         repeat: true
-        onTriggered: diskProc.running = true
+        onTriggered: codexProc.running = true
     }
 
     onIsOpenChanged: {
         if (isOpen)
-            diskProc.running = true;
+            codexProc.running = true;
     }
 }
