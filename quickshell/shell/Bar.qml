@@ -64,6 +64,11 @@ Scope {
                     Layout.rightMargin: 8
                 }
 
+                CodexUsage {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.rightMargin: 12
+                }
+
                 DiskUsage {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.rightMargin: 8
@@ -206,6 +211,15 @@ Scope {
                     panelId: "brightnessPanel"
                     anchor: "top-right"
                     preferredWidth: 380
+                    preferredHeight: 200
+                }
+
+                CodexPanel {
+                    id: codexPanel
+                    anchors.fill: parent
+                    panelId: "codexPanel"
+                    anchor: "top-right"
+                    preferredWidth: 400
                     preferredHeight: 200
                 }
 
