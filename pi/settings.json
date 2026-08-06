@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.0",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "gpt-5.6-terra",
   "editorPaddingX": 1,
   "enableInstallTelemetry": false,
   "packages": [
@@ -17,7 +17,7 @@
     "npm:pi-image-paste",
     "git:github.com/jonjonrankin/pi-caveman",
     "npm:@gotgenes/pi-permission-system",
-    "npm:@victor-software-house/pi-curated-themes"
+    "npm:@firstpick/pi-themes-bundle"
   ],
   "extensions": [
     "./extensions/readonly.ts",
@@ -38,5 +38,13 @@
   "tuiMode": "fullscreen",
   "defaultProjectTrust": "always",
   "doubleEscapeAction": "tree",
-  "fullscreenScrollbar": "auto"
+  "fullscreenScrollbar": "auto",
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "enableSkillCommands": true,
+  "steeringMode": "one-at-a-time",
+  "markdown": {
+    "mermaid": "streaming"
+  }
 }
