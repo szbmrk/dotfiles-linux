@@ -11,8 +11,8 @@ import {
 
 const PLANNOTATOR_STATUS_KEY = "plannotator";
 
-const PURPLE = "\u001b[38;2;180;190;254m";
 const YELLOW = "\u001b[38;2;249;226;175m";
+const BLUE = "\u001b[38;2;137;180;250m";
 const RESET = "\u001b[39m";
 
 type BorderAwareEditor = {
@@ -26,7 +26,7 @@ type EditorFactory = (
 ) => unknown;
 
 function borderColor(enabled: boolean): (text: string) => string {
-  const prefix = enabled ? YELLOW : PURPLE;
+  const prefix = enabled ? YELLOW : BLUE;
   return (text: string) => prefix + text + RESET;
 }
 
@@ -136,7 +136,8 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
     // Image Paste installs its own CustomEditor in its session_start handler.
     // Extension load order is not a stable composition mechanism, so wrap both
     // an editor already registered before us and every editor registered later.
-    const withBorder = (factory: EditorFactory): EditorFactory =>
+    const withBorder =
+      (factory: EditorFactory): EditorFactory =>
       (tui, theme, keybindings) => {
         activeTui = tui;
         const editor = factory(tui, theme, keybindings);
@@ -147,9 +148,7 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
 
     const defaultEditorFactory: EditorFactory = (tui, theme, keybindings) =>
       new PromptBorderEditor(tui, theme, keybindings);
-    setEditorComponent(
-      withBorder(previous ?? defaultEditorFactory) as never,
-    );
+    setEditorComponent(withBorder(previous ?? defaultEditorFactory) as never);
 
     // Keep the border wrapper when an extension that starts later replaces the
     // editor (currently pi-image-paste). Preserve `undefined`, which restores

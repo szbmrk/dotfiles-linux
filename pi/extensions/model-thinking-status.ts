@@ -1,5 +1,5 @@
 const WIDGET_KEY = "model-thinking-status";
-const CATPPUCCIN_MOCHA_BLUE = "\u001b[38;2;137;180;250m";
+const TEAL = "\u001b[38;2;148;226;213m";
 const ANSI_RESET_FG = "\u001b[39m";
 
 function modelIdOf(model: unknown): string {
@@ -27,7 +27,7 @@ function thinkingColor(level: string): string {
 }
 
 function colorModel(text: string): string {
-  return CATPPUCCIN_MOCHA_BLUE + text + ANSI_RESET_FG;
+  return TEAL + text + ANSI_RESET_FG;
 }
 
 function formatLine(ctx: {
