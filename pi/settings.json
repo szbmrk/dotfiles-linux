@@ -15,8 +15,7 @@
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@narumitw/pi-usage",
     "npm:pi-lens",
-    "npm:pi-image-paste",
-    "npm:@xynogen/pix-pretty"
+    "npm:pi-image-paste"
   ],
   "extensions": [
     "./extensions/readonly.ts",
