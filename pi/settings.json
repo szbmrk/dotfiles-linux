@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.83.0",
+  "lastChangelogVersion": "0.84.0",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
+  "defaultModel": "gpt-5.6-terra",
   "editorPaddingX": 1,
   "enableInstallTelemetry": false,
   "packages": [
@@ -10,9 +10,13 @@
     "npm:@plannotator/pi-extension",
     "npm:@sherif-fanous/pi-catppuccin",
     "npm:@ff-labs/pi-fff",
-    "npm:@narumitw/pi-lsp",
     "npm:@narumitw/pi-btw",
-    "npm:pi-web-access"
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@narumitw/pi-usage",
+    "npm:pi-lens",
+    "npm:pi-image-paste",
+    "npm:@xynogen/pix-pretty"
   ],
   "extensions": [
     "./extensions/readonly.ts",
@@ -24,7 +28,7 @@
   },
   "outputPad": 1,
   "autocompleteMaxVisible": 7,
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "off",
   "enabledModels": [
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.6-terra",

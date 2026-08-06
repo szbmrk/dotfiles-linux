@@ -86,6 +86,8 @@ function applyBorderColor(editor: unknown, enabled: boolean): void {
 }
 
 class PromptBorderEditor extends CustomEditor {
+  declare borderColor: (text: string) => string;
+
   constructor(tui: TUI, theme: EditorTheme, keybindings: KeybindingsManager) {
     super(tui, theme, keybindings);
     this.borderColor = borderColor(getReadonlyEnabled());
@@ -96,6 +98,7 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
   let activeTui: TUI | undefined;
   const activeEditors = new Set<unknown>();
   let unsubscribeReadonly: (() => void) | undefined;
+  let restoreEditorComponent: (() => void) | undefined;
   let plannotatorEnabled = false;
 
   const isHighlighted = () => getReadonlyEnabled() || plannotatorEnabled;
@@ -112,6 +115,8 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
 
   pi.on("session_start", (_event, ctx) => {
     if (initialRepaintTimer) clearTimeout(initialRepaintTimer);
+    restoreEditorComponent?.();
+    restoreEditorComponent = undefined;
     unsubscribeReadonly?.();
     activeEditors.clear();
     plannotatorEnabled = hasPlannotatorEnabled(ctx);
@@ -125,15 +130,39 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
     };
 
     const previous = ctx.ui.getEditorComponent() as EditorFactory | undefined;
-    ctx.ui.setEditorComponent((tui, theme, keybindings) => {
-      activeTui = tui;
-      const editor =
-        previous?.(tui, theme, keybindings) ??
-        new PromptBorderEditor(tui, theme, keybindings);
-      activeEditors.add(editor);
-      applyBorderColor(editor, isHighlighted());
-      return editor as never;
-    });
+    const originalSetEditorComponent = ctx.ui.setEditorComponent;
+    const setEditorComponent = originalSetEditorComponent.bind(ctx.ui);
+
+    // Image Paste installs its own CustomEditor in its session_start handler.
+    // Extension load order is not a stable composition mechanism, so wrap both
+    // an editor already registered before us and every editor registered later.
+    const withBorder = (factory: EditorFactory): EditorFactory =>
+      (tui, theme, keybindings) => {
+        activeTui = tui;
+        const editor = factory(tui, theme, keybindings);
+        activeEditors.add(editor);
+        applyBorderColor(editor, isHighlighted());
+        return editor;
+      };
+
+    const defaultEditorFactory: EditorFactory = (tui, theme, keybindings) =>
+      new PromptBorderEditor(tui, theme, keybindings);
+    setEditorComponent(
+      withBorder(previous ?? defaultEditorFactory) as never,
+    );
+
+    // Keep the border wrapper when an extension that starts later replaces the
+    // editor (currently pi-image-paste). Preserve `undefined`, which restores
+    // Pi's default editor during extension shutdown.
+    const borderSetter = ((factory: EditorFactory | undefined) => {
+      setEditorComponent(factory ? (withBorder(factory) as never) : undefined);
+    }) as typeof ctx.ui.setEditorComponent;
+    ctx.ui.setEditorComponent = borderSetter;
+    restoreEditorComponent = () => {
+      if (ctx.ui.setEditorComponent === borderSetter) {
+        ctx.ui.setEditorComponent = originalSetEditorComponent;
+      }
+    };
 
     unsubscribeReadonly = subscribeReadonlyState(() => {
       repaint();
@@ -161,6 +190,8 @@ export default function promptBorderColorExtension(pi: ExtensionAPI) {
   pi.on("session_shutdown", () => {
     if (initialRepaintTimer) clearTimeout(initialRepaintTimer);
     initialRepaintTimer = undefined;
+    restoreEditorComponent?.();
+    restoreEditorComponent = undefined;
     unsubscribeReadonly?.();
     unsubscribeReadonly = undefined;
     activeEditors.clear();
