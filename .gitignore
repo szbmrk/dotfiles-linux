@@ -25,7 +25,6 @@ alacritty/env.toml
 !hypr/**
 hypr/conf/local.conf
 hypr/conf/local.lua
-hypr/hyprlandd.lua
 
 !MangoHud/
 !MangoHud/**

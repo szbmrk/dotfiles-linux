@@ -15,8 +15,9 @@
       "git checkout *": "ask",
       "git commit *": "deny",
       "git push *": "deny",
-      "pnpm *": "ask",
-      "npm *": "ask"
+      "pnpm add *": "ask",
+      "npm install *": "ask",
+      "pnpm db *": "ask"
     },
     "external_directory": "allow"
   }

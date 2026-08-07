@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.84.0",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "gpt-5.6-terra",
   "editorPaddingX": 1,
   "enableInstallTelemetry": false,
   "packages": [
@@ -33,7 +33,8 @@
   "enabledModels": [
     "openai-codex/gpt-5.4",
     "openai-codex/gpt-5.6-terra",
-    "openai-codex/gpt-5.6-luna"
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-sol"
   ],
   "tuiMode": "fullscreen",
   "defaultProjectTrust": "always",
