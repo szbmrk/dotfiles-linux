@@ -64,10 +64,12 @@ Scope {
                     Layout.rightMargin: 8
                 }
 
+                /*
                 CodexUsage {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.rightMargin: 12
-                }
+				}
+				*/
 
                 DiskUsage {
                     Layout.alignment: Qt.AlignVCenter
@@ -214,6 +216,7 @@ Scope {
                     preferredHeight: 200
                 }
 
+                /*
                 CodexPanel {
                     id: codexPanel
                     anchors.fill: parent
@@ -222,6 +225,7 @@ Scope {
                     preferredWidth: 400
                     preferredHeight: 200
                 }
+				*/
 
                 DiskPanel {
                     id: diskPanel
