@@ -44,6 +44,7 @@ pi/pi-btw.json
 pi/mcp-cache.json
 pi/npm
 pi/sessions
+pi/models-store.json
 
 !quickshell/
 !quickshell/**
