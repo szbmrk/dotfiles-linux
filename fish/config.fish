@@ -233,7 +233,7 @@ if status is-interactive
         set i (math $i + 1)
     end
 
-    exec tmux new-session -s "$session"
+    exec tmux new-session -s "$session" \; set-option -t "$session" destroy-unattached on
 end
 
 function tn
