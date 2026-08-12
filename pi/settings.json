@@ -13,11 +13,11 @@
     "npm:pi-web-access",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@narumitw/pi-usage",
-    "npm:pi-lens",
     "npm:pi-image-paste",
     "git:github.com/jonjonrankin/pi-caveman",
     "npm:@gotgenes/pi-permission-system",
-    "npm:@firstpick/pi-themes-bundle"
+    "npm:@firstpick/pi-themes-bundle",
+    "npm:pi-rtk-optimizer"
   ],
   "extensions": [
     "./extensions/readonly.ts",

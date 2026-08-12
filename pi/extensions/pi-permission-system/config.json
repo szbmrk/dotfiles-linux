@@ -17,6 +17,7 @@
       "git push *": "deny",
       "pnpm add *": "ask",
       "npm install *": "ask",
+      "pnpm db*": "ask",
       "pnpm db *": "ask"
     },
     "external_directory": "allow"
