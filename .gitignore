@@ -45,6 +45,7 @@ pi/mcp-cache.json
 pi/npm
 pi/sessions
 pi/models-store.json
+pi/web-search-cache/*
 
 !quickshell/
 !quickshell/**
