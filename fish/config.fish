@@ -250,3 +250,4 @@ fnm env --use-on-cd --shell fish | source
 
 # Pi
 fish_add_path "/home/szobo/.local/share/fnm/node-versions/v24.18.0/installation/bin"
+direnv hook fish | source
