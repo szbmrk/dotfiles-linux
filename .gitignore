@@ -21,6 +21,9 @@ alacritty/env.toml
 # !gtk-4.0/
 # !gtk-4.0/**
 
+!herdr/
+!herdr/config.toml
+
 !hypr/
 !hypr/**
 hypr/conf/local.conf

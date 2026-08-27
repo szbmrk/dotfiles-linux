@@ -9,7 +9,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "opacity",
 	match = {
-		class = "^(code|org.gnome.Nautilus)$",
+		class = "^(code)$",
 	},
 	opacity = 0.95,
 })

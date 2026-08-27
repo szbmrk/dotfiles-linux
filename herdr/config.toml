@@ -1,0 +1,22 @@
+onboarding = false
+
+[experimental]
+pane_history = true
+
+switch_ascii_input_source_in_prefix = true
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[keys]
+prefix = "ctrl+a"
+
+[[keys.command]]
+key = "g"
+type = "pane"
+command = "lazygit"
+
+[theme]
+name = "catppuccin"

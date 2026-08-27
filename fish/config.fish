@@ -26,6 +26,7 @@ set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
 set PATH $PATH /usr/lib/jvm/java-21-temurin-jdk/bin
+set PATH $PATH /usr/local/go/bin
 set PATH $PATH $JAVA_HOME
 set PATH $PATH $PNPM_HOME
 

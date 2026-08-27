@@ -9,3 +9,5 @@ require("config.commands")
 vim.cmd("colorscheme catppuccin-mocha")
 vim.cmd.highlight("IndentLine guifg=#524f67")
 vim.cmd.highlight("IndentLineCurrent guifg=#908caa")
+
+vim.cmd("Copilot disable")

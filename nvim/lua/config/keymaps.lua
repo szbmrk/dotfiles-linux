@@ -129,14 +129,10 @@ set_keymap({ "n", "v" }, "<leader>fd", function()
 end, { desc = "Format selection or buffer with conform.nvim" })
 
 -- Move line up with Alt+Up
-set_keymap("i", "<A-Up>", "<Esc>:move .-2<CR>gi")
-set_keymap("n", "<A-Up>", ":move .-2<CR>gv")
 set_keymap("v", "<A-Up>", ":move '<-2<CR>gv=gv")
 
 -- Move line down with Alt+Down
 set_keymap("v", "<A-Down>", ":move '>+1<CR>gv=gv")
-set_keymap("i", "<A-Down>", "<Esc>:move .+1<CR>gi")
-set_keymap("n", "<A-Down>", ":move .+1<CR>")
 
 -- Leader+E to open explorer
 set_keymap("n", "<leader>e", ":Neotree toggle reveal<CR>")
