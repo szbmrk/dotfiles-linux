@@ -224,7 +224,19 @@ fish_add_path /home/szobo/.opencode/bin
 if status is-interactive
     and test "$HERDR_ENV" != "1"
     and test "$TERM_PROGRAM" != "vscode"
-    exec herdr --no-session
+
+    set -l n 1
+
+    while herdr session list --json | grep -q "\"main$n\""
+        set n (math $n + 1)
+    end
+
+    set -l session "main$n"
+
+    herdr session attach "$session"
+    herdr session delete "$session" >/dev/null 2>&1
+
+    exit
 end
 
 fnm env --use-on-cd --shell fish | source
@@ -232,3 +244,8 @@ fnm env --use-on-cd --shell fish | source
 # Pi
 fish_add_path "/home/szobo/.local/share/fnm/node-versions/v24.18.0/installation/bin"
 direnv hook fish | source
+
+# Herdr autorename
+for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
+    test -r "$_f"; and source "$_f"; and break
+end

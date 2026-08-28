@@ -30,6 +30,9 @@ alacritty/env.toml
 hypr/conf/local.conf
 hypr/conf/local.lua
 
+!lazygit/
+!lazygit/**
+
 !MangoHud/
 !MangoHud/**
 
@@ -46,6 +49,7 @@ hypr/conf/local.lua
 pi/auth.json
 pi/pi-btw.json
 pi/mcp-cache.json
+pi/fff
 pi/npm
 pi/sessions
 pi/models-store.json

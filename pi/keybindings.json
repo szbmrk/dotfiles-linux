@@ -1,4 +1,5 @@
 {
+  "app.exit": ["ctrl+q", "ctrl+d"],
   "app.session.rename": ["ctrl+alt+r"],
   "app.clipboard.pasteImage": ["ctrl+v", "alt+v", "f6"]
 }
