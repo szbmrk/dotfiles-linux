@@ -222,29 +222,9 @@ starship init fish | source
 fish_add_path /home/szobo/.opencode/bin
 
 if status is-interactive
-    and not set -q TMUX
+    and test "$HERDR_ENV" != "1"
     and test "$TERM_PROGRAM" != "vscode"
-
-    set base main
-    set session $base
-    set i 2
-
-    while tmux has-session -t "$session" 2>/dev/null
-        set session "$base$i"
-        set i (math $i + 1)
-    end
-
-    exec tmux new-session -s "$session" \; set-option -t "$session" destroy-unattached on
-end
-
-function tn
-    set name (basename "$PWD")
-    if set -q TMUX
-        tmux new-session -d -s "$name" -c "$PWD" 2>/dev/null
-        tmux switch-client -t "$name"
-    else
-        tmux new-session -A -s "$name" -c "$PWD"
-    end
+    exec herdr --no-session
 end
 
 fnm env --use-on-cd --shell fish | source

@@ -23,6 +23,7 @@ alacritty/env.toml
 
 !herdr/
 !herdr/config.toml
+!herdr/status.sh
 
 !hypr/
 !hypr/**
@@ -49,6 +50,7 @@ pi/npm
 pi/sessions
 pi/models-store.json
 pi/web-search-cache/*
+pi/extensions/herdr-agent-state.ts
 
 !quickshell/
 !quickshell/**
