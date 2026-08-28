@@ -5,6 +5,7 @@ name = "catppuccin"
 
 [experimental]
 switch_ascii_input_source_in_prefix = true
+kitty_graphics = true
 
 [ui]
 mouse_capture = true
@@ -31,7 +32,7 @@ rows = [
 ]
 
 [ui.toast]
-delivery = "system"
+delivery = "herdr"
 
 [ui.toast.herdr]
 position = "top-right"

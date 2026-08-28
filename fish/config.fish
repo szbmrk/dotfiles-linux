@@ -215,11 +215,29 @@ function make_rust_proj
     cd "$target"
 end
 
+function herdr-clean
+    for session in (herdr session list | awk '$1 ~ /^main/ {print $1}')
+        herdr session stop $session
+        herdr session delete $session
+    end
+end
+
 eval "$(zoxide init fish --cmd cd)"
 starship init fish | source
 
 # opencode
 fish_add_path /home/szobo/.opencode/bin
+
+fnm env --use-on-cd --shell fish | source
+
+# Pi
+fish_add_path "/home/szobo/.local/share/fnm/node-versions/v24.18.0/installation/bin"
+direnv hook fish | source
+
+# Herdr autorename
+for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
+    test -r "$_f"; and source "$_f"; and break
+end
 
 if status is-interactive
     and test "$HERDR_ENV" != "1"
@@ -234,18 +252,8 @@ if status is-interactive
     set -l session "main$n"
 
     herdr session attach "$session"
-    herdr session delete "$session" >/dev/null 2>&1
+	herdr session stop "$session" >/dev/null 2>&1
+	herdr session delete "$session" >/dev/null 2>&1
 
     exit
-end
-
-fnm env --use-on-cd --shell fish | source
-
-# Pi
-fish_add_path "/home/szobo/.local/share/fnm/node-versions/v24.18.0/installation/bin"
-direnv hook fish | source
-
-# Herdr autorename
-for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
-    test -r "$_f"; and source "$_f"; and break
 end
