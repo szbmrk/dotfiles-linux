@@ -142,3 +142,15 @@ set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
 set_keymap("n", "<leader>xl", "<cmd>Trouble lsp toggle<cr>")
 set_keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
 set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
+
+set_keymap("x", "<leader>a", function()
+	vim.cmd('normal! "zy')
+	local base = os.getenv("XDG_RUNTIME_DIR")
+	if not base or base == "" then
+		base = vim.fn.fnamemodify(vim.fn.tempname(), ":h")
+	end
+	local dir = base .. "/herdr-annotate-" .. vim.loop.getuid()
+	vim.fn.mkdir(dir, "p", "0700")
+	vim.fn.writefile(vim.split(vim.fn.getreg("z"), "\n"), dir .. "/selection")
+	vim.fn.jobstart({ "herdr", "plugin", "action", "invoke", "annotate.capture" })
+end, { desc = "Annotate in Herdr" })
