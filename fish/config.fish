@@ -222,6 +222,16 @@ function herdr-clean
     end
 end
 
+function tn
+    set name (basename "$PWD")
+    if set -q TMUX
+        tmux new-session -d -s "$name" -c "$PWD" 2>/dev/null
+        tmux switch-client -t "$name"
+    else
+        tmux new-session -A -s "$name" -c "$PWD"
+    end
+end
+
 eval "$(zoxide init fish --cmd cd)"
 starship init fish | source
 
@@ -239,21 +249,37 @@ for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook
     test -r "$_f"; and source "$_f"; and break
 end
 
+# if status is-interactive
+#     and test "$HERDR_ENV" != "1"
+#     and test "$TERM_PROGRAM" != "vscode"
+#
+#     set -l n 1
+#
+#     while herdr session list --json | grep -q "\"main$n\""
+#         set n (math $n + 1)
+#     end
+#
+#     set -l session "main$n"
+#
+#     herdr session attach "$session"
+# 	herdr session stop "$session" >/dev/null 2>&1
+# 	herdr session delete "$session" >/dev/null 2>&1
+#
+#     exit
+# end
+
 if status is-interactive
-    and test "$HERDR_ENV" != "1"
+    and not set -q TMUX
     and test "$TERM_PROGRAM" != "vscode"
 
-    set -l n 1
+    set base main
+    set session $base
+    set i 2
 
-    while herdr session list --json | grep -q "\"main$n\""
-        set n (math $n + 1)
+    while tmux has-session -t "$session" 2>/dev/null
+        set session "$base$i"
+        set i (math $i + 1)
     end
 
-    set -l session "main$n"
-
-    herdr session attach "$session"
-	herdr session stop "$session" >/dev/null 2>&1
-	herdr session delete "$session" >/dev/null 2>&1
-
-    exit
+    exec tmux new-session -s "$session" \; set-option -t "$session" destroy-unattached on
 end
