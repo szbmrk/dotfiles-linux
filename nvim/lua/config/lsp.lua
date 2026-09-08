@@ -135,18 +135,18 @@ local lsp_configs = {
 		-- 	},
 		-- },
 	},
-	kotlin_language_server = {
-		cmd = { "kotlin-language-server" },
-		filetypes = { "kotlin" },
-		root_markers = {
-			"settings.gradle",
-			"settings.gradle.kts",
-			"build.gradle",
-			"build.gradle.kts",
-			"pom.xml",
-			".git",
-		},
-	},
+	-- kotlin_language_server = {
+	-- 	cmd = { "kotlin-language-server" },
+	-- 	filetypes = { "kotlin" },
+	-- 	root_markers = {
+	-- 		"settings.gradle",
+	-- 		"settings.gradle.kts",
+	-- 		"build.gradle",
+	-- 		"build.gradle.kts",
+	-- 		"pom.xml",
+	-- 		".git",
+	-- 	},
+	-- },
 }
 
 for server, config in pairs(lsp_configs) do

@@ -1,7 +1,7 @@
 local M = {}
 
 local function js_formatter()
-	return { "prettier" }
+	return { "oxfmt" }
 end
 
 function M.setup()

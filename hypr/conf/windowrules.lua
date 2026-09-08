@@ -25,3 +25,16 @@ hl.window_rule({
 		900,
 	},
 })
+
+hl.window_rule({
+	name = "dddownload",
+	match = {
+		title = "^(DDDownload)$",
+	},
+	float = true,
+	center = true,
+	size = {
+		1100,
+		680,
+	},
+})

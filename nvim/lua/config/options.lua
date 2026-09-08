@@ -15,6 +15,18 @@ opt.autoindent = true
 opt.shiftround = true
 opt.smartindent = true
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		-- vim.opt_local.tabstop = 2
+		-- vim.opt_local.shiftwidth = 2
+		-- vim.opt_local.softtabstop = 2
+		vim.opt_local.tabstop = 4
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.softtabstop = 4
+	end,
+})
+
 -- Search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -23,11 +35,7 @@ opt.smartcase = true
 opt.wrap = false
 
 -- System clipboard
-opt.clipboard:append(
-    vim.env.SSH_TTY
-    and ""
-    or "unnamedplus"
-)
+opt.clipboard:append(vim.env.SSH_TTY and "" or "unnamedplus")
 
 -- Completion
 opt.completeopt = "menu,menuone,popup,fuzzy,noselect"
@@ -40,13 +48,13 @@ opt.undofile = true
 opt.undolevels = 10000
 
 -- Enable line wrapping for markdown files
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'markdown',
-    callback = function()
-        vim.opt_local.wrap = true
-        vim.keymap.set('n', '<Down>', 'gj', { noremap = true })
-        vim.keymap.set('n', '<Up>', 'gk', { noremap = true })
-        vim.keymap.set('i', '<Down>', '<Esc>gja', { noremap = true })
-        vim.keymap.set('i', '<Up>', '<Esc>gka', { noremap = true })
-    end
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.keymap.set("n", "<Down>", "gj", { noremap = true })
+		vim.keymap.set("n", "<Up>", "gk", { noremap = true })
+		vim.keymap.set("i", "<Down>", "<Esc>gja", { noremap = true })
+		vim.keymap.set("i", "<Up>", "<Esc>gka", { noremap = true })
+	end,
 })
