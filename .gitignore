@@ -55,6 +55,7 @@ pi/sessions
 pi/models-store.json
 pi/web-search-cache/*
 pi/extensions/herdr-agent-state.ts
+pi/mcp-npx-cache.json
 
 !quickshell/
 !quickshell/**
