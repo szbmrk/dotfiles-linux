@@ -75,7 +75,7 @@ if __name__ == "__main__":
         exit(0)
 
     wallpapers = get_wallpapers()
-    choice = rofi_select(wallpapers, prompt="Wallpapers:")
+    choice = rofi_select(wallpapers, prompt="Wallpapers: ")
     if not choice:
         print("No selection (cancelled).")
     else:
