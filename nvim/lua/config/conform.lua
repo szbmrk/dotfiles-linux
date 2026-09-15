@@ -25,6 +25,8 @@ local oxfmt_config_files = {
 	".oxfmtrc.json",
 	".oxfmtrc.jsonc",
 	"oxfmt.config.ts",
+	"vite.config.ts",
+	"vite.config.js",
 }
 
 local function package_has_prettier(path)
