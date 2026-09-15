@@ -37,7 +37,7 @@ def rofi_select(wallpapers: Dict[str, Path], prompt: str) -> str:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
-    out, err = p.communicate(input=input_data)
+    out, _ = p.communicate(input=input_data)
     if p.returncode != 0:
         return ""
 
