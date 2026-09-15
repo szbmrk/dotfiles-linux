@@ -25,8 +25,6 @@ local oxfmt_config_files = {
 	".oxfmtrc.json",
 	".oxfmtrc.jsonc",
 	"oxfmt.config.ts",
-	"vite.config.ts",
-	"vite.config.js",
 }
 
 local function package_has_prettier(path)
@@ -50,6 +48,15 @@ end
 
 local function project_has_oxfmt_config(bufnr)
 	return vim.fs.root(vim.api.nvim_buf_get_name(bufnr), oxfmt_config_files) ~= nil
+end
+
+local function prettier_args(_, ctx)
+	local args = { "--ignore-path", ".gitignore", "--ignore-path", ".prettierignore" }
+	if not project_has_prettier_config(ctx.buf) then
+		vim.list_extend(args, { "--tab-width", "4", "--use-tabs" })
+	end
+
+	return args
 end
 
 local function js_formatter(bufnr)
@@ -93,7 +100,7 @@ function M.setup()
 
 		formatters = {
 			prettier = {
-				prepend_args = { "--ignore-path", ".gitignore", "--ignore-path", ".prettierignore" },
+				prepend_args = prettier_args,
 			},
 		},
 	})
