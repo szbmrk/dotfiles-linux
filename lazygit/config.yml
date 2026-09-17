@@ -1,7 +1,3 @@
-git:
-  diffRenderers:
-    - colorArg: always
-      command: delta --paging=never
 keybinding:
   universal:
     quit: 'ctrl+q'
