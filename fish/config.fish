@@ -19,6 +19,7 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 
 set PATH $PATH /home/szobo/.cargo/bin
 set PATH $PATH /home/szobo/.dotnet/tools
+set PATH $PATH /home/szobo/.elan/bin
 set PATH $PATH /home/szobo/.fly/bin
 set PATH $PATH /home/szobo/.local/bin
 set PATH $PATH /home/szobo/Android/Sdk/platform-tools
