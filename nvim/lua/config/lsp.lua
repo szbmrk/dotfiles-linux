@@ -7,6 +7,11 @@ local function get_python_path()
 end
 
 local lsp_configs = {
+	ocamllsp = {
+		cmd = { "ocamllsp" },
+		filetypes = { "ocaml", "ocamlinterface", "ocamllex", "menhir" },
+		root_markers = { "dune-project", "dune-workspace", ".git" },
+	},
 	pyright = {
 		cmd = { "pyright-langserver", "--stdio" },
 		filetypes = { "python" },

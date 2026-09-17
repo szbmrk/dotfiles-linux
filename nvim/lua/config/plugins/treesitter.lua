@@ -23,6 +23,7 @@ return {
 			"python",
 			"query",
 			"rust",
+			"ocaml",
 			"regex",
 			"toml",
 			"jsx",

@@ -77,6 +77,7 @@ function M.setup()
 			python = { "black", "ruff" },
 			go = { "gofmt" },
 			rust = { "rustfmt" },
+			ocaml = { "ocamlformat" },
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			cs = { "dotnet-format" },
