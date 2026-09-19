@@ -148,10 +148,6 @@ function make_python_proj
     _make_template_proj python python $argv
 end
 
-function make_java_proj
-    _make_template_proj java java $argv
-end
-
 function make_rust_proj
     _make_template_proj rust rust $argv
 end
