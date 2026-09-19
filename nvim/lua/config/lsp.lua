@@ -119,6 +119,11 @@ local lsp_configs = {
 		filetypes = { "qml", "qt" },
 		root_markers = { ".git" },
 	},
+	texlab = {
+		cmd = { "texlab" },
+		filetypes = { "tex", "plaintex", "bib" },
+		root_markers = { ".latexmkrc", "latexmkrc", ".git" },
+	},
 	omnisharp = {
 		cmd = { "/home/szobo/.local/bin/omnisharp/run", "--languageserver" },
 		filetypes = { "cs", "vb" },

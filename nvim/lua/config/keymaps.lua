@@ -89,7 +89,7 @@ set_keymap("n", "<leader>vd", vim.diagnostic.open_float)
 set_keymap("n", "<leader>vca", vim.lsp.buf.code_action)
 set_keymap("n", "gd", function()
 	local params = vim.lsp.util.make_position_params(0, "utf-8")
-	vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, ctx, _)
+	vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, _, _)
 		if err then
 			vim.notify("Error getting definition: " .. err.message, vim.log.levels.ERROR)
 			return
@@ -142,6 +142,10 @@ set_keymap("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
 set_keymap("n", "<leader>xl", "<cmd>Trouble lsp toggle<cr>")
 set_keymap("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
 set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
+
+-- Vimtex keymaps
+set_keymap("n", "<leader>lc", "<cmd>VimtexCompile<cr>")
+set_keymap("n", "<leader>lx", "<cmd>VimtexClean<cr>")
 
 set_keymap("x", "<leader>a", function()
 	vim.cmd('normal! "zy')

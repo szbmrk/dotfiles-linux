@@ -94,6 +94,8 @@ function M.setup()
 
 			php = { "php-cs-fixer" },
 			lua = { "stylua" },
+			tex = { "latexindent" },
+			plaintex = { "latexindent" },
 		},
 
 		format_on_save = {
