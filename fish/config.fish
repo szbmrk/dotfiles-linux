@@ -216,6 +216,58 @@ function make_rust_proj
     cd "$target"
 end
 
+function make_latex_proj
+    set -l projname $argv[1]
+    if test -z "$projname"
+        set projname (read -P "Project name: ")
+    end
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+    if string match -qr '(^\.{1,2}$|/)' -- "$projname"
+        echo "Error: use a project name, not a path."
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+    if test -e "$target"; or test -L "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    mkdir -p "$HOME/Projects"; or return 1
+    cp -r "$HOME/templates/latex" "$target"; or return 1
+    echo "Created new LaTeX project at $target"
+    cd "$target"
+end
+
+function make_beamer_proj
+    set -l projname $argv[1]
+    if test -z "$projname"
+        set projname (read -P "Project name: ")
+    end
+    if test -z "$projname"
+        echo "No project name given!"
+        return 1
+    end
+    if string match -qr '(^\.{1,2}$|/)' -- "$projname"
+        echo "Error: use a project name, not a path."
+        return 1
+    end
+
+    set -l target "$HOME/Projects/$projname"
+    if test -e "$target"; or test -L "$target"
+        echo "Error: $target already exists."
+        return 1
+    end
+
+    mkdir -p "$HOME/Projects"; or return 1
+    cp -r "$HOME/templates/beamer" "$target"; or return 1
+    echo "Created new Beamer project at $target"
+    cd "$target"
+end
+
 function herdr-clean
     for session in (herdr session list | awk '$1 ~ /^main/ {print $1}')
         herdr session stop $session
