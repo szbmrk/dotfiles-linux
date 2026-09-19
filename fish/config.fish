@@ -78,194 +78,90 @@ end
 # ===========================
 # Make template projects
 # ===========================
-function make_c_proj
-    set -l projname (read -P "Project name: ")
+function _make_template_proj --argument-names template label projname
+    if test -z "$projname"
+        read -P "Project name: " projname
+    end
     if test -z "$projname"
         echo "No project name given!"
         return 1
     end
 
-    set -l target "$HOME/Projects/$projname"
+    if string match -qr '(^\.{1,2}$|/)' -- "$projname"
+        echo "Error: use a project name, not a path."
+        return 1
+    end
 
-    if test -e "$target"
+    set -l target "$HOME/Projects/$projname"
+    if test -e "$target"; or test -L "$target"
         echo "Error: $target already exists."
         return 1
     end
 
-    cp -r "$HOME/templates/c" "$target"
-    mkdir "$target/include/$projname"
-    echo "Created new C project at $target"
+    mkdir -p "$HOME/Projects"; or return 1
+    cp -r "$HOME/templates/$template" "$target"; or return 1
 
-    set -l makefile_path "$target/Makefile"
-
-    if test -f "$makefile_path"
-        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
-        echo "Updated Makefile with project name."
-    else
-        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
+    switch "$template"
+        case c cpp
+            mkdir "$target/include/$projname"; or return 1
     end
-    cd "$target"
+    echo "Created new $label project at $target"
+
+    switch "$template"
+        case c cpp rust
+            set -l makefile_path "$target/Makefile"
+            if test -f "$makefile_path"
+                sed -i "1iPROJECT_NAME = $projname" "$makefile_path"; or return 1
+                echo "Updated Makefile with project name."
+            else
+                echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
+            end
+    end
+
+    if test "$template" = rust
+        set -l cargotoml_path "$target/Cargo.toml"
+        if test -f "$cargotoml_path"
+            sed -i "2iname = \"$projname\"" "$cargotoml_path"; or return 1
+            echo "Updated Cargo.toml with project name."
+        else
+            echo "Warning: Cargo.toml not found at '$cargotoml_path'. Skipping modification."
+        end
+    end
+
+    cd "$target"; or return 1
+    if test "$template" = python
+        uv venv .venv; or return 1
+        source ".venv/bin/activate.fish"; or return 1
+    end
+    return 0
+end
+
+function make_c_proj
+    _make_template_proj c C $argv
 end
 
 function make_cpp_proj
-    set -l projname (read -P "Project name: ")
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-
-    if test -e "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    cp -r "$HOME/templates/cpp" "$target"
-    mkdir "$target/include/$projname"
-    echo "Created new C++ project at $target"
-
-    set -l makefile_path "$target/Makefile"
-
-    if test -f "$makefile_path"
-        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
-        echo "Updated Makefile with project name."
-    else
-        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
-    end
-    cd "$target"
+    _make_template_proj cpp C++ $argv
 end
 
 function make_python_proj
-    set -l projname (read -P "Project name: ")
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-
-    if test -e "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    cp -r "$HOME/templates/python" "$target"
-    echo "Created new python project at $target"
-
-    cd "$target"
-
-    uv venv .venv
-    source ".venv/bin/activate.fish"
+    _make_template_proj python python $argv
 end
 
 function make_java_proj
-    set -l projname (read -P "Project name: ")
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-
-    if test -e "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    cp -r "$HOME/templates/java" "$target"
-    echo "Created new java project at $target"
-
-    cd "$target"
+    _make_template_proj java java $argv
 end
 
 function make_rust_proj
-    set -l projname (read -P "Project name: ")
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-
-    if test -e "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    cp -r "$HOME/templates/rust" "$target"
-    echo "Created new rust project at $target"
-
-    set -l makefile_path "$target/Makefile"
-
-    if test -f "$makefile_path"
-        sed -i "1iPROJECT_NAME = $projname" "$makefile_path"
-        echo "Updated Makefile with project name."
-    else
-        echo "Warning: Makefile not found at '$makefile_path'. Skipping modification."
-    end
-
-    set -l cargotoml_path "$target/Cargo.toml"
-
-    if test -f "$cargotoml_path"
-        sed -i "2iname = \"$projname\"" "$cargotoml_path"
-        echo "Updated Cargo.toml with project name."
-    else
-        echo "Warning: Cargo.toml not found at '$cargotoml_path'. Skipping modification."
-    end
-    cd "$target"
+    _make_template_proj rust rust $argv
 end
 
 function make_latex_proj
-    set -l projname $argv[1]
-    if test -z "$projname"
-        set projname (read -P "Project name: ")
-    end
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-    if string match -qr '(^\.{1,2}$|/)' -- "$projname"
-        echo "Error: use a project name, not a path."
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-    if test -e "$target"; or test -L "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    mkdir -p "$HOME/Projects"; or return 1
-    cp -r "$HOME/templates/latex" "$target"; or return 1
-    echo "Created new LaTeX project at $target"
-    cd "$target"
+    _make_template_proj latex LaTeX $argv
 end
 
 function make_beamer_proj
-    set -l projname $argv[1]
-    if test -z "$projname"
-        set projname (read -P "Project name: ")
-    end
-    if test -z "$projname"
-        echo "No project name given!"
-        return 1
-    end
-    if string match -qr '(^\.{1,2}$|/)' -- "$projname"
-        echo "Error: use a project name, not a path."
-        return 1
-    end
-
-    set -l target "$HOME/Projects/$projname"
-    if test -e "$target"; or test -L "$target"
-        echo "Error: $target already exists."
-        return 1
-    end
-
-    mkdir -p "$HOME/Projects"; or return 1
-    cp -r "$HOME/templates/beamer" "$target"; or return 1
-    echo "Created new Beamer project at $target"
-    cd "$target"
+    _make_template_proj beamer Beamer $argv
 end
 
 function herdr-clean
