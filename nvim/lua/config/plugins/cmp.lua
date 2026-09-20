@@ -61,7 +61,8 @@ return {
 					{ name = "cmdline" },
 				}),
 			})
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			require("cmp_nvim_lsp").default_capabilities()
 
 			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
