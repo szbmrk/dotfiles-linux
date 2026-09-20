@@ -56,6 +56,26 @@ local lsp_configs = {
 		cmd = { "vscode-json-language-server", "--stdio" },
 		filetypes = { "json" },
 		root_markers = { ".git" },
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
+	yamlls = {
+		cmd = { "yaml-language-server", "--stdio" },
+		filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
+		root_markers = { ".git" },
+		settings = {
+			yaml = {
+				schemaStore = {
+					enable = false,
+					url = "",
+				},
+				schemas = require("schemastore").yaml.schemas(),
+			},
+		},
 	},
 	tsserver = {
 		cmd = { "typescript-language-server", "--stdio" },
