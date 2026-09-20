@@ -44,12 +44,26 @@ set_keymap("v", "<C-d>", "y'>p", { silent = true })
 set_keymap("i", "<C-d>", "<Esc>yypa", { silent = true })
 
 -- Ctrl+A to select all
-set_keymap("n", "<C-a>", "ggVG", { silent = true })
-set_keymap("i", "<C-a>", "<Esc>ggVG", { silent = true })
+set_keymap("n", "<C-a>", function()
+	local scroll = require("snacks.scroll")
+	local scroll_enabled = scroll.enabled
+	if scroll_enabled then
+		scroll.disable()
+	end
 
--- Backspace to delete without yanking
-set_keymap("n", "<BS>", "x", { silent = true })
-set_keymap("v", "<BS>", "d", { silent = true })
+	local ok, err = pcall(function()
+		vim.cmd("normal! ggVG")
+		vim.cmd("redraw")
+	end)
+
+	if scroll_enabled then
+		scroll.enable()
+	end
+	if not ok then
+		error(err)
+	end
+end, { silent = true })
+set_keymap("i", "<C-a>", "<Esc><C-a>", { silent = true, remap = true })
 
 -- Ctrl+X to cut
 set_keymap("v", "<C-x>", "d", { silent = true })
