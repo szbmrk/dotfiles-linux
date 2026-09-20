@@ -8,6 +8,7 @@ set_keymap("", "<Esc>", "<Esc><cmd>noh<CR>", {
 
 -- Save file with Ctrl+S
 set_keymap("n", "<C-s>", ":w<CR>", { silent = true })
+set_keymap("v", "<C-s>", "<Esc>:w<CR>", { silent = true })
 set_keymap("i", "<C-s>", "<Esc>:w<CR>a", { silent = true })
 
 -- Undo with Ctrl+Z
@@ -43,8 +44,8 @@ set_keymap("v", "<C-d>", "y'>p", { silent = true })
 set_keymap("i", "<C-d>", "<Esc>yypa", { silent = true })
 
 -- Ctrl+A to select all
--- set_keymap("n", "<C-a>", "ggVG", { silent = true })
--- set_keymap("i", "<C-a>", "<Esc>ggVG", { silent = true })
+set_keymap("n", "<C-a>", "ggVG", { silent = true })
+set_keymap("i", "<C-a>", "<Esc>ggVG", { silent = true })
 
 -- Backspace to delete without yanking
 set_keymap("n", "<BS>", "x", { silent = true })
@@ -71,12 +72,6 @@ set_keymap("n", "<leader><Tab>", ":b#<CR>", { silent = true })
 -- Replace all in file
 set_keymap("n", "<leader>r", ":%s/", { silent = true })
 
--- Move to end/start of line
-set_keymap("n", "<S-Left>", "g^", { noremap = true })
-set_keymap("n", "<S-Right>", "g$", { noremap = true })
-set_keymap("i", "<S-Left>", "<Esc>g^i", { noremap = true })
-set_keymap("i", "<S-Right>", "<Esc>g$a", { noremap = true })
-
 -- LSP keymaps
 set_keymap("n", "<leader>vrr", vim.lsp.buf.references)
 set_keymap("i", "<F2>", vim.lsp.buf.rename)
@@ -86,7 +81,10 @@ set_keymap("n", "<C-h>", vim.lsp.buf.signature_help)
 set_keymap("i", "<C-h>", vim.lsp.buf.signature_help)
 set_keymap("n", "K", vim.lsp.buf.hover)
 set_keymap("n", "<leader>vd", vim.diagnostic.open_float)
-set_keymap("n", "<leader>vca", vim.lsp.buf.code_action)
+set_keymap("n", "<leader>vca", function()
+	require("tiny-code-action").code_action()
+end)
+
 set_keymap("n", "gd", function()
 	local params = vim.lsp.util.make_position_params(0, "utf-8")
 	vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, _, _)
@@ -146,15 +144,3 @@ set_keymap("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
 -- Vimtex keymaps
 set_keymap("n", "<leader>lc", "<cmd>VimtexCompile<cr>")
 set_keymap("n", "<leader>lx", "<cmd>VimtexClean<cr>")
-
-set_keymap("x", "<leader>a", function()
-	vim.cmd('normal! "zy')
-	local base = os.getenv("XDG_RUNTIME_DIR")
-	if not base or base == "" then
-		base = vim.fn.fnamemodify(vim.fn.tempname(), ":h")
-	end
-	local dir = base .. "/herdr-annotate-" .. vim.loop.getuid()
-	vim.fn.mkdir(dir, "p", "0700")
-	vim.fn.writefile(vim.split(vim.fn.getreg("z"), "\n"), dir .. "/selection")
-	vim.fn.jobstart({ "herdr", "plugin", "action", "invoke", "annotate.capture" })
-end, { desc = "Annotate in Herdr" })
