@@ -35,6 +35,7 @@ alias c="clear"
 alias claer="clear"
 alias vim="nvim"
 alias cat="bat"
+alias lg="lazygit"
 
 # ===========================
 # Functions
