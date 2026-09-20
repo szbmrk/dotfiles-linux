@@ -43,8 +43,7 @@ set_keymap("n", "<C-d>", "yyp", { silent = true })
 set_keymap("v", "<C-d>", "y'>p", { silent = true })
 set_keymap("i", "<C-d>", "<Esc>yypa", { silent = true })
 
--- Ctrl+A to select all
-set_keymap("n", "<C-a>", function()
+local function without_scroll(action)
 	local scroll = require("snacks.scroll")
 	local scroll_enabled = scroll.enabled
 	if scroll_enabled then
@@ -52,7 +51,7 @@ set_keymap("n", "<C-a>", function()
 	end
 
 	local ok, err = pcall(function()
-		vim.cmd("normal! ggVG")
+		action()
 		vim.cmd("redraw")
 	end)
 
@@ -62,8 +61,21 @@ set_keymap("n", "<C-a>", function()
 	if not ok then
 		error(err)
 	end
+end
+
+-- Ctrl+A to select all
+set_keymap("n", "<C-a>", function()
+	without_scroll(function()
+		vim.cmd("normal! ggVG")
+	end)
 end, { silent = true })
 set_keymap("i", "<C-a>", "<Esc><C-a>", { silent = true, remap = true })
+
+set_keymap("x", "o", function()
+	without_scroll(function()
+		vim.cmd("normal! o")
+	end)
+end, { silent = true })
 
 -- Ctrl+X to cut
 set_keymap("v", "<C-x>", "d", { silent = true })
