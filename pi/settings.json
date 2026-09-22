@@ -1,51 +1,51 @@
 {
-	"lastChangelogVersion": "0.86.1",
-	"theme": "catppuccin-mocha",
-	"defaultProvider": "openai-codex",
-	"defaultModel": "gpt-5.6-terra",
-	"editorPaddingX": 1,
-	"enableInstallTelemetry": false,
-	"packages": [
-		"npm:pi-mcp-adapter",
-		"npm:@plannotator/pi-extension",
-		"npm:@ff-labs/pi-fff",
-		"npm:@narumitw/pi-btw",
-		"npm:pi-web-access",
-		"npm:@juicesharp/rpiv-ask-user-question",
-		"npm:@narumitw/pi-usage",
-		"npm:pi-image-paste",
-		"git:github.com/jonjonrankin/pi-caveman",
-		"npm:@gotgenes/pi-permission-system",
-		"npm:@firstpick/pi-themes-bundle",
-		"npm:pi-rtk-optimizer"
-	],
-	"extensions": [
-		"./extensions/readonly.ts",
-		"./extensions/model-thinking-status.ts",
-		"./extensions/prompt-border-color.ts"
-	],
-	"images": {
-		"blockImages": false
-	},
-	"outputPad": 1,
-	"autocompleteMaxVisible": 7,
-	"defaultThinkingLevel": "high",
-	"enabledModels": [
-		"openai-codex/gpt-5.6-luna",
-		"openai-codex/gpt-5.6-terra",
-		"openai-codex/gpt-5.6-sol",
-		"openai-codex/gpt-6-astra"
-	],
-	"tuiMode": "fullscreen",
-	"defaultProjectTrust": "always",
-	"doubleEscapeAction": "tree",
-	"fullscreenScrollbar": "auto",
-	"terminal": {
-		"showTerminalProgress": false
-	},
-	"enableSkillCommands": true,
-	"steeringMode": "one-at-a-time",
-	"markdown": {
-		"mermaid": "streaming"
-	}
+  "lastChangelogVersion": "0.87.0",
+  "theme": "catppuccin-mocha",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-terra",
+  "editorPaddingX": 1,
+  "enableInstallTelemetry": false,
+  "packages": [
+    "npm:pi-mcp-adapter",
+    "npm:@plannotator/pi-extension",
+    "npm:@ff-labs/pi-fff",
+    "npm:@narumitw/pi-btw",
+    "npm:pi-web-access",
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:@narumitw/pi-usage",
+    "npm:pi-image-paste",
+    "git:github.com/jonjonrankin/pi-caveman",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:@firstpick/pi-themes-bundle",
+    "npm:pi-rtk-optimizer"
+  ],
+  "extensions": [
+    "./extensions/readonly.ts",
+    "./extensions/model-thinking-status.ts",
+    "./extensions/prompt-border-color.ts"
+  ],
+  "images": {
+    "blockImages": false
+  },
+  "outputPad": 1,
+  "autocompleteMaxVisible": 7,
+  "defaultThinkingLevel": "high",
+  "enabledModels": [
+    "openai-codex/gpt-5.6-luna",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-6-astra"
+  ],
+  "tuiMode": "fullscreen",
+  "defaultProjectTrust": "always",
+  "doubleEscapeAction": "tree",
+  "fullscreenScrollbar": "auto",
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "enableSkillCommands": true,
+  "steeringMode": "one-at-a-time",
+  "markdown": {
+    "mermaid": "streaming"
+  }
 }
