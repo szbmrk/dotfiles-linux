@@ -1,12 +1,11 @@
 {
-  "lastChangelogVersion": "0.99.1",
+  "lastChangelogVersion": "1.0.0",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-astra",
   "editorPaddingX": 1,
   "enableInstallTelemetry": false,
   "packages": [
-    "npm:pi-mcp-adapter",
     "npm:@plannotator/pi-extension",
     "npm:@ff-labs/pi-fff",
     "npm:@narumitw/pi-btw",
@@ -22,7 +21,8 @@
   "extensions": [
     "./extensions/readonly.ts",
     "./extensions/model-thinking-status.ts",
-    "./extensions/prompt-border-color.ts"
+    "./extensions/prompt-border-color.ts",
+    "-builtin:mcp"
   ],
   "images": {
     "blockImages": false
