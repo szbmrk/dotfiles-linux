@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "approvals": [
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "cloudflare-docs",
+      "definitionHash": "06d2301904f2868a6c81b3c2baa8d477d31944b0d37c19d90a00a912370f6f47",
+      "approvedAt": "2026-09-30T16:55:21.672Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "cloudflare-builds",
+      "definitionHash": "572d53e995c89d52a1e91440e63cbf42edc11951fe092c0812d4de4875465cb2",
+      "approvedAt": "2026-09-30T16:55:22.153Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "cloudflare-observability",
+      "definitionHash": "5ca86020b24c170c1ac0bb7060c003ad4c4db4032ab778b6c4f11892d9bed10c",
+      "approvedAt": "2026-09-30T16:55:22.626Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "figma",
+      "definitionHash": "6a1305ea93baba3fe6ffcfac0ffe856e3dcabc22f21a3536c717b2f5b3a514fe",
+      "approvedAt": "2026-09-30T16:55:23.867Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "dart",
+      "definitionHash": "a784376555e5070e7f07cf16145a14f2021843b5eb2453882187bed2b91909c2",
+      "approvedAt": "2026-09-30T16:55:24.199Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "shadcn",
+      "definitionHash": "3b4bc711eb7ee5226798f18ac5980cf33fc86cd646362f69156b721b364e5063",
+      "approvedAt": "2026-09-30T16:55:24.519Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "planetscale",
+      "definitionHash": "38406e9bac726d77cbceaaa4c95347780214ded8cafc91ecb3145e45d53041d4",
+      "approvedAt": "2026-09-30T16:55:24.760Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "aws",
+      "definitionHash": "816773161c7eb5c59ef504a4c6521b495bb550d9163c5194c2e5dcb1255b72f9",
+      "approvedAt": "2026-09-30T16:55:24.974Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "context7",
+      "definitionHash": "d65ca3b2c82c05e94354a6bf7f6eb59259fcf1dd72b47bc11b013fbcf3f522dc",
+      "approvedAt": "2026-09-30T16:55:39.991Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "workos",
+      "definitionHash": "2c1adeb3ba4ef27211dbaf398366baf50cda7ab7de72453b316e3995888c3e84",
+      "approvedAt": "2026-09-30T16:55:40.328Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "notion",
+      "definitionHash": "917700594df6b34244c964542dd7af796e1e9b8dc5ab1f76d8a6b45cb23b25f4",
+      "approvedAt": "2026-09-30T16:55:40.454Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/dddownload",
+      "serverName": "sentry",
+      "definitionHash": "6458e4a30ba7bf96cc1f70485e62757ed14f241b4b293ac7d5c471d53053bad7",
+      "approvedAt": "2026-09-30T16:55:40.624Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "context7",
+      "definitionHash": "c30bb63918ca53bf18369ef09352f33fe62c9e46056eacb90effab4861bdca48",
+      "approvedAt": "2026-10-01T17:51:16.661Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "shadcn",
+      "definitionHash": "7983bc532dced9bc6fbce5f839a5ae495f59771ca6aa6ffc42b1dacd80846a3b",
+      "approvedAt": "2026-10-01T17:51:16.998Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "next-devtools",
+      "definitionHash": "a734c79c239bea6c39bee307017b550b7d7cf12d7a2c3372b5d93d115eaf046a",
+      "approvedAt": "2026-10-01T17:51:17.161Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "drizzle",
+      "definitionHash": "633fc4d56201d9252235368d56c45c3c780e60d92887e552076e7d1fa9f3f306",
+      "approvedAt": "2026-10-01T17:51:17.312Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "notion",
+      "definitionHash": "917700594df6b34244c964542dd7af796e1e9b8dc5ab1f76d8a6b45cb23b25f4",
+      "approvedAt": "2026-10-01T17:51:17.456Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "Dart",
+      "definitionHash": "a784376555e5070e7f07cf16145a14f2021843b5eb2453882187bed2b91909c2",
+      "approvedAt": "2026-10-01T17:51:17.607Z"
+    },
+    {
+      "projectRoot": "/home/szobo/travlrd/hellobrand",
+      "serverName": "sentry",
+      "definitionHash": "6458e4a30ba7bf96cc1f70485e62757ed14f241b4b293ac7d5c471d53053bad7",
+      "approvedAt": "2026-10-01T17:51:17.890Z"
+    }
+  ]
+}

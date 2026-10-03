@@ -8,7 +8,7 @@ return {
 			lualine_b = {
 				"branch",
 				"diff",
-				{ "diagnostics", sources = { "nvim_workspace_diagnostic" } },
+				{ "diagnostics", sources = { "nvim_diagnostic" } },
 			},
 		},
 	},
