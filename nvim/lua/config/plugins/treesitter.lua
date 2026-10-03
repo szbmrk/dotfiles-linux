@@ -9,6 +9,7 @@ return {
 			"c",
 			"c_sharp",
 			"diff",
+			"haskell",
 			"html",
 			"javascript",
 			"jsdoc",

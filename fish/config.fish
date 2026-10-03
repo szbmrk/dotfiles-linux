@@ -16,6 +16,7 @@ set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux STARSHIP_CACHE /tmp
 set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 set -Ux XDG_CONFIG_HOME $HOME/.config
+set -ux GHCUP_INSTALL_BASE_PREFIX $HOME
 
 set PATH $PATH /home/szobo/.cargo/bin
 set PATH $PATH /home/szobo/.dotnet/tools
@@ -26,6 +27,7 @@ set PATH $PATH /home/szobo/Android/Sdk/platform-tools
 set PATH $PATH /home/szobo/go/bin
 set PATH $PATH /home/szobo/kotlin/kotlinc/bin
 set PATH $PATH /home/szobo/kotlin-lsp/bin
+set PATH $PATH /home/szobo/.cabal/bin
 set PATH $PATH /usr/lib/jvm/java-21-temurin-jdk/bin
 set PATH $PATH /usr/local/go/bin
 set PATH $PATH $JAVA_HOME
@@ -238,3 +240,5 @@ end
 # This section can be safely removed at any time if needed.
 test -r '/home/szobo/.opam/opam-init/init.fish' && source '/home/szobo/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
 # END opam configuration
+
+fish_add_path --prepend --move $HOME/.ghcup/bin

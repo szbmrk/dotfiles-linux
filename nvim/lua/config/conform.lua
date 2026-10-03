@@ -76,6 +76,7 @@ function M.setup()
 		formatters_by_ft = {
 			python = { "black", "ruff" },
 			go = { "gofmt" },
+			haskell = { "ormolu" },
 			rust = { "rustfmt" },
 			ocaml = { "ocamlformat" },
 			c = { "clang-format" },

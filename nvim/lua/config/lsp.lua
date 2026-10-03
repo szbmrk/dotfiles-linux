@@ -7,6 +7,17 @@ local function get_python_path()
 end
 
 local lsp_configs = {
+	hls = {
+		cmd = { "haskell-language-server-wrapper", "--lsp" },
+		filetypes = { "haskell", "lhaskell" },
+		root_markers = { "hie.yaml", "cabal.project", "stack.yaml", ".git" },
+		workspace_required = false,
+		settings = {
+			haskell = {
+				formattingProvider = "ormolu",
+			},
+		},
+	},
 	ocamllsp = {
 		cmd = { "ocamllsp" },
 		filetypes = { "ocaml", "ocamlinterface", "ocamllex", "menhir" },
