@@ -47,9 +47,9 @@ opt.backup = false
 opt.undofile = true
 opt.undolevels = 10000
 
--- Enable line wrapping for markdown files
+-- Enable line wrapping for markdown and latex files
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
+	pattern = { "markdown", "tex" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.keymap.set("n", "<Down>", "gj", { noremap = true })

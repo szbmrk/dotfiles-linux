@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.0.0",
+  "lastChangelogVersion": "1.0.2",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-astra",
@@ -16,7 +16,8 @@
     "git:github.com/jonjonrankin/pi-caveman",
     "npm:@gotgenes/pi-permission-system",
     "npm:@firstpick/pi-themes-bundle",
-    "npm:pi-rtk-optimizer"
+    "npm:pi-rtk-optimizer",
+    "npm:pi-mcp-adapter"
   ],
   "extensions": [
     "./extensions/readonly.ts",

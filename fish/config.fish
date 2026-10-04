@@ -16,7 +16,7 @@ set -Ux PROJECTS_DIR $HOME/Projects
 set -Ux STARSHIP_CACHE /tmp
 set -Ux STARSHIP_CONFIG $HOME/.config/starship/starship.toml
 set -Ux XDG_CONFIG_HOME $HOME/.config
-set -ux GHCUP_INSTALL_BASE_PREFIX $HOME
+set -gx GHCUP_INSTALL_BASE_PREFIX $HOME
 
 set PATH $PATH /home/szobo/.cargo/bin
 set PATH $PATH /home/szobo/.dotnet/tools
