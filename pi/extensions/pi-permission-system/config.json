@@ -9,6 +9,7 @@
 			"~/.ssh/*": "deny"
 		},
 		"bash": {
+			"*": "allow",
 			"rm -rf *": "deny",
 			"sudo *": "ask",
 			"git clone *": "ask",
