@@ -1,1 +1,77 @@
-{}
+{
+  "mcp__dart|https://mcp.dartai.com/mcp": {
+    "serverUrl": "https://mcp.dartai.com/mcp",
+    "discovery": {
+      "authorizationServerUrl": "https://mcp.dartai.com/",
+      "authorizationServerMetadata": {
+        "issuer": "https://mcp.dartai.com/",
+        "authorization_endpoint": "https://mcp.dartai.com/authorize",
+        "token_endpoint": "https://mcp.dartai.com/token",
+        "registration_endpoint": "https://mcp.dartai.com/register",
+        "scopes_supported": [
+          "read",
+          "write"
+        ],
+        "response_types_supported": [
+          "code"
+        ],
+        "grant_types_supported": [
+          "authorization_code",
+          "refresh_token"
+        ],
+        "token_endpoint_auth_methods_supported": [
+          "client_secret_post",
+          "client_secret_basic",
+          "private_key_jwt",
+          "none"
+        ],
+        "service_documentation": "https://help.dartai.com/en/articles/10733406-dart-mcp",
+        "code_challenge_methods_supported": [
+          "S256"
+        ],
+        "client_id_metadata_document_supported": true
+      },
+      "resourceMetadata": {
+        "resource": "https://mcp.dartai.com/mcp",
+        "authorization_servers": [
+          "https://mcp.dartai.com/"
+        ],
+        "scopes_supported": [
+          "read",
+          "write"
+        ],
+        "bearer_methods_supported": [
+          "header"
+        ]
+      },
+      "resourceMetadataUrl": "https://mcp.dartai.com/.well-known/oauth-protected-resource/mcp"
+    },
+    "clientInformation": {
+      "redirect_uris": [
+        "http://127.0.0.1:33049/callback"
+      ],
+      "token_endpoint_auth_method": "none",
+      "grant_types": [
+        "authorization_code",
+        "refresh_token"
+      ],
+      "response_types": [
+        "code"
+      ],
+      "scope": "read write",
+      "client_name": "pi",
+      "client_id": "7eef11f1-d125-4db6-aba5-2fb5fd93480d",
+      "client_id_issued_at": 1792146892
+    },
+    "oauthState": "26e0d6804bef55d8b0b4696af9ced8f3fd9f5c6ed92412da4be5cb0416d46e14",
+    "codeVerifier": "3x8ocVhAkQA0PSTbQeLLEsMN1JM49uaHwzwn_IyJkLI",
+    "tokens": {
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21jcC5kYXJ0YWkuY29tLyIsImF1ZCI6Imh0dHBzOi8vbWNwLmRhcnRhaS5jb20vbWNwIiwiY2xpZW50X2lkIjoiN2VlZjExZjEtZDEyNS00ZGI2LWFiYTUtMmZiNWZkOTM0ODBkIiwic2NvcGUiOiJyZWFkIHdyaXRlIiwiZXhwIjoxNzkyMTgyODk4LCJpYXQiOjE3OTIxNDY4OTgsImp0aSI6IjFWMmNqRFg5Y1ZYSGwzTEppU2JFTGw1ajhDdGxGSHNTOVo3SGtZcFY3TFEifQ.NBQFGZwHMSYFMI2dip6g-CjwC2nZZj6A_btos05CPVw",
+      "token_type": "Bearer",
+      "expires_in": 36000,
+      "scope": "read write",
+      "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL21jcC5kYXJ0YWkuY29tLyIsImF1ZCI6Imh0dHBzOi8vbWNwLmRhcnRhaS5jb20vbWNwIiwiY2xpZW50X2lkIjoiN2VlZjExZjEtZDEyNS00ZGI2LWFiYTUtMmZiNWZkOTM0ODBkIiwic2NvcGUiOiJyZWFkIHdyaXRlIiwiZXhwIjoxODIzNjgyODk4LCJpYXQiOjE3OTIxNDY4OTgsImp0aSI6IlY4LXVCczlDZ0tIeUFZcFVDdk1COS10c1lkY2FoZnJ0M3VIN2UyMEhVQmciLCJ0b2tlbl91c2UiOiJyZWZyZXNoIn0.ra4YgTsR-suac0V76oasq7YQb05Jb9GXY3ooIOUWCqg"
+    },
+    "tokensExpireAt": 1792182898846
+  }
+}

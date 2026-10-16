@@ -2,6 +2,9 @@
   "mcpServers": {
     "context7": {
       "url": "https://mcp.context7.com/mcp"
+    },
+    "dart": {
+      "url": "https://mcp.dartai.com/mcp"
     }
   }
 }
