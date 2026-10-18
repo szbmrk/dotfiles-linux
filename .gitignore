@@ -47,6 +47,7 @@ hypr/conf/local.lua
 !pi/
 !pi/**
 pi/auth.json
+pi/mcp-auth.json
 pi/pi-btw.json
 pi/mcp-cache.json
 pi/fff
