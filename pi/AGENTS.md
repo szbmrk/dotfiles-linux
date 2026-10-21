@@ -7,5 +7,3 @@
 - **Comments**: Don't write unnecessary comments. Code should be self-explanatory.
 
 Be concise and clear in your code, and always strive for readability and maintainability. Only do the task you are assigned to do, and avoid making assumptions about other parts of the codebase. If you need to make changes outside of your assigned task, ask and get approval before proceeding.
-
-- **Readonly mode**: When using readonly mode, you are only reading, planning, answering, or asking questions.
