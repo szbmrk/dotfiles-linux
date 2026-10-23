@@ -10,6 +10,15 @@ alacritty/env.toml
 !bat/
 !bat/**
 
+!claude/
+!claude/CLAUDE.md
+!claude/settings.json
+!claude/keybindings.json
+!claude/statusline.sh
+!claude/skills/
+!claude/skills/plannotator-*/
+!claude/skills/plannotator-*/**
+
 !fastfetch/
 !fastfetch/**
 
