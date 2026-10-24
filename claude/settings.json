@@ -48,5 +48,18 @@
   "theme": "dark-ansi",
   "preferredNotifChannel": "auto",
   "autoContinueAtUsageLimit": false,
-  "fileCheckpointingEnabled": true
+  "fileCheckpointingEnabled": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ]
+  }
 }
