@@ -1,46 +1,52 @@
 {
-	"permissions": {
-		"allow": ["Bash", "Read", "Edit", "Write", "WebFetch"],
-		"deny": [
-			"Read(~/.ssh/**)",
-			"Edit(~/.ssh/**)",
-			"Bash(rm -rf *)",
-			"Bash(git commit *)",
-			"Bash(git push *)"
-		],
-		"ask": [
-			"Read(**/*.env)",
-			"Read(**/*.env.*)",
-			"Edit(**/*.env)",
-			"Edit(**/*.env.*)",
-			"Bash(sudo *)",
-			"Bash(git clone *)",
-			"Bash(git checkout *)",
-			"Bash(pnpm add *)",
-			"Bash(npm install *)",
-			"Bash(pnpm db*)"
-		],
-		"defaultMode": "auto"
-	},
-	"statusLine": {
-		"type": "command",
-		"command": "~/.claude/statusline.sh",
-		"refreshInterval": 30
-	},
-	"modelSettings": {
-		"claude-opus-5-5": {
-			"effortLevel": "medium"
-		},
-		"claude-sonnet-5-5": {
-			"effortLevel": "high"
-		}
-	},
-	"promptSuggestionEnabled": false,
-	"tui": "fullscreen",
-	"timeFormat": "24-hour",
-	"theme": "dark-ansi",
-	"preferredNotifChannel": "auto",
-	"autoContinueAtUsageLimit": false,
-	"fileCheckpointingEnabled": true,
-	"model": "opus"
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "WebFetch"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Edit(~/.ssh/**)",
+      "Bash(rm -rf *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ],
+    "ask": [
+      "Read(**/*.env)",
+      "Read(**/*.env.*)",
+      "Edit(**/*.env)",
+      "Edit(**/*.env.*)",
+      "Bash(sudo *)",
+      "Bash(git clone *)",
+      "Bash(git checkout *)",
+      "Bash(pnpm add *)",
+      "Bash(npm install *)",
+      "Bash(pnpm db*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "refreshInterval": 30
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "promptSuggestionEnabled": false,
+  "tui": "fullscreen",
+  "timeFormat": "24-hour",
+  "theme": "dark-ansi",
+  "preferredNotifChannel": "auto",
+  "autoContinueAtUsageLimit": false,
+  "fileCheckpointingEnabled": true
 }
