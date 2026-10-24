@@ -8,11 +8,13 @@
       "WebFetch"
     ],
     "deny": [
-      "Read(~/.ssh/**)",
-      "Edit(~/.ssh/**)",
-      "Bash(rm -rf *)",
       "Bash(git commit *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(rm -rf *)",
+      "Bash(rtk git commit *)",
+      "Bash(rtk git push *)",
+      "Edit(~/.ssh/**)",
+      "Read(~/.ssh/**)"
     ],
     "ask": [
       "Read(**/*.env)",
