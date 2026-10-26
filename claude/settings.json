@@ -64,5 +64,8 @@
   "editorMode": "normal",
   "preferredNotifChannel": "auto",
   "autoContinueAtUsageLimit": false,
-  "fileCheckpointingEnabled": true
+  "fileCheckpointingEnabled": true,
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true
+  }
 }
