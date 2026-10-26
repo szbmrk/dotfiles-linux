@@ -41,6 +41,10 @@ alacritty/env.toml
 hypr/conf/local.conf
 hypr/conf/local.lua
 
+!hyprwhspr/
+!hyprwhspr/theme/
+!hyprwhspr/theme/**
+
 !lazygit/
 !lazygit/**
 

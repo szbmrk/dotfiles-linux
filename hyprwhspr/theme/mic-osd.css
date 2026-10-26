@@ -1,0 +1,11 @@
+/* Catppuccin Mocha */
+@define-color background-color #1e1e2ef2;
+@define-color border-color #89b4fa;
+@define-color bar-color-left #74c7ec;
+@define-color bar-color-right #89b4fa;
+@define-color text-color #cdd6f4;
+@define-color recording-dot #f38ba8;
+@define-color paused-dot #f9e2af;
+@define-color processing-dot #94e2d5;
+@define-color error-dot #eba0ac;
+@define-color success-dot #a6e3a1;
