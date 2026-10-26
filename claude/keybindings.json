@@ -53,7 +53,8 @@
 				"ctrl+s": "chat:stash",
 				"ctrl+v": "chat:imagePaste",
 				"space": "voice:pushToTalk",
-				"ctrl+k": "command:clear"
+				"ctrl+k": "command:clear",
+				"ctrl+p": "command:model"
 			}
 		},
 		{
