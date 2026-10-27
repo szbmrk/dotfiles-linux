@@ -49,6 +49,10 @@
     "command": "~/.claude/statusline.sh",
     "refreshInterval": 30
   },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "medium"
@@ -65,7 +69,5 @@
   "preferredNotifChannel": "auto",
   "autoContinueAtUsageLimit": false,
   "fileCheckpointingEnabled": true,
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true
-  }
+  "idleCompaction": false
 }
