@@ -93,7 +93,7 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 
-hl.bind("mouse:276", hl.dsp.pass({ window = "class:^(discord)$" }), { submap_universal = true })
+hl.bind("mouse:276", hl.dsp.global("discord:discord-toggle-mute"), { submap_universal = true })
 
 hl.bind(
 	"SUPER + SHIFT + D",
