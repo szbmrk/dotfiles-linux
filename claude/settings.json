@@ -44,6 +44,9 @@
       }
     ]
   },
+  "worktree": {
+    "baseRef": "fresh"
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
@@ -51,8 +54,10 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
   },
+  "feedbackDrafts": "notify",
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "medium"
@@ -67,7 +72,8 @@
   "theme": "dark-ansi",
   "editorMode": "normal",
   "preferredNotifChannel": "auto",
+  "idleCompaction": false,
   "autoContinueAtUsageLimit": false,
   "fileCheckpointingEnabled": true,
-  "idleCompaction": false
+  "inputNeededNotifEnabled": true
 }
