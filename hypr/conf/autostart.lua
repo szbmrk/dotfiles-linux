@@ -1,4 +1,5 @@
 hl.on("hyprland.start", function()
+	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("systemctl --user start hyprland-session.target")
 	hl.exec_cmd("awww-daemon")
