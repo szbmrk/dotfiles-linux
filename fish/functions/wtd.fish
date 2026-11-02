@@ -1,28 +1,18 @@
-function wtd --description 'Remove the worktree for [branch] (default: current one) and its local branch'
-    if test (count $argv) -gt 1
-        echo "usage: wtd [branch]"
-        return 1
-    end
-
-    set branch $argv[1]
-    if test -z "$branch"
-        set branch (git branch --show-current 2>/dev/null)
-    end
-
-    set paths (__wt_paths $branch)
+function wtd --description 'Remove the current worktree and its local branch'
+    set dir (git rev-parse --show-toplevel 2>/dev/null)
     or begin
         echo "wtd: not inside a git repo"
         return 1
     end
-    set root $paths[1]
-    set dir $paths[2]
+    set root (dirname (git rev-parse --path-format=absolute --git-common-dir))
+    set branch (git branch --show-current)
 
-    if not test -d $dir
-        echo "wtd: no worktree at $dir"
+    if test $dir = $root
+        echo "wtd: $dir is the main checkout, not a worktree"
         return 1
     end
 
-    if test -n "$(git -C $dir status --porcelain)"
+    if test -n "$(git status --porcelain)"
         echo "wtd: $dir has uncommitted changes"
         return 1
     end
@@ -34,6 +24,8 @@ function wtd --description 'Remove the worktree for [branch] (default: current o
     cd $root
     git worktree remove $dir
     or return 1
-    git branch -D $branch
+    if test -n "$branch"
+        git branch -D $branch
+    end
     git fetch --prune --quiet
 end
