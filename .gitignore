@@ -26,6 +26,8 @@ alacritty/env.toml
 
 !fish/
 !fish/config.fish
+!fish/functions/
+!fish/functions/**
 
 # !gtk-3.0/
 # !gtk-3.0/**
