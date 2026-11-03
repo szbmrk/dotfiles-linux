@@ -37,7 +37,7 @@ function wt --description 'Open a git worktree for <branch> [base] in the curren
     cd $dir
     tmux rename-window server
 
-    for spec in 'nvim:nvim .' 'lg:lazygit' 'cc:claude'
+    for spec in 'nvim:nvim .' 'claude:claude' 'lazygit:lazygit'
         set parts (string split -m1 : -- $spec)
         set window (tmux new-window -d -P -F '#{window_id}' -n $parts[1] -c $dir)
         tmux send-keys -t $window $parts[2] Enter
