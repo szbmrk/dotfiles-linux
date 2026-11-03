@@ -18,6 +18,14 @@ function wtd --description 'Remove the current worktree and its local branch'
     end
 
     if set -q TMUX
+        set current (tmux display-message -p '#{window_id}')
+        for line in (tmux list-panes -s -F '#{window_id} #{pane_current_path}')
+            set parts (string split -m1 ' ' -- $line)
+            test $parts[1] = $current; and continue
+            if string match -q -- "$dir" $parts[2]; or string match -q -- "$dir/*" $parts[2]
+                tmux kill-window -t $parts[1] 2>/dev/null
+            end
+        end
         tmux set-window-option automatic-rename on
     end
 
