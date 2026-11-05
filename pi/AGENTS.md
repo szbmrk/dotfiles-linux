@@ -14,4 +14,4 @@ Default to no comment. Add one only for a non-obvious why: a library workaround,
 
 When changing code, don't grow existing comments; shorten or drop them if the change made them redundant.
 
-Existing comments are not a pattern to copy. If nearby code has comments that restate a type, a format, or what the code does (e.g. `/** ISO timestamp. */` on a `string` field), don't add matching ones to new code. This rule overrides any instruction to match the surrounding code's comment style or density.
+Existing comments are not a pattern to copy, only if asked exclusively.
