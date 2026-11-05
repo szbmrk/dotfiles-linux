@@ -1,79 +1,73 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash",
-      "Read",
-      "Edit",
-      "Write",
-      "WebFetch"
-    ],
-    "deny": [
-      "Bash(git commit *)",
-      "Bash(git push *)",
-      "Bash(rm -rf *)",
-      "Bash(rtk git commit *)",
-      "Bash(rtk git push *)",
-      "Edit(~/.ssh/**)",
-      "Read(~/.ssh/**)"
-    ],
-    "ask": [
-      "Read(**/*.env)",
-      "Read(**/*.env.*)",
-      "Edit(**/*.env)",
-      "Edit(**/*.env.*)",
-      "Bash(sudo *)",
-      "Bash(git clone *)",
-      "Bash(git checkout *)",
-      "Bash(pnpm add *)",
-      "Bash(npm install *)",
-      "Bash(pnpm db*)"
-    ],
-    "defaultMode": "auto"
-  },
-  "model": "opus",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
-          }
-        ]
-      }
-    ]
-  },
-  "worktree": {
-    "baseRef": "fresh"
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "refreshInterval": 30
-  },
-  "enabledPlugins": {
-    "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
-  },
-  "feedbackDrafts": "notify",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    },
-    "claude-sonnet-5-5": {
-      "effortLevel": "high"
-    }
-  },
-  "promptSuggestionEnabled": false,
-  "tui": "fullscreen",
-  "timeFormat": "24-hour",
-  "theme": "dark-ansi",
-  "editorMode": "normal",
-  "preferredNotifChannel": "auto",
-  "idleCompaction": false,
-  "autoContinueAtUsageLimit": false,
-  "fileCheckpointingEnabled": true,
-  "inputNeededNotifEnabled": true
+	"permissions": {
+		"allow": ["Bash", "Read", "Edit", "Write", "WebFetch"],
+		"deny": [
+			"Bash(git commit *)",
+			"Bash(git push *)",
+			"Bash(rm -rf *)",
+			"Bash(rtk git commit *)",
+			"Bash(rtk git push *)",
+			"Edit(~/.ssh/**)",
+			"Read(~/.ssh/**)"
+		],
+		"ask": [
+			"Read(**/*.env)",
+			"Read(**/*.env.*)",
+			"Edit(**/*.env)",
+			"Edit(**/*.env.*)",
+			"Bash(sudo *)",
+			"Bash(git clone *)",
+			"Bash(git checkout *)",
+			"Bash(pnpm add *)",
+			"Bash(npm install *)",
+			"Bash(pnpm db*)"
+		],
+		"defaultMode": "auto"
+	},
+	"model": "opus",
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "rtk hook claude"
+					}
+				]
+			}
+		]
+	},
+	"worktree": {
+		"baseRef": "fresh"
+	},
+	"statusLine": {
+		"type": "command",
+		"command": "~/.claude/statusline.sh",
+		"refreshInterval": 30
+	},
+	"enabledPlugins": {
+		"typescript-lsp@claude-plugins-official": true,
+		"pyright-lsp@claude-plugins-official": true,
+		"figma@claude-plugins-official": true
+	},
+	"feedbackDrafts": "notify",
+	"modelSettings": {
+		"claude-opus-5-5": {
+			"effortLevel": "medium"
+		},
+		"claude-sonnet-5-5": {
+			"effortLevel": "high"
+		}
+	},
+	"promptSuggestionEnabled": false,
+	"tui": "fullscreen",
+	"timeFormat": "24-hour",
+	"theme": "dark-ansi",
+	"editorMode": "normal",
+	"preferredNotifChannel": "auto",
+	"idleCompaction": false,
+	"autoContinueAtUsageLimit": false,
+	"fileCheckpointingEnabled": true,
+	"inputNeededNotifEnabled": true
 }
