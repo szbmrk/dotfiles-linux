@@ -1,9 +1,13 @@
 [Unit]
 Description=Set motherboard RGB color
+StartLimitIntervalSec=120
+StartLimitBurst=20
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/openrgb -d "B650M AORUS ELITE" -m static -c FF6A40
+Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=default.target
