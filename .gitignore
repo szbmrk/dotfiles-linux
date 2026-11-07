@@ -95,6 +95,10 @@ pi/mcp-npx-cache.json
 !swaync/
 !swaync/**
 
+!systemd/
+!systemd/user/
+!systemd/user/openrgb-motherboard.service
+
 !tmux/
 !tmux/**
 tmux/plugins

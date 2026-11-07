@@ -1,0 +1,9 @@
+[Unit]
+Description=Set motherboard RGB color
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/openrgb -d "B650M AORUS ELITE" -m static -c FF6A40
+
+[Install]
+WantedBy=default.target
