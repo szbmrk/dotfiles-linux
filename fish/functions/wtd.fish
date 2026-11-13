@@ -1,4 +1,4 @@
-function wtd --description 'Remove the current worktree and its local branch'
+function wtd --description 'Remove the current worktree, its local branch and its tmux session'
     set dir (git rev-parse --show-toplevel 2>/dev/null)
     or begin
         echo "wtd: not inside a git repo"
@@ -17,16 +17,24 @@ function wtd --description 'Remove the current worktree and its local branch'
         return 1
     end
 
-    if set -q TMUX
-        set current (tmux display-message -p '#{window_id}')
-        for line in (tmux list-panes -s -F '#{window_id} #{pane_current_path}')
-            set parts (string split -m1 ' ' -- $line)
-            test $parts[1] = $current; and continue
-            if string match -q -- "$dir" $parts[2]; or string match -q -- "$dir/*" $parts[2]
-                tmux kill-window -t $parts[1] 2>/dev/null
-            end
+    if test -n "$branch"; and test "$(git for-each-ref --format='%(upstream:track)' refs/heads/$branch)" != '[gone]'
+        set unpushed (git rev-list --count $branch --not --remotes)
+        if test $unpushed -gt 0
+            read -l -P "wtd: $branch has $unpushed commits on no remote. Delete anyway? [y/N] " answer
+            or return 1
+            string match -qi y -- $answer
+            or return 1
         end
-        tmux set-window-option automatic-rename on
+    end
+
+    set session (__wt_session $dir)
+    set -q TMUX
+    and set current (tmux display-message -p '#S')
+
+    if test "$current" = $session
+        tmux kill-window -a
+    else
+        tmux kill-session -t "=$session" 2>/dev/null
     end
 
     cd $root
@@ -36,4 +44,8 @@ function wtd --description 'Remove the current worktree and its local branch'
         git branch -D $branch
     end
     git fetch --prune --quiet
+
+    if test "$current" = $session
+        tmux kill-session -t "=$session"
+    end
 end
