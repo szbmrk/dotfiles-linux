@@ -18,9 +18,8 @@ Existing comments are not a pattern to copy, only if asked exclusively.
 Apply this section only when running in the pi harness, i.e. the `ffgrep`, `fffind` and `codemode` tools are available. Ignore it otherwise.
 
 - The bash tool already runs in the project cwd; never prefix commands with `cd` to it.
-- Use `read` to view files, never `cat`/`head`/`tail`/`sed` via bash.
-- Use `ffgrep`/`fffind` for searching instead of `grep`/`rg`/`find` via bash.
-- Use `codemode` to batch independent tool calls or filter large output.
+- Use `read` to view files, never `cat`/`head`/`tail`/`sed` via bash; rtk may truncate bash output, and `edit` needs exact text.
+- Use `codemode` to batch non-bash tool calls (web search, fetches, MCP servers like context7); bash loops are fine for shell work.
 
 ## Commits
 
