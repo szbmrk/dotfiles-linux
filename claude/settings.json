@@ -54,8 +54,7 @@
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true
   },
   "feedbackDrafts": "notify",
   "modelSettings": {
