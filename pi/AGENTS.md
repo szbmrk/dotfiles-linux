@@ -20,7 +20,8 @@ Apply this section only when running in the pi harness, i.e. the `ffgrep`, `fffi
 - The bash tool already runs in the project cwd; never prefix commands with `cd` to it.
 - Use `read` to view files, never `cat`/`head`/`tail`/`sed` via bash; rtk may truncate bash output, and `edit` needs exact text.
 - Use `codemode` to batch non-bash tool calls (web search, fetches, MCP servers like context7); bash loops are fine for shell work.
+- For library or framework API questions, check context7 via codemode before answering from memory.
 
 ## Commits
 
-The user makes every commit. When work reaches a commit point, give a one-line commit title in a code block, with no body, and leave `git commit` to them.
+The user makes every commit. Never run `git commit` yourself.
