@@ -13,6 +13,15 @@ When changing code, don't grow existing comments; shorten or drop them if the ch
 
 Existing comments are not a pattern to copy, only if asked exclusively.
 
+## Tool usage (pi only)
+
+Apply this section only when running in the pi harness, i.e. the `ffgrep`, `fffind` and `codemode` tools are available. Ignore it otherwise.
+
+- The bash tool already runs in the project cwd; never prefix commands with `cd` to it.
+- Use `read` to view files, never `cat`/`head`/`tail`/`sed` via bash.
+- Use `ffgrep`/`fffind` for searching instead of `grep`/`rg`/`find` via bash.
+- Use `codemode` to batch independent tool calls or filter large output.
+
 ## Commits
 
 The user makes every commit. When work reaches a commit point, give a one-line commit title in a code block, with no body, and leave `git commit` to them.

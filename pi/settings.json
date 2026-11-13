@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.5.0",
+  "lastChangelogVersion": "1.5.2",
   "theme": "catppuccin-mocha",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-astra",
@@ -27,7 +27,8 @@
     "npm:@firstpick/pi-themes-bundle",
     "npm:pi-rtk-optimizer",
     "npm:pi-mcp-adapter",
-    "https://github.com/earendil-works/pi-claude-code"
+    "https://github.com/earendil-works/pi-claude-code",
+    "git:github.com/dmmulroy/pi-claude-cli"
   ],
   "extensions": [
     "./extensions/readonly.ts",
@@ -44,7 +45,7 @@
   "defaultThinkingLevel": "medium",
   "enabledModels": [
     "claude-code/claude-opus-5-5",
-    "claude-code/claude-sonnet-5-5"
+    "claude-code/claude-fable-5-2"
   ],
   "tuiMode": "fullscreen",
   "defaultProjectTrust": "always",
@@ -63,7 +64,7 @@
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0",
     "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0",
     "{\"source\":\"npm:pi-rtk-optimizer\",\"scope\":\"user\"}": "0.9.0",
-    "{\"source\":\"npm:@narumitw/pi-btw\",\"scope\":\"user\"}": "0.63.4",
-    "{\"source\":\"npm:@narumitw/pi-usage\",\"scope\":\"user\"}": "0.69.2"
+    "{\"source\":\"npm:@narumitw/pi-btw\",\"scope\":\"user\"}": "0.63.8",
+    "{\"source\":\"npm:@narumitw/pi-usage\",\"scope\":\"user\"}": "0.69.3"
   }
 }
