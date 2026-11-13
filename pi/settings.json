@@ -27,8 +27,7 @@
     "npm:@firstpick/pi-themes-bundle",
     "npm:pi-rtk-optimizer",
     "npm:pi-mcp-adapter",
-    "https://github.com/earendil-works/pi-claude-code",
-    "git:github.com/dmmulroy/pi-claude-cli"
+    "https://github.com/earendil-works/pi-claude-code"
   ],
   "extensions": [
     "./extensions/readonly.ts",
