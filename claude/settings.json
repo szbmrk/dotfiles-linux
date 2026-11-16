@@ -23,7 +23,6 @@
       "Edit(**/*.env.*)",
       "Bash(sudo *)",
       "Bash(git clone *)",
-      "Bash(git checkout *)",
       "Bash(pnpm add *)",
       "Bash(npm install *)",
       "Bash(pnpm db*)"
@@ -59,7 +58,7 @@
   "feedbackDrafts": "notify",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "medium"
     },
     "claude-sonnet-5-5": {
       "effortLevel": "high"

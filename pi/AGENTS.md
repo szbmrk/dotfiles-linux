@@ -13,16 +13,6 @@ When changing code, don't grow existing comments; shorten or drop them if the ch
 
 Existing comments are not a pattern to copy, only if asked exclusively.
 
-## Tool usage (pi only)
-
-Apply this section only when running in the pi harness, i.e. the `ffgrep`, `fffind` and `codemode` tools are available. Ignore it otherwise.
-
-- The bash tool already runs in the project cwd; never prefix commands with `cd` to it.
-- Use `read` to view files, never `cat`/`head`/`tail`/`sed` via bash; rtk may truncate bash output, and `edit` needs exact text.
-- Use `codemode` to batch non-bash tool calls (web search, fetches, MCP servers like context7); bash loops are fine for shell work.
-- For library or framework API questions, check context7 via codemode before answering from memory.
-- pi has no auto-memory. When the user corrects you or states a durable project-specific preference, add it as a short rule to the project's `.pi/APPEND_SYSTEM.md` and tell the user. Create the file if missing and make sure `.pi/` is in `.git/info/exclude`. Put cross-project preferences in this file instead, after asking.
-
 ## Commits
 
 The user makes every commit. Never run `git commit` yourself.
