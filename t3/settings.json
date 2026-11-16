@@ -26,6 +26,10 @@
       "modelOrder": []
     }
   },
+  "storageCleanup": {
+    "worktreeOnMerge": true,
+    "worktreeOnDelete": true
+  },
   "defaultModelSelection": {
     "instanceId": "claudeAgent",
     "model": "claude-opus-5-5"
@@ -41,12 +45,13 @@
   },
   "projectSettingsFolded": true,
   "deviceOnboardingCompleted": true,
-  "idleCompaction": "onReturn",
+  "idleCompaction": "off",
   "sidebarAutoSettleKeepPullRequests": true,
   "defaultTheme": "catppuccin-mocha-blue",
-  "defaultThemeSetAt": "2026-11-16T21:07:14.702Z",
+  "defaultThemeSetAt": "2026-11-16T21:13:01.034Z",
   "defaultAppearance": "dark",
-  "defaultAppearanceSetAt": "2026-11-16T21:07:14.702Z",
+  "defaultAppearanceSetAt": "2026-11-16T21:13:01.034Z",
+  "branchNamingMode": "semantic",
   "providerInstances": {
     "claudeAgent": {
       "driver": "claudeAgent",
