@@ -99,3 +99,12 @@ hl.bind(
 	"SUPER + SHIFT + D",
 	hl.dsp.exec_cmd("/home/szobo/.local/share/hyprwhspr/src/config/hyprland/hyprwhspr-tray.sh record")
 )
+
+hl.bind("CTRL + Return", function()
+	local window = hl.get_active_window()
+	if window and window.class == "com.t3tools.T3Code" then
+		hl.dispatch(hl.dsp.send_shortcut({ mods = "SHIFT", key = "Return" }))
+	else
+		hl.dispatch(hl.dsp.send_shortcut({ mods = "CTRL", key = "Return" }))
+	end
+end)
