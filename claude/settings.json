@@ -24,6 +24,7 @@
       "Bash(sudo *)",
       "Bash(git clone *)",
       "Bash(pnpm add *)",
+      "Bash(pnpm install *)",
       "Bash(npm install *)",
       "Bash(pnpm db*)"
     ],
