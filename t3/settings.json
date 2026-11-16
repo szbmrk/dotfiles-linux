@@ -52,6 +52,7 @@
   "defaultAppearance": "dark",
   "defaultAppearanceSetAt": "2026-11-16T21:13:01.034Z",
   "branchNamingMode": "semantic",
+  "removeAgentCreditsOnMerge": true,
   "providerInstances": {
     "claudeAgent": {
       "driver": "claudeAgent",
