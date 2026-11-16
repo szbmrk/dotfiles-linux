@@ -107,6 +107,9 @@ pi/extensions/pi-permission-system/logs/
 !systemd/user/
 !systemd/user/openrgb-motherboard.service
 
+!t3/
+!t3/**
+
 !tmux/
 !tmux/**
 tmux/plugins

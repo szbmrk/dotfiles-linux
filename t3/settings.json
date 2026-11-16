@@ -1,0 +1,58 @@
+{
+  "providerModelPreferences": {
+    "codex": {
+      "hiddenModels": [
+        "gpt-6-luna",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna"
+      ],
+      "modelOrder": []
+    },
+    "claudeAgent": {
+      "hiddenModels": [
+        "claude-sonnet-5-5",
+        "claude-fable-5-1",
+        "claude-fable-5",
+        "claude-opus-5",
+        "claude-opus-4-8",
+        "claude-opus-4-7",
+        "claude-opus-4-6",
+        "claude-opus-4-5",
+        "claude-sonnet-5",
+        "claude-sonnet-4-6",
+        "claude-haiku-5-5",
+        "claude-haiku-4-5"
+      ],
+      "modelOrder": []
+    }
+  },
+  "defaultModelSelection": {
+    "instanceId": "claudeAgent",
+    "model": "claude-opus-5-5"
+  },
+  "projectSettingsOverrides": {
+    "26051a37-775f-4adb-919b-5b2f51908630": {
+      "sourceControlWritingStyle": {
+        "mode": "repo_conventions",
+        "customInstructions": "",
+        "followChangeRequestTemplates": true
+      }
+    }
+  },
+  "projectSettingsFolded": true,
+  "deviceOnboardingCompleted": true,
+  "idleCompaction": "onReturn",
+  "sidebarAutoSettleKeepPullRequests": true,
+  "defaultTheme": "catppuccin-mocha-blue",
+  "defaultThemeSetAt": "2026-11-16T21:07:14.702Z",
+  "defaultAppearance": "dark",
+  "defaultAppearanceSetAt": "2026-11-16T21:07:14.702Z",
+  "providerInstances": {
+    "claudeAgent": {
+      "driver": "claudeAgent",
+      "config": {
+        "idleCompaction": "off"
+      }
+    }
+  }
+}
