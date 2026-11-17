@@ -71,6 +71,11 @@ Scope {
 				}
 				*/
 
+                ClaudeUsage {
+                    Layout.alignment: Qt.AlignVCenter
+                    Layout.rightMargin: 12
+                }
+
                 DiskUsage {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.rightMargin: 8
@@ -226,6 +231,15 @@ Scope {
                     preferredHeight: 200
                 }
 				*/
+
+                ClaudePanel {
+                    id: claudePanel
+                    anchors.fill: parent
+                    panelId: "claudePanel"
+                    anchor: "top-right"
+                    preferredWidth: 400
+                    preferredHeight: 280
+                }
 
                 DiskPanel {
                     id: diskPanel
