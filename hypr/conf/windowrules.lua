@@ -9,7 +9,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "opacity",
 	match = {
-		class = "^(code)$",
+		class = "^(code|com\\.t3tools\\.T3Code)$",
 	},
 	opacity = 0.95,
 })
