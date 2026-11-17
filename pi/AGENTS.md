@@ -18,7 +18,7 @@ Load every skill that covers the library, tool or workflow at hand before starti
 
 ## Subagents
 
-Delegate without asking when a task splits into independent slices, such as server and native clients, or Android and desktop. Write the shared contract yourself first (schemas, wire examples, spec text), then run one subagent per slice in parallel, and send each slice's follow-ups to its own subagent. Keep small fixes, single-file changes and lookups inline. Check every slice's result, screenshots included, before reporting it.
+Delegate without asking when a task splits into independent slices, such as server and native clients, or Android and desktop. Write the shared contract yourself first (schemas, wire examples, spec text), then run one subagent per slice in parallel, and send each slice's follow-ups to its own subagent. Scout the same way without asking: when mapping what a change touches means sweeping several areas, run one read-only subagent per area in parallel and keep only their conclusions (locations, constraints, surprises). Keep small fixes, single-file changes and lookups with a known target inline. Check every slice's result, screenshots included, before reporting it.
 
 ## Commits
 
