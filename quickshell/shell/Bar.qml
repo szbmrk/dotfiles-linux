@@ -73,11 +73,12 @@ Scope {
 
                 ClaudeUsage {
                     Layout.alignment: Qt.AlignVCenter
-                    Layout.rightMargin: 12
+                    Layout.rightMargin: 8
                 }
 
                 DiskUsage {
                     Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: 8
                     Layout.rightMargin: 8
                 }
 
