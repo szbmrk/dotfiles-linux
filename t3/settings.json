@@ -28,7 +28,9 @@
   },
   "storageCleanup": {
     "worktreeOnMerge": true,
-    "worktreeOnDelete": true
+    "worktreeOnDelete": true,
+    "browserArtifactsAfterDays": 8,
+    "logsAfterDays": 8
   },
   "defaultModelSelection": {
     "instanceId": "claudeAgent",
