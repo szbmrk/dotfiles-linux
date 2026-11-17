@@ -13,6 +13,9 @@
       "Bash(rm -rf *)",
       "Bash(rtk git commit *)",
       "Bash(rtk git push *)",
+      "Bash(pnpm db:migrate*)",
+      "Bash(*drizzle-kit migrate*)",
+      "Bash(*drizzle-kit push*)",
       "Edit(~/.ssh/**)",
       "Read(~/.ssh/**)"
     ],
@@ -26,7 +29,7 @@
       "Bash(pnpm add *)",
       "Bash(pnpm install *)",
       "Bash(npm install *)",
-      "Bash(pnpm db*)"
+      "Bash(pnpm db:reset*)"
     ],
     "defaultMode": "auto"
   },
