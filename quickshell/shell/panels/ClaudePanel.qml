@@ -15,7 +15,7 @@ PopupPanel {
     property real now: Date.now()
 
     function usageColor(percent) {
-        return percent > 90 ? Theme.red : percent > 70 ? Theme.yellow : Theme.teal;
+        return percent < 10 ? Theme.red : percent < 30 ? Theme.yellow : Theme.teal;
     }
 
     function formatResetIn(timestamp) {
@@ -166,9 +166,9 @@ PopupPanel {
             onStreamFinished: {
                 var parts = this.text.trim().split(/\s+/);
                 if (parts.length >= 4) {
-                    root.sessionPercent = parseFloat(parts[0]) || 0;
+                    root.sessionPercent = 100 - (parseFloat(parts[0]) || 0);
                     root.sessionResetAt = parseInt(parts[1]) || 0;
-                    root.weeklyPercent = parseFloat(parts[2]) || 0;
+                    root.weeklyPercent = 100 - (parseFloat(parts[2]) || 0);
                     root.weeklyResetAt = parseInt(parts[3]) || 0;
                     root.loaded = true;
                 }
