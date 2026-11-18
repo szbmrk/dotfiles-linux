@@ -81,7 +81,7 @@ PopupPanel {
 
     SystemClock {
         id: sysClock
-        precision: SystemClock.Minutes
+        precision: SystemClock.Seconds
     }
 
     panelContent: Component {
@@ -132,7 +132,7 @@ PopupPanel {
                     }
 
                     PanelText {
-                        text: Qt.formatTime(sysClock.date, "hh:mm")
+						text: Qt.formatTime(sysClock.date, "hh:mm:ss")
                         pointSize: Style.fontXXL
                         font.weight: Style.weightBold
                         color: Theme.base
