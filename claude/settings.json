@@ -42,6 +42,10 @@
           {
             "type": "command",
             "command": "rtk hook claude"
+          },
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.command // \"\"' | grep -qE '(^|[^[:alnum:]_-])git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+stash([[:space:]]|;|$)' && { echo \"git stash is blocked. Test another state of the code in a worktree or a scratch branch.\" >&2; exit 2; } || exit 0"
           }
         ]
       }
