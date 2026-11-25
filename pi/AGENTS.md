@@ -5,6 +5,7 @@ Change only what the task covers. Put anything else worth doing in a short list 
 ## Diagnosis
 
 Find the cause before changing anything. A symptom can come from layout, timing or environment rather than the content it shows, such as a truncated label that looks like wrong wording.
+Before fixing, get a loop that reproduces the failure, and count a fix only when that loop goes from red to green.
 Call a failure flaky only with evidence, such as the same failure on the base branch.
 Set thresholds and limits from measured values.
 
@@ -34,6 +35,13 @@ Delegate without asking when a task splits into independent slices, such as serv
 Scout the same way: when mapping a change means sweeping several areas, run one read-only subagent per area and keep only their conclusions (locations, constraints, surprises).
 Keep small fixes, single-file changes and lookups with a known target inline.
 Check every slice's result, screenshots included, before reporting it.
+
+## Review
+
+When a feature is done, end the final report by offering a review.
+When the user asks for a review in any wording, or accepts the offer, run two reviews in parallel and report them separately:
+- **Fresh**: the `code-review` skill against the branch's merge-base. Its subagents never see this session, so they judge the code alone.
+- **Forked**: one forked subagent per area the change touches, such as server and client, each inheriting this session's context. Each checks its area against what the conversation settled: the user's intent and corrections, and anything agreed but not done.
 
 ## Git
 

@@ -8,14 +8,15 @@
       "WebFetch"
     ],
     "deny": [
+      "Bash(*drizzle-kit migrate*)",
+      "Bash(*drizzle-kit push*)",
       "Bash(git commit *)",
       "Bash(git push *)",
+      "Bash(pnpm db:migrate*)",
+      "Bash(rm -fr *)",
       "Bash(rm -rf *)",
       "Bash(rtk git commit *)",
       "Bash(rtk git push *)",
-      "Bash(pnpm db:migrate*)",
-      "Bash(*drizzle-kit migrate*)",
-      "Bash(*drizzle-kit push*)",
       "Edit(~/.ssh/**)",
       "Read(~/.ssh/**)"
     ],
