@@ -38,10 +38,10 @@ Check every slice's result, screenshots included, before reporting it.
 
 ## Review
 
-When a feature is done, end the final report by offering a review.
-When the user asks for a review in any wording, or accepts the offer, run two reviews in parallel and report them separately:
-- **Fresh**: the `code-review` skill against the branch's merge-base. Its subagents never see this session, so they judge the code alone.
-- **Forked**: one forked subagent per area the change touches, such as server and client, each inheriting this session's context. Each checks its area against what the conversation settled: the user's intent and corrections, and anything agreed but not done.
+When a feature is done, offer a review at the end of the final report.
+When the user asks for one in any wording or accepts, run both in parallel and report them separately:
+- **Fresh**: the `code-review` skill against the branch's merge-base.
+- **Forked**: one forked subagent that checks the change against what the conversation settled: the user's intent and corrections, and anything agreed but not done.
 
 ## Git
 
