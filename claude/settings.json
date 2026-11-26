@@ -19,11 +19,21 @@
       "Bash(rtk git push *)",
       "Edit(~/.ssh/**)",
       "Read(~/.ssh/**)",
+      "mcp__claude_ai_Slack__slack_add_list_comment",
+      "mcp__claude_ai_Slack__slack_add_list_record",
+      "mcp__claude_ai_Slack__slack_add_reaction",
+      "mcp__claude_ai_Slack__slack_complete_file_upload",
+      "mcp__claude_ai_Slack__slack_create_canvas",
+      "mcp__claude_ai_Slack__slack_create_conversation",
+      "mcp__claude_ai_Slack__slack_create_list",
+      "mcp__claude_ai_Slack__slack_get_file_upload_url",
+      "mcp__claude_ai_Slack__slack_schedule_message",
       "mcp__claude_ai_Slack__slack_send_message",
       "mcp__claude_ai_Slack__slack_send_message_draft",
-      "mcp__claude_ai_Slack__slack_schedule_message",
-      "mcp__claude_ai_Slack__slack_create_canvas",
-      "mcp__claude_ai_Slack__slack_update_canvas"
+      "mcp__claude_ai_Slack__slack_update_canvas",
+      "mcp__claude_ai_Slack__slack_update_list",
+      "mcp__claude_ai_Slack__slack_update_list_comment",
+      "mcp__claude_ai_Slack__slack_update_list_record"
     ],
     "ask": [
       "Read(**/*.env)",
@@ -60,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "n=$(jq -r \".tool_name // \\\"\\\"\" | sed \"s/^mcp__claude_ai_Slack__//\"); if ! echo \"$n\" | grep -qiE \"send|post|schedule|create|update|edit|delete|add|remove|react|upload|invite|join|leave|archive|set|draft|write|mark\" && echo \"$n\" | grep -qiE \"read|search|get|list|fetch|view|find|lookup\"; then exit 0; fi; echo \"Slack MCP is read-only: $n is blocked.\" >&2; exit 2"
+            "command": "n=$(jq -r \".tool_name // \\\"\\\"\" | sed \"s/^mcp__claude_ai_Slack__//\"); if ! echo \"$n\" | grep -qiE \"send|post|schedule|create|update|edit|delete|add|remove|upload|invite|join|leave|archive|set|draft|write|mark\" && echo \"$n\" | grep -qiE \"read|search|get|list|fetch|view|find|lookup\"; then exit 0; fi; echo \"Slack MCP is read-only: $n is blocked.\" >&2; exit 2"
           }
         ]
       }
