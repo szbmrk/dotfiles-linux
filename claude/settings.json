@@ -18,7 +18,12 @@
       "Bash(rtk git commit *)",
       "Bash(rtk git push *)",
       "Edit(~/.ssh/**)",
-      "Read(~/.ssh/**)"
+      "Read(~/.ssh/**)",
+      "mcp__claude_ai_Slack__slack_send_message",
+      "mcp__claude_ai_Slack__slack_send_message_draft",
+      "mcp__claude_ai_Slack__slack_schedule_message",
+      "mcp__claude_ai_Slack__slack_create_canvas",
+      "mcp__claude_ai_Slack__slack_update_canvas"
     ],
     "ask": [
       "Read(**/*.env)",
@@ -47,6 +52,15 @@
           {
             "type": "command",
             "command": "jq -r '.tool_input.command // \"\"' | grep -qE '(^|[^[:alnum:]_-])git([[:space:]]+-C[[:space:]]+[^[:space:]]+)?[[:space:]]+stash([[:space:]]|;|$)' && { echo \"git stash is blocked. Test another state of the code in a worktree or a scratch branch.\" >&2; exit 2; } || exit 0"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__claude_ai_Slack__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "n=$(jq -r \".tool_name // \\\"\\\"\" | sed \"s/^mcp__claude_ai_Slack__//\"); if ! echo \"$n\" | grep -qiE \"send|post|schedule|create|update|edit|delete|add|remove|react|upload|invite|join|leave|archive|set|draft|write|mark\" && echo \"$n\" | grep -qiE \"read|search|get|list|fetch|view|find|lookup\"; then exit 0; fi; echo \"Slack MCP is read-only: $n is blocked.\" >&2; exit 2"
           }
         ]
       }
