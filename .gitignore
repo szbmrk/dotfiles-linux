@@ -20,6 +20,8 @@ alacritty/env.toml
 !claude/skills/
 !claude/skills/plannotator-*/
 !claude/skills/plannotator-*/**
+!claude/skills/daily-status/
+!claude/skills/daily-status/**
 
 !fastfetch/
 !fastfetch/**
