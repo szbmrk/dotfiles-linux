@@ -21,3 +21,9 @@ echo "## pull requests touched"
 gh search prs --author=@me --owner=travlrd-com --updated=">=$since" --limit 100 \
   --json repository,number,title,state,createdAt,closedAt \
   --jq ".[] | select(.createdAt[0:10] < \"$until\" and (.closedAt == null or .closedAt[0:10] >= \"$since\")) | \"\(.repository.name)#\(.number)\t\(.state)\topened \(.createdAt[0:10])\tclosed \(.closedAt[0:10]? // \"-\")\t\(.title)\""
+
+echo
+echo "## follow-ups"
+gh search prs --author=@me --owner=travlrd-com --updated=">=$since" --limit 100 \
+  --json repository,number,createdAt,closedAt,body \
+  --jq ".[] | select(.createdAt[0:10] < \"$until\" and (.closedAt == null or .closedAt[0:10] >= \"$since\")) | (.body // \"\" | [match(\"(?im)^(?:#+ *|\\\\*\\\\*)follow[- ]?ups?[^\\n]*\\n+((?:[-*] .*\\n?)+)\"; \"g\").captures[0].string] | join(\"\")) as \$f | select(\$f != \"\") | \"\(.repository.name)#\(.number)\n\(\$f)\""

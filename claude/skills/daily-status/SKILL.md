@@ -20,9 +20,9 @@ The **window** runs from the last status's post date through yesterday, so a Mon
 bash ~/.claude/skills/daily-status/evidence.sh <post date, YYYY-MM-DD>
 ```
 
-It prints the user's commits on every branch of the repos under `~/travlrd`, and their PRs touched in the window. The PR list decides merged or open; the branch name beside a commit is only a hint.
+It prints the user's commits on every branch of the repos under `~/travlrd`, their PRs touched in the window, and the follow-ups those PRs list in their description. The PR list decides merged or open; the branch name beside a commit is only a hint.
 
-Done when every commit and every PR in the output is assigned to an item or to noise (step 3).
+Done when every commit and every PR in the output is assigned to an item or to noise (step 3), and every follow-up to a `Today:` item or to work already done (step 4).
 
 ## 3. Previous workday items
 
@@ -63,7 +63,7 @@ Show the status in the reply as rendered Markdown:
 - TBD
 ```
 
-`Today:` is every `:octagonal_sign:` item without its mark, then every unverified item, then `TBD`. `Next workday:` is `TBD`.
+`Today:` is every `:octagonal_sign:` item without its mark, then every unverified item, then one item per **follow-up** that no commit in the window already covers, then `TBD` only if the list is still empty. A follow-up item uses the same `<Project> - <topic>` wording, with the topic boiled down to what a teammate would recognise: `**Zooming** into the day strip, down to the minute` on a timeline PR gives `analysis timeline zoom handling`. `Next workday:` is `TBD`.
 
 Then put the same status on the clipboard as HTML with nothing between elements, since any whitespace or `<p>` pastes into Slack as an empty line. Write it to a scratchpad file and copy it with `setsid -f`, so `wl-copy` outlives the shell:
 
