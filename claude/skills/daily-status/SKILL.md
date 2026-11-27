@@ -10,7 +10,7 @@ Draft the **status** the user pastes into today's "Daily Status Message Request"
 
 Search Slack for the user's latest status: `slack_search_public_and_private`, filters `from:<@U0AL60DEVN3> in:<#C048SNGT57D>`, keyword `workday`, sorted by timestamp, limit 3. Take the newest one posted before today (if one was already posted today, tell the user and stop).
 
-Done when you hold its post date and its `Today:` items. If Slack is unreachable, use the last weekday as the post date and an empty plan.
+Done when you hold its post date, its `Today:` items (the **plan**) and its `Next workday:` items (the **queue**). If Slack is unreachable, use the last weekday as the post date and an empty plan.
 
 ## 2. Evidence
 
@@ -63,7 +63,7 @@ Show the status in the reply as rendered Markdown:
 - TBD
 ```
 
-`Today:` is every `:octagonal_sign:` item without its mark, then every unverified item, then one item per **follow-up** that no commit in the window already covers, then `TBD` only if the list is still empty. A follow-up item uses the same `<Project> - <topic>` wording, with the topic boiled down to what a teammate would recognise: `**Zooming** into the day strip, down to the minute` on a timeline PR gives `analysis timeline zoom handling`. `Next workday:` is `TBD`.
+`Today:` is every `:octagonal_sign:` item without its mark, then every unverified item, then every queue item no commit in the window already covers (its wording kept, typos fixed, placeholders dropped), then one item per **follow-up** that no commit in the window already covers, then `TBD` only if the list is still empty. Each piece of work appears once: a follow-up or queue item that matches an earlier line merges into it. A follow-up item uses the same `<Project> - <topic>` wording, with the topic boiled down to what a teammate would recognise: `**Zooming** into the day strip, down to the minute` on a timeline PR gives `analysis timeline zoom handling`. `Next workday:` is `TBD`.
 
 Then put the same status on the clipboard as HTML with nothing between elements, since any whitespace or `<p>` pastes into Slack as an empty line. Write it to a scratchpad file and copy it with `setsid -f`, so `wl-copy` outlives the shell:
 
